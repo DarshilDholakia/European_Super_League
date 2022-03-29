@@ -17,8 +17,12 @@ public class AssignmentDataAccessService implements AssignmentDao {
     @Override
     public List<Player> selectAllPlayersForUser(Integer user_id) {
         String sql = """
-                SELECT player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points FROM ((users INNER JOIN player_assignment ON player_assignment.user_id = users.id)
-                INNER JOIN players ON player_assignment.player_id = players.id) WHERE users.id = ?;
+                SELECT player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points 
+                FROM ((users 
+                INNER JOIN player_assignment 
+                ON player_assignment.user_id = users.id)
+                INNER JOIN players ON player_assignment.player_id = players.id) 
+                WHERE users.id = ?;
                 """;
         return jdbcTemplate.query(sql, new AssignmentMapper(), user_id);
     }
@@ -26,13 +30,21 @@ public class AssignmentDataAccessService implements AssignmentDao {
     @Override
     public int insertAssignment(Assignments assignments) {
         String sql = """
-                
+                INSERT INTO player_assignment (user_id, player_id) VALUES (?, ?);
                 """;
-        return 0;
+        int rowAffected = jdbcTemplate.update(
+                sql,
+                assignments.getUser_id(),
+                assignments.getPlayer_id()
+        );
+            return rowAffected;
     }
 
     @Override
     public int deleteAssignment(Integer assignment_id) {
-        return 0;
+        String sql = """
+                DELETE FROM player_assignment WHERE id = ?;
+                """;
+        return jdbcTemplate.update(sql, assignment_id);
     }
 }
