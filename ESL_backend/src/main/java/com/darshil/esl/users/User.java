@@ -1,7 +1,5 @@
 package com.darshil.esl.users;
 
-import com.darshil.esl.players.Player;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +17,6 @@ public class User {
         this.password = password;
         this.teamName = teamName;
         this.totalPoints = totalPoints;
-//        this.players = players;
     }
     public User(Integer id,String email, String password, String teamName, Integer totalPoints) {
         this.id = id;
@@ -27,7 +24,6 @@ public class User {
         this.password = password;
         this.teamName = teamName;
         this.totalPoints = totalPoints;
-//        this.players = players;
     }
     public String getEmail() {
         return email;
@@ -61,14 +57,6 @@ public class User {
         this.totalPoints = totalPoints;
     }
 
-//    public List<Player> getPlayers() {
-////        return players;
-//    }
-//
-//    public void setPlayers(List<Player> players) {
-//        this.players = players;
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -89,7 +77,6 @@ public class User {
                 ", password='" + password + '\'' +
                 ", teamName='" + teamName + '\'' +
                 ", totalPoints=" + totalPoints +
-//                ", players=" + players +
                 '}';
     }
 }
