@@ -26,6 +26,12 @@ public class AssignmentService {
 
     public void insertAssignment(Assignments assignments) {
         try {
+            if(assignments.getUser_id() == null) {
+                throw new InvalidRequestException("User id cannot be null");
+            }
+            if(assignments.getPlayer_id() == null) {
+                throw new InvalidRequestException("Player id cannot be null");
+            }
             assignmentDao.insertAssignment(assignments);
         } catch(RowNotChangedException e) {
             throw new IllegalStateException("Assignment was not added.");
