@@ -5,9 +5,11 @@ import com.darshil.esl.players.Player;
 import java.util.List;
 
 public interface AssignmentDao {
+    List<Assignments> selectAllAssignments();
     List<Player> selectAllPlayersForUser(Integer user_id);
-//    Player selectPlayerForUser(Integer user_id); NOT SURE IF NEEDED
-    int insertAssignment(Integer user_id, Integer player_id);
-    int deleteAssignment(Integer assignment_id);
-    int updateAssignment(Integer assignment_id, Integer user_id, Integer player_id);
+    int insertAssignment(Assignments assignments); //lets user add a player to their team
+    int deleteAssignment(Integer assignment_id); //lets user remove player from their team
+
+    //    Player selectPlayerForUser(Integer user_id); MAYBE AN EXTENSION? STATS PAGE FOR EACH PLAYER
+    //    int updateAssignment(Integer assignment_id, Integer user_id, Integer player_id);
 }

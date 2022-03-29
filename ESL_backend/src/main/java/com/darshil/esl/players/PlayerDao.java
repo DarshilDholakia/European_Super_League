@@ -5,6 +5,9 @@ public interface PlayerDao {
     List<Player> selectAllPlayers();
     Player selectPlayerById(Integer id);
     int insertPlayer(Player player);
-    int deletePlayer(Integer id);
-    int updatePlayer(Integer id, Player update);
+    int deletePlayerById(Integer id);
+    int updatePlayerById(Integer id, Player updatedPlayer);
+    List<Player> selectPlayersByName(String player_name);
+    List<Player> selectPlayersByPosition(Position player_position);
+    List<Player> selectPlayersByClub(Club player_club);
 }

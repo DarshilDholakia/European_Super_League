@@ -4,7 +4,6 @@ DROP TABLE player_assignment;
 DROP TABLE players;
 DROP TABLE users;
 
-
 CREATE TABLE players (
     id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     player_name character varying(255) NOT NULL,
@@ -80,19 +79,19 @@ INSERT INTO players (player_name,player_position,player_club,price,goals,assists
 VALUES ('M Salah', 'FORWARD', 'LIVERPOOL', 5, 0, 0, 0, 0, 0, 0);
 
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
-VALUES ('T Courtois', 'GOALKEEPER', 'REAL MADRID', 5, 0, 0, 0, 0, 0, 0);
+VALUES ('T Courtois', 'GOALKEEPER', 'REAL_MADRID', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
-VALUES ('Marcelo', 'DEFENDER', 'REAL MADRID', 5, 0, 0, 0, 0, 0, 0);
+VALUES ('Marcelo', 'DEFENDER', 'REAL_MADRID', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
-VALUES ('D Alaba', 'DEFENDER', 'REAL MADRID', 5, 0, 0, 0, 0, 0, 0);
+VALUES ('D Alaba', 'DEFENDER', 'REAL_MADRID', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
-VALUES ('T Kroos', 'MIDFIELDER', 'REAL MADRID', 5, 0, 0, 0, 0, 0, 0);
+VALUES ('T Kroos', 'MIDFIELDER', 'REAL_MADRID', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
-VALUES ('L Modric', 'MIDFIELDER', 'REAL MADRID', 5, 0, 0, 0, 0, 0, 0);
+VALUES ('L Modric', 'MIDFIELDER', 'REAL_MADRID', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
-VALUES ('V Junior', 'FORWARD', 'REAL MADRID', 5, 0, 0, 0, 0, 0, 0);
+VALUES ('V Junior', 'FORWARD', 'REAL_MADRID', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
-VALUES ('K Benzema', 'FORWARD', 'REAL MADRID', 5, 0, 0, 0, 0, 0, 0);
+VALUES ('K Benzema', 'FORWARD', 'REAL_MADRID', 5, 0, 0, 0, 0, 0, 0);
 
 
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
@@ -150,11 +149,11 @@ VALUES('K Zouma', 'DEFENDER', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
 VALUES('D Rice', 'MIDFIELDER', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
-VALUES('S Bemrahma', 'MIDFIELDER', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
+VALUES('S Benrahma', 'MIDFIELDER', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
 VALUES('J Bowen', 'FORWARD', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
-VALUES('M ANTONIO', 'FORWARD', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
+VALUES('M Antonio', 'FORWARD', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
 
 
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
