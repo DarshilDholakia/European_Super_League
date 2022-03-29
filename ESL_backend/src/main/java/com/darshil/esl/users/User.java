@@ -1,30 +1,34 @@
 package com.darshil.esl.users;
 
+import com.darshil.esl.players.Player;
+
+import java.util.List;
 import java.util.Objects;
 
 public class User {
-    int UserId;
-    String email;
-    String password;
-    String teamName;
-    Integer totalPoint;
+    private Integer id;
+    private String email;
+    private String password;
+    private String teamName;
+    private Integer totalPoints;
+    public User(){
+    }
 
-    public User(int userId, String email, String password, String teamName, Integer totalPoint) {
-        UserId = userId;
+    public User(String email, String password, String teamName, Integer totalPoints) {
         this.email = email;
         this.password = password;
         this.teamName = teamName;
-        this.totalPoint = totalPoint;
+        this.totalPoints = totalPoints;
+//        this.players = players;
     }
-
-    public int getUserId() {
-        return UserId;
+    public User(Integer id,String email, String password, String teamName, Integer totalPoints) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.teamName = teamName;
+        this.totalPoints = totalPoints;
+//        this.players = players;
     }
-
-    public void setUserId(int userId) {
-        UserId = userId;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -49,35 +53,43 @@ public class User {
         this.teamName = teamName;
     }
 
-    public Integer getTotalPoint() {
-        return totalPoint;
+    public Integer getTotalPoints() {
+        return totalPoints;
     }
 
-    public void setTotalPoint(Integer totalPoint) {
-        this.totalPoint = totalPoint;
+    public void setTotalPoints(Integer totalPoints) {
+        this.totalPoints = totalPoints;
     }
+
+//    public List<Player> getPlayers() {
+////        return players;
+//    }
+//
+//    public void setPlayers(List<Player> players) {
+//        this.players = players;
+//    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return UserId == user.UserId && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(teamName, user.teamName) && Objects.equals(totalPoint, user.totalPoint);
+        return Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(teamName, user.teamName) && Objects.equals(totalPoints, user.totalPoints);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(UserId, email, password, teamName, totalPoint);
+        return Objects.hash(email, password, teamName, totalPoints);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "UserId=" + UserId +
-                ", email='" + email + '\'' +
+                "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", teamName='" + teamName + '\'' +
-                ", totalPoint=" + totalPoint +
+                ", totalPoints=" + totalPoints +
+//                ", players=" + players +
                 '}';
     }
 }
