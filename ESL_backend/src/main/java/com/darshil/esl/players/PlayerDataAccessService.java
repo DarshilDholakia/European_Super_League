@@ -136,7 +136,7 @@ public class PlayerDataAccessService implements PlayerDao {
     }
 
     @Override
-    public List<Player> selectPlayerByName(String player_name) {
+    public List<Player> selectPlayersByName(String player_name) {
         String sql = """
                 SELECT id, player_name, player_position, player_club, price, goals, assists, red_cards, yellow_cards, clean_sheets, points 
                 FROM players WHERE player_name = ?
