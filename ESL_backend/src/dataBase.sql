@@ -217,3 +217,11 @@ INSERT INTO players (player_name,player_position,player_club,price,goals,assists
 VALUES ('J Felix', 'FORWARD','ATLETICO', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
 VALUES ('A Griezmann', 'FORWARD','ATLETICO', 5, 0, 0, 0, 0, 0, 0);
+
+
+INSERT INTO users (email, password, team_name, total_points) VALUES ('darshil@mail.co.uk', 'password', 'ABCDE FC', 0);
+INSERT INTO users (email, password, team_name, total_points) VALUES ('adib@mail.co.uk', 'password', 'Obi-Wan Iwobi', 0);
+INSERT INTO users (email, password, team_name, total_points) VALUES ('abdi@mail.co.uk', 'password', 'Somali Allstars', 0);
+INSERT INTO users (email, password, team_name, total_points) VALUES ('suj@mail.co.uk', 'password', 'Giroud Awakening', 0);
+INSERT INTO users (email, password, team_name, total_points) VALUES ('a_a_ron@mail.co.uk', 'password', 'Dunk and Disorderly', 0);
+INSERT INTO users (email, password, team_name, total_points) VALUES ('michael@mail.co.uk', 'password', 'The Wizard of Özil', 0);
