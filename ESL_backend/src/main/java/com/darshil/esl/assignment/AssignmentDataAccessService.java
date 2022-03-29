@@ -1,6 +1,8 @@
 package com.darshil.esl.assignment;
 
 import com.darshil.esl.players.Player;
+import com.darshil.esl.players.PlayerMapper;
+import org.springframework.jdbc.core.ArgumentPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +17,14 @@ public class AssignmentDataAccessService implements AssignmentDao {
     }
 
     @Override
+    public List<Assignments> selectAllAssignments() {
+        String sql = """
+                SELECT user_id,player_id FROM player_assignment;
+                """;
+        return jdbcTemplate.query(sql, new AssignmentMapper());
+    }
+
+    @Override
     public List<Player> selectAllPlayersForUser(Integer user_id) {
         String sql = """
                 SELECT player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points 
@@ -24,7 +34,7 @@ public class AssignmentDataAccessService implements AssignmentDao {
                 INNER JOIN players ON player_assignment.player_id = players.id) 
                 WHERE users.id = ?;
                 """;
-        return jdbcTemplate.query(sql, new AssignmentMapper(), user_id);
+        return jdbcTemplate.query(sql, new PlayerMapper(), user_id);
     }
 
     @Override
