@@ -38,6 +38,15 @@ public class PlayerService {
     }
 
     private void checkPlayerInputProperties(Player player) {
+        if(player.getPlayer_name() == null) {
+            throw new InvalidRequestException("Name cannot be null");
+        }
+        if(player.getPlayer_position() == null) {
+            throw new InvalidRequestException("Position cannot be null");
+        }
+        if(player.getPlayer_club() == null) {
+            throw new InvalidRequestException("Club cannot be null");
+        }
         if(player.getPrice() == null) {
             throw new InvalidRequestException("Price cannot be null");
         }
@@ -58,15 +67,6 @@ public class PlayerService {
         }
         if(player.getPoints() == null) {
             throw new InvalidRequestException("Points cannot be null");
-        }
-        if(player.getName() == null) {
-            throw new InvalidRequestException("Name cannot be null");
-        }
-        if(player.getClub() == null) {
-            throw new InvalidRequestException("Club cannot be null");
-        }
-        if(player.getPrice() == null) {
-            throw new InvalidRequestException("Position cannot be null");
         }
     }
 }
