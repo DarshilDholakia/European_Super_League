@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Fantasy European Super League
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Group1 of the BNTA Capstone project aiming to create a front-end application for an existing Wordle-Helper server-side project.
 
-## Available Scripts
+By Aaron, Abdi, Adib, Darshil, Michael and Suraaj.
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* [Project Description – project outline and Tech Stack](#Project-Description)
+    * [Brief](#Brief)
+    * [Tech Stack](#Tech-Stack)
+* [Setup Instructions](#Setup-Instructions)
+* [Acknowledgements](#Acknowledgements)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Project Description
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Brief
+For this project your team will have completely free reign to design and build a full-stack application to provide a service or solve a problem that you want to work on. You have 1.5 weeks to work on this and you will need to consider all of the steps involved in the previous projects. On the final day you will present your work to your colleagues, instructors and clients.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This is a full-stack project, meaning it must include both front and back ends. This is done by building a React app connecting to a Spring back-end (to consolidate the work we have done so far on the course).
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Setup Instructions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    1. Clone the Repo into your terminal: git@github.com:DarshilDholakia/European_Super_League.git
+    2. Open server-side repo ("ESL_backend") in IntelliJ and run the SpringBoot application ("eslApplication.java").
+    3. Open client-side repo ("esl_frontend") in Visual Studio Code (VSC) and run the following code in the VSC in-built terminal:
+        - npm install
+        - npm start
+    4. Further instructions to follow
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Acknowledgements
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Aaron](https://github.com/Aaron-Nazareth)
+- [Abdi](https://github.com/Abdiqaniafrah)
+- [Adib](https://github.com/AdibZB)
+- [Darshil](https://github.com/DarshilDholakia)
+- [Michael](https://github.com/13stMichael)
+- [Suraaj](https://github.com/SuraajL)
