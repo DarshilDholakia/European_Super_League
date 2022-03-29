@@ -40,19 +40,10 @@ public class AssignmentService {
     }
 
     public void deleteAssignment(Integer assignment_id) {
-//        try {
-//            try {assignmentDao.deleteAssignment(assignment_id);
-//        } catch (RowNotChangedException e) {
-//                throw new IllegalStateException("Assignment with ID " + assignment_id + "was not deleted!");
-//            }}
-//        catch (EmptyResultDataAccessException e) {
-//            throw new IllegalStateException("Assignment with ID " + assignment_id + "does not exist!");
-//        }
-
         Integer rowsAffected = assignmentDao.deleteAssignment(assignment_id);
         if (rowsAffected != 1) {
             throw new RowNotChangedException("Assignment with ID " + assignment_id + " was not deleted");
         }
     }
-    //include check for whenever an id of assignment to be deleted is inserted into the URL and that assignment doesn't exist (player service)
+    //TODO: include check for whenever an id of assignment to be deleted is inserted into the URL and that assignment doesn't exist (player service)
 }
