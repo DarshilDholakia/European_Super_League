@@ -2,6 +2,7 @@ package com.darshil.esl.players;
 import com.darshil.esl.InvalidRequestException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.util.EnumUtils;
 
 import java.util.List;
 
@@ -79,6 +80,8 @@ public class PlayerService {
 
     public List<Player> selectPlayersByClub(Club player_club){
 
+        //check if player_club exists in enum
+
         List<Player> playerList = playerDao.selectPlayersByClub(player_club);
         if (playerList==null){
             throw new InvalidRequestException("No players found for that club");
@@ -130,4 +133,6 @@ public class PlayerService {
             throw new InvalidRequestException("Points cannot be null");
         }
     }
+
+
 }

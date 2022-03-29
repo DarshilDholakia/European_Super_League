@@ -19,7 +19,8 @@ public class AssignmentService {
     public List<Player> selectAllPlayersForUser(Integer user_id) {
         try {
             return assignmentDao.selectAllPlayersForUser(user_id);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             throw new InvalidRequestException("No players found. Try again.");
         }
     }
@@ -53,4 +54,5 @@ public class AssignmentService {
             throw new RowNotChangedException("Assignment with ID " + assignment_id + " was not deleted");
         }
     }
+    //include check for whenever an id of assignment to be deleted is inserted into the URL and that assignment doesn't exist (player service)
 }

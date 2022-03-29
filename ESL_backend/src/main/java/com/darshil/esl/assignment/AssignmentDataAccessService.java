@@ -27,7 +27,7 @@ public class AssignmentDataAccessService implements AssignmentDao {
     @Override
     public List<Player> selectAllPlayersForUser(Integer user_id) {
         String sql = """
-                SELECT player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points 
+                SELECT player_id,player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points 
                 FROM ((users 
                 INNER JOIN player_assignment 
                 ON player_assignment.user_id = users.id)

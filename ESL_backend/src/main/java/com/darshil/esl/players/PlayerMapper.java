@@ -9,7 +9,7 @@ public class PlayerMapper implements RowMapper<Player> {
 
     @Override
     public Player mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new Player(rs.getInt("id"),
+        return new Player(rs.getInt("player_id"),
             rs.getString("player_name"),
             Position.valueOf(rs.getString("player_position").toUpperCase()),
             Club.valueOf(rs.getString("player_club").toUpperCase()),

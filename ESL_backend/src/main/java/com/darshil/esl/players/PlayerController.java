@@ -49,7 +49,7 @@ public class PlayerController {
         // player_position into an ENUM
     }
 
-    @GetMapping(path = "player/club/{club}")
+    @GetMapping(path = "player/club/{player_club}")
     public List<Player> getPlayersByClub(@PathVariable("player_club") String player_club){
         return playerService.selectPlayersByClub(Club.valueOf(player_club)); //converts string input for player_club
         // into an ENUM
