@@ -9,7 +9,6 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("users")
 public class UserController {
     private UserService userService;
 
@@ -19,24 +18,24 @@ public class UserController {
 
     //User Options
     //Add Patient
-    @PostMapping
-    public void addPatient(@Valid @RequestBody User user)
+    @PostMapping(path="user")
+    public void addUser(@Valid @RequestBody User user)
     { userService.addNewUser(user);}
 
     //Get all patients
-    @GetMapping
+    @GetMapping(path="user/all")
     public List<User> getUsers() {return
     userService.findAllUsers();}
 
     //Update User details
-    @PutMapping("{id}")
-    public void updateUserbyId(@RequestBody User user, @PathVariable("id") Integer id) {
+    @PutMapping(path="user/{id}")
+    public void updateUserById(@RequestBody User user, @PathVariable("id") Integer id) {
         userService.updateUser(id, user);
     }
 
     // Delete patient by ID
-    @DeleteMapping("{id}")
-    public void deleteUser(@PathVariable("id") Integer id){
+    @DeleteMapping(path="user/{id}")
+    public void deleteUserById(@PathVariable("id") Integer id){
         userService.deleteUserById(id);}
 
 

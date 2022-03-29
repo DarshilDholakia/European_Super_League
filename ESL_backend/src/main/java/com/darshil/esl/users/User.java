@@ -25,6 +25,15 @@ public class User {
         this.teamName = teamName;
         this.totalPoints = totalPoints;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getEmail() {
         return email;
     }

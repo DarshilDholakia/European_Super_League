@@ -12,11 +12,11 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+@Service
 public class UserService {
     private UserDao userDao;
 
-    public UserService(@Qualifier("userrepo") UserDao userDao) {
+    public UserService(UserDao userDao) {
 
         this.userDao = userDao;
     }
@@ -25,7 +25,7 @@ public class UserService {
         return userDao
                 .selectAllUsers()
                 .stream()
-                .anyMatch(p -> Objects.equals(p.getid(),userId));
+                .anyMatch(p -> Objects.equals(p.getId(),userId));
     }
 
     public int addNewUser(User user) {
@@ -56,9 +56,9 @@ public class UserService {
             }
 
 
-        boolean exists = doesUserWithIdExist(user.getUserId());
+        boolean exists = doesUserWithIdExist(user.getId());
         if (exists){
-            throw new RuntimeException("User with id" + user.getUserId() + " already exists");
+            throw new RuntimeException("User with id" + user.getId() + " already exists");
         }
         //TODO Input potential function to check
 
@@ -112,7 +112,7 @@ public class UserService {
         if (exists) {
             User delUser = userDao
                     .selectUserById(id);
-            return userDao.deleteUser(delUser);
+            return userDao.deleteUser(id);
         } else {
             throw new UserNotFoundException("Patient with id" + id + " not found");
         }

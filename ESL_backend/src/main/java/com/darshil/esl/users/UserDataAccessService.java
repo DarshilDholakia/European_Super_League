@@ -22,6 +22,7 @@ public class UserDataAccessService implements UserDao {
           return jdbcTemplate.update(sql,
                   user.getEmail(),user.getPassword(),user.getTeamName(),user.getTotalPoints());
      }
+
      @Override
      public int deleteUser(Integer id) {
           String sql = "DELETE FROM users WHERE id=?";
