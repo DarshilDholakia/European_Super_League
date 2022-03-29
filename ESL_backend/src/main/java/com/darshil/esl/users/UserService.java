@@ -25,7 +25,7 @@ public class UserService {
         return userDao
                 .selectAllUsers()
                 .stream()
-                .anyMatch(p -> Objects.equals(p.getUserId(),userId));
+                .anyMatch(p -> Objects.equals(p.getid(),userId));
     }
 
     public int addNewUser(User user) {
@@ -52,7 +52,7 @@ public class UserService {
             }
             else{
                 //Add InvalidEmailException
-                System.out.printlng("The email input is invalid, please check again");
+                System.out.println("The email input is invalid, please check again");
             }
 
 
