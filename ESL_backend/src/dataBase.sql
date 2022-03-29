@@ -4,7 +4,6 @@ DROP TABLE player_assignment;
 DROP TABLE players;
 DROP TABLE users;
 
-
 CREATE TABLE players (
     id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     player_name character varying(255) NOT NULL,
@@ -150,11 +149,11 @@ VALUES('K Zouma', 'DEFENDER', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
 VALUES('D Rice', 'MIDFIELDER', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
-VALUES('S Bemrahma', 'MIDFIELDER', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
+VALUES('S Benrahma', 'MIDFIELDER', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
 VALUES('J Bowen', 'FORWARD', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
-VALUES('M ANTONIO', 'FORWARD', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
+VALUES('M Antonio', 'FORWARD', 'WEST_HAM', 5, 0, 0, 0, 0, 0, 0);
 
 
 INSERT INTO players (player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points)
