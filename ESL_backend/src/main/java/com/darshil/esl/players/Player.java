@@ -4,6 +4,9 @@ import java.util.Objects;
 
 public class Player {
     private Integer id;
+    private String name;
+    private Position position;
+    private Club club;
     private Integer price;
     private Integer goals;
     private Integer assists;
@@ -11,14 +14,17 @@ public class Player {
     private Integer yellow_cards;
     private Integer clean_sheets;
     private Integer points;
-    private String name;
-    private Club club;
-    private Position position;
 
-    public Player(Integer id, Integer price, Integer goals, Integer assists,
-                  Integer red_cards, Integer yellow_cards, Integer clean_sheets,
-                  Integer points, String name, Club club, Position position) {
+    public Player(){
+
+    };
+
+    public Player(Integer id, String name, Position position, Club club, Integer price, Integer goals,
+                  Integer assists, Integer red_cards, Integer yellow_cards, Integer clean_sheets, Integer points) {
         this.id = id;
+        this.name = name;
+        this.position = position;
+        this.club = club;
         this.price = price;
         this.goals = goals;
         this.assists = assists;
@@ -26,9 +32,6 @@ public class Player {
         this.yellow_cards = yellow_cards;
         this.clean_sheets = clean_sheets;
         this.points = points;
-        this.name = name;
-        this.club = club;
-        this.position = position;
     }
 
     public Integer getId() {
@@ -37,6 +40,30 @@ public class Player {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Club getClub() {
+        return club;
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
     }
 
     public Integer getPrice() {
@@ -95,47 +122,26 @@ public class Player {
         this.points = points;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Club getClub() {
-        return club;
-    }
-
-    public void setClub(Club club) {
-        this.club = club;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Player player = (Player) o;
-        return id.equals(player.id) && price.equals(player.price) && goals.equals(player.goals) && assists.equals(player.assists) && red_cards.equals(player.red_cards) && yellow_cards.equals(player.yellow_cards) && clean_sheets.equals(player.clean_sheets) && points.equals(player.points) && name.equals(player.name) && club == player.club && position == player.position;
+        return Objects.equals(id, player.id) && Objects.equals(name, player.name) && position == player.position && club == player.club && Objects.equals(price, player.price) && Objects.equals(goals, player.goals) && Objects.equals(assists, player.assists) && Objects.equals(red_cards, player.red_cards) && Objects.equals(yellow_cards, player.yellow_cards) && Objects.equals(clean_sheets, player.clean_sheets) && Objects.equals(points, player.points);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, price, goals, assists, red_cards, yellow_cards, clean_sheets, points, name, club, position);
+        return Objects.hash(id, name, position, club, price, goals, assists, red_cards, yellow_cards, clean_sheets, points);
     }
 
     @Override
     public String toString() {
         return "Player{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
+                ", position=" + position +
+                ", club=" + club +
                 ", price=" + price +
                 ", goals=" + goals +
                 ", assists=" + assists +
@@ -143,9 +149,6 @@ public class Player {
                 ", yellow_cards=" + yellow_cards +
                 ", clean_sheets=" + clean_sheets +
                 ", points=" + points +
-                ", name='" + name + '\'' +
-                ", club=" + club +
-                ", position=" + position +
                 '}';
     }
 }
