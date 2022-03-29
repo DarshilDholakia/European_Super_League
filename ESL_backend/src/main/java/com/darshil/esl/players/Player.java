@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class Player {
     private Integer id;
-    private String name;
-    private Position position;
-    private Club club;
+    private String player_name;
+    private Position player_position;
+    private Club player_club;
     private Integer price;
     private Integer goals;
     private Integer assists;
@@ -19,12 +19,13 @@ public class Player {
 
     };
 
-    public Player(Integer id, String name, Position position, Club club, Integer price, Integer goals,
+    public Player(Integer id, String player_name, Position player_position, Club player_club, Integer price,
+                  Integer goals,
                   Integer assists, Integer red_cards, Integer yellow_cards, Integer clean_sheets, Integer points) {
         this.id = id;
-        this.name = name;
-        this.position = position;
-        this.club = club;
+        this.player_name = player_name;
+        this.player_position = player_position;
+        this.player_club = player_club;
         this.price = price;
         this.goals = goals;
         this.assists = assists;
@@ -42,28 +43,28 @@ public class Player {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPlayer_name() {
+        return player_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPlayer_name(String player_name) {
+        this.player_name = player_name;
     }
 
-    public Position getPosition() {
-        return position;
+    public Position getPlayer_position() {
+        return player_position;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
+    public void setPlayer_position(Position player_position) {
+        this.player_position = player_position;
     }
 
-    public Club getClub() {
-        return club;
+    public Club getPlayer_club() {
+        return player_club;
     }
 
-    public void setClub(Club club) {
-        this.club = club;
+    public void setPlayer_club(Club player_club) {
+        this.player_club = player_club;
     }
 
     public Integer getPrice() {
@@ -127,21 +128,23 @@ public class Player {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Player player = (Player) o;
-        return Objects.equals(id, player.id) && Objects.equals(name, player.name) && position == player.position && club == player.club && Objects.equals(price, player.price) && Objects.equals(goals, player.goals) && Objects.equals(assists, player.assists) && Objects.equals(red_cards, player.red_cards) && Objects.equals(yellow_cards, player.yellow_cards) && Objects.equals(clean_sheets, player.clean_sheets) && Objects.equals(points, player.points);
+        return Objects.equals(id, player.id) && Objects.equals(player_name, player.player_name) && player_position == player.player_position && player_club == player.player_club && Objects.equals(price, player.price) && Objects.equals(goals, player.goals) && Objects.equals(assists, player.assists) && Objects.equals(red_cards, player.red_cards) && Objects.equals(yellow_cards, player.yellow_cards) && Objects.equals(clean_sheets, player.clean_sheets) && Objects.equals(points, player.points);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, position, club, price, goals, assists, red_cards, yellow_cards, clean_sheets, points);
+        return Objects.hash(id, player_name, player_position, player_club, price, goals, assists, red_cards, yellow_cards,
+                clean_sheets,
+                points);
     }
 
     @Override
     public String toString() {
         return "Player{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", position=" + position +
-                ", club=" + club +
+                ", name='" + player_name + '\'' +
+                ", position=" + player_position +
+                ", club=" + player_club +
                 ", price=" + price +
                 ", goals=" + goals +
                 ", assists=" + assists +
