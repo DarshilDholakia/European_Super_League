@@ -20,24 +20,24 @@ public class PlayerDataAccessService implements PlayerDao {
                 SELECT id, player_name, player_position, player_club, price, goals, assists, red_cards, yellow_cards, clean_sheets, points 
                 FROM players
                 """;
-        RowMapper<Player> playerRowMapper = (rs, rowNum) -> {  //rowmapper to go through each row, gives you result set,
-            // which we then turn into ints, strings etc to make a new player object
-            Player player = new Player(
-                    rs.getInt("id"),
-                    rs.getString("player_name"),
-                    Position.valueOf(rs.getString("player_position")),//converts player_position input to an enum
-                    Club.valueOf(rs.getString("player_club")),
-                    rs.getInt("price"),
-                    rs.getInt("goals"),
-                    rs.getInt("assists"),
-                    rs.getInt("red_cards"),
-                    rs.getInt("yellow_cards"),
-                    rs.getInt("clean_sheets"),
-                    rs.getInt("points")
-            );
-            return player; //so its not lost in the heap
-        };
-        List<Player> playerList = jdbcTemplate.query(sql, playerRowMapper);
+//        RowMapper<Player> playerRowMapper = (rs, rowNum) -> {  //rowmapper to go through each row, gives you result set,
+//            // which we then turn into ints, strings etc to make a new player object
+//            Player player = new Player(
+//                    rs.getInt("id"),
+//                    rs.getString("player_name"),
+//                    Position.valueOf(rs.getString("player_position")),//converts player_position input to an enum
+//                    Club.valueOf(rs.getString("player_club")),
+//                    rs.getInt("price"),
+//                    rs.getInt("goals"),
+//                    rs.getInt("assists"),
+//                    rs.getInt("red_cards"),
+//                    rs.getInt("yellow_cards"),
+//                    rs.getInt("clean_sheets"),
+//                    rs.getInt("points")
+//            );
+//            return player; //so its not lost in the heap
+//        };
+        List<Player> playerList = jdbcTemplate.query(sql, new PlayerMapper());
         if (playerList.isEmpty()) {
             return null;
         } else {
@@ -50,25 +50,26 @@ public class PlayerDataAccessService implements PlayerDao {
     public Player selectPlayerById(Integer id) {
         String sql = """
                 SELECT id, player_name, player_position, player_club, price, goals, assists, red_cards, yellow_cards, clean_sheets, points 
-                FROM players where id = ?
+                FROM players 
+                WHERE id = ?
                 """;
-        RowMapper<Player> playerRowMapper = (rs, rowNum) -> {
-            Player player = new Player(
-                    rs.getInt("id"),
-                    rs.getString("player_name"),
-                    Position.valueOf(rs.getString("player_position")),
-                    Club.valueOf(rs.getString("player_club")),
-                    rs.getInt("price"),
-                    rs.getInt("goals"),
-                    rs.getInt("assists"),
-                    rs.getInt("red_cards"),
-                    rs.getInt("yellow_cards"),
-                    rs.getInt("clean_sheets"),
-                    rs.getInt("points")
-            );
-            return player;
-        };
-        List<Player> playerList = jdbcTemplate.query(sql, playerRowMapper, id);
+//        RowMapper<Player> playerRowMapper = (rs, rowNum) -> {
+//            Player player = new Player(
+//                    rs.getInt("id"),
+//                    rs.getString("player_name"),
+//                    Position.valueOf(rs.getString("player_position")),
+//                    Club.valueOf(rs.getString("player_club")),
+//                    rs.getInt("price"),
+//                    rs.getInt("goals"),
+//                    rs.getInt("assists"),
+//                    rs.getInt("red_cards"),
+//                    rs.getInt("yellow_cards"),
+//                    rs.getInt("clean_sheets"),
+//                    rs.getInt("points")
+//            );
+//            return player;
+//        };
+        List<Player> playerList = jdbcTemplate.query(sql, new PlayerMapper(), id);
         if (playerList.isEmpty()) {
             return null;
         } else {
@@ -141,23 +142,23 @@ public class PlayerDataAccessService implements PlayerDao {
                 SELECT id, player_name, player_position, player_club, price, goals, assists, red_cards, yellow_cards, clean_sheets, points 
                 FROM players WHERE player_name = ?
                 """;
-        RowMapper<Player> playerRowMapper = (rs, rowNum) -> {
-            Player player = new Player(
-                    rs.getInt("id"),
-                    rs.getString("player_name"),
-                    Position.valueOf(rs.getString("player_position")),
-                    Club.valueOf(rs.getString("player_club")),
-                    rs.getInt("price"),
-                    rs.getInt("goals"),
-                    rs.getInt("assists"),
-                    rs.getInt("red_cards"),
-                    rs.getInt("yellow_cards"),
-                    rs.getInt("clean_sheets"),
-                    rs.getInt("points")
-            );
-            return player;
-        };
-        List<Player> playerList = jdbcTemplate.query(sql, playerRowMapper, player_name);
+//        RowMapper<Player> playerRowMapper = (rs, rowNum) -> {
+//            Player player = new Player(
+//                    rs.getInt("id"),
+//                    rs.getString("player_name"),
+//                    Position.valueOf(rs.getString("player_position")),
+//                    Club.valueOf(rs.getString("player_club")),
+//                    rs.getInt("price"),
+//                    rs.getInt("goals"),
+//                    rs.getInt("assists"),
+//                    rs.getInt("red_cards"),
+//                    rs.getInt("yellow_cards"),
+//                    rs.getInt("clean_sheets"),
+//                    rs.getInt("points")
+//            );
+//            return player;
+//        };
+        List<Player> playerList = jdbcTemplate.query(sql, new PlayerMapper(), player_name);
         if (playerList.isEmpty()) {
             return null;
         } else {
@@ -171,23 +172,23 @@ public class PlayerDataAccessService implements PlayerDao {
                 SELECT id, player_name, player_position, player_club, price, goals, assists, red_cards, yellow_cards, clean_sheets, points 
                 FROM players WHERE player_position = ?
                 """;
-        RowMapper<Player> playerRowMapper = (rs, rowNum) -> {
-            Player player = new Player(
-                    rs.getInt("id"),
-                    rs.getString("player_name"),
-                    Position.valueOf(rs.getString("player_position")),
-                    Club.valueOf(rs.getString("player_club")),
-                    rs.getInt("price"),
-                    rs.getInt("goals"),
-                    rs.getInt("assists"),
-                    rs.getInt("red_cards"),
-                    rs.getInt("yellow_cards"),
-                    rs.getInt("clean_sheets"),
-                    rs.getInt("points")
-            );
-            return player;
-        };
-        List<Player> playerList = jdbcTemplate.query(sql, playerRowMapper, player_position.name());
+//        RowMapper<Player> playerRowMapper = (rs, rowNum) -> {
+//            Player player = new Player(
+//                    rs.getInt("id"),
+//                    rs.getString("player_name"),
+//                    Position.valueOf(rs.getString("player_position")),
+//                    Club.valueOf(rs.getString("player_club")),
+//                    rs.getInt("price"),
+//                    rs.getInt("goals"),
+//                    rs.getInt("assists"),
+//                    rs.getInt("red_cards"),
+//                    rs.getInt("yellow_cards"),
+//                    rs.getInt("clean_sheets"),
+//                    rs.getInt("points")
+//            );
+//            return player;
+//        };
+        List<Player> playerList = jdbcTemplate.query(sql, new PlayerMapper(), player_position.name());
         if (playerList.isEmpty()) {
             return null;
         } else {
@@ -201,23 +202,23 @@ public class PlayerDataAccessService implements PlayerDao {
                 SELECT id, player_name, player_position, player_club, price, goals, assists, red_cards, yellow_cards, clean_sheets, points 
                 FROM players WHERE player_club = ?
                 """;
-        RowMapper<Player> playerRowMapper = (rs, rowNum) -> {
-            Player player = new Player(
-                    rs.getInt("id"),
-                    rs.getString("player_name"),
-                    Position.valueOf(rs.getString("player_position")),
-                    Club.valueOf(rs.getString("player_club")),
-                    rs.getInt("price"),
-                    rs.getInt("goals"),
-                    rs.getInt("assists"),
-                    rs.getInt("red_cards"),
-                    rs.getInt("yellow_cards"),
-                    rs.getInt("clean_sheets"),
-                    rs.getInt("points")
-            );
-            return player;
-        };
-        List<Player> playerList = jdbcTemplate.query(sql, playerRowMapper, player_club.name());
+//        RowMapper<Player> playerRowMapper = (rs, rowNum) -> {
+//            Player player = new Player(
+//                    rs.getInt("id"),
+//                    rs.getString("player_name"),
+//                    Position.valueOf(rs.getString("player_position")),
+//                    Club.valueOf(rs.getString("player_club")),
+//                    rs.getInt("price"),
+//                    rs.getInt("goals"),
+//                    rs.getInt("assists"),
+//                    rs.getInt("red_cards"),
+//                    rs.getInt("yellow_cards"),
+//                    rs.getInt("clean_sheets"),
+//                    rs.getInt("points")
+//            );
+//            return player;
+//        };
+        List<Player> playerList = jdbcTemplate.query(sql, new PlayerMapper(), player_club.name());
         if (playerList.isEmpty()) {
             return null;
         } else {

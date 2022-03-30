@@ -12,7 +12,8 @@ public class AssignmentMapper implements RowMapper<Assignments> {
 
     @Override
     public Assignments mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new Assignments(rs.getInt("id"),
+        return new Assignments(
+                rs.getInt("id"),
                 rs.getInt("user_id"),
                 rs.getInt("player_id")
                 );
