@@ -14,6 +14,11 @@ public class AssignmentController {
         this.assignmentService = assignmentService;
     }
 
+    @GetMapping(path = "assignments/all")
+    public List<Assignments> assignmentList() {
+        return assignmentService.selectAllAssignments();
+    }
+
     @GetMapping(path = "assignments/user_id/{user_id}")
     public List<Player> selectAllPlayersForUser(@PathVariable ("user_id") Integer user_id) {
         return assignmentService.selectAllPlayersForUser(user_id);
@@ -25,7 +30,7 @@ public class AssignmentController {
     }
 
     @DeleteMapping(path = "assignments/assignment_id/{assignment_id}")
-    public void deleteAssignement(@PathVariable("assignment_id") Integer id) {
+    public void deleteAssignment(@PathVariable("assignment_id") Integer id) {
         assignmentService.deleteAssignment(id);
     }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface AssignmentDao {
     List<Assignments> selectAllAssignments();
+    Assignments selectAssignmentById(Integer assignment_id);
     List<Player> selectAllPlayersForUser(Integer user_id);
     int insertAssignment(Assignments assignments); //lets user add a player to their team
     int deleteAssignment(Integer assignment_id); //lets user remove player from their team

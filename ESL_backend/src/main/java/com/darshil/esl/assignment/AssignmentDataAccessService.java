@@ -19,9 +19,20 @@ public class AssignmentDataAccessService implements AssignmentDao {
     @Override
     public List<Assignments> selectAllAssignments() {
         String sql = """
-                SELECT user_id,player_id FROM player_assignment;
+                SELECT id,user_id,player_id 
+                FROM player_assignment;
                 """;
         return jdbcTemplate.query(sql, new AssignmentMapper());
+    }
+
+    @Override
+    public Assignments selectAssignmentById(Integer assignment_id) {
+        String sql = """
+                SELECT id,user_id,player_id 
+                FROM player_assignment 
+                WHERE id = ?;
+                """;
+        return jdbcTemplate.queryForObject(sql, new AssignmentMapper(), assignment_id);
     }
 
     @Override
@@ -34,7 +45,7 @@ public class AssignmentDataAccessService implements AssignmentDao {
                 INNER JOIN players ON player_assignment.player_id = players.id) 
                 WHERE users.id = ?;
                 """;
-        return jdbcTemplate.query(sql, new PlayerMapper(), user_id);
+        return jdbcTemplate.query(sql, new AssignmentPlayerMapper(), user_id);
     }
 
     @Override
