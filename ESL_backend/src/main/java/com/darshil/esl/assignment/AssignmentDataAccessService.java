@@ -25,6 +25,16 @@ public class AssignmentDataAccessService implements AssignmentDao {
     }
 
     @Override
+    public Assignments selectAssignmentById(Integer assignment_id) {
+        String sql = """
+                SELECT id,user_id,player_id 
+                FROM player_assignment 
+                WHERE id = ?;
+                """;
+        return jdbcTemplate.queryForObject(sql, new AssignmentMapper());
+    }
+
+    @Override
     public List<Player> selectAllPlayersForUser(Integer user_id) {
         String sql = """
                 SELECT player_id,player_name,player_position,player_club,price,goals,assists,red_cards,yellow_cards,clean_sheets,points 

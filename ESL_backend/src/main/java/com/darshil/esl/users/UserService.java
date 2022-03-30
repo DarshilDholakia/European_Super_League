@@ -3,7 +3,6 @@ package com.darshil.esl.users;
 import com.darshil.esl.exception.EmptyFieldException;
 import com.darshil.esl.exception.InvalidRequestException;
 import com.darshil.esl.exception.UserNotFoundException;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 

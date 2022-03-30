@@ -1,9 +1,9 @@
 package com.darshil.esl.assignment;
 
-import com.darshil.esl.InvalidRequestException;
-import com.darshil.esl.RowNotChangedException;
+import com.darshil.esl.exception.AssignmentNotFoundException;
+import com.darshil.esl.exception.InvalidRequestException;
+import com.darshil.esl.exception.RowNotChangedException;
 import com.darshil.esl.players.Player;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -16,12 +16,19 @@ public class AssignmentService {
         this.assignmentDao = assignmentDao;
     }
 
+    public List<Assignments> selectAllAssignments() {
+        //TODO: select all assignments checks
+        return assignmentDao.selectAllAssignments();
+    }
+
     public List<Player> selectAllPlayersForUser(Integer user_id) {
+        checkIfIdValid(user_id);
+
         try {
             return assignmentDao.selectAllPlayersForUser(user_id);
         }
         catch (Exception e) {
-            throw new InvalidRequestException("No players found. Try again.");
+            throw new InvalidRequestException("No players found, please try again.");
         }
     }
 
@@ -40,19 +47,22 @@ public class AssignmentService {
     }
 
     public void deleteAssignment(Integer assignment_id) {
-//        try {
-//            try {assignmentDao.deleteAssignment(assignment_id);
-//        } catch (RowNotChangedException e) {
-//                throw new IllegalStateException("Assignment with ID " + assignment_id + "was not deleted!");
-//            }}
-//        catch (EmptyResultDataAccessException e) {
-//            throw new IllegalStateException("Assignment with ID " + assignment_id + "does not exist!");
-//        }
+        checkIfIdValid(assignment_id);
+
+        Assignments assignments = assignmentDao.selectAssignmentById(assignment_id);
+        if (assignments == null) {
+            throw new AssignmentNotFoundException("Assignment with ID " + assignment_id + " does not exist.");
+        }
 
         Integer rowsAffected = assignmentDao.deleteAssignment(assignment_id);
         if (rowsAffected != 1) {
             throw new RowNotChangedException("Assignment with ID " + assignment_id + " was not deleted");
         }
     }
-    //include check for whenever an id of assignment to be deleted is inserted into the URL and that assignment doesn't exist (player service)
+
+    public void checkIfIdValid(Integer id) {
+        if (id == null || id <= 0) {
+            throw new InvalidRequestException("Please enter a valid ID");
+        }
+    }
 }
