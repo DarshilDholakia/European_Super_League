@@ -114,20 +114,38 @@ public class PlayerService {
         if(player.getPrice() == null) {
             throw new InvalidRequestException("Price cannot be null");
         }
+        if(player.getPrice() == 0) {
+            throw new InvalidRequestException("Price cannot be zero or less");
+        }
         if(player.getGoals() == null) {
             throw new InvalidRequestException("Goals cannot be null");
+        }
+        if(player.getGoals() < 0) {
+            throw new InvalidRequestException("Goals cannot be negative");
         }
         if(player.getAssists() == null) {
             throw new InvalidRequestException("Assists cannot be null");
         }
+        if(player.getAssists() < 0) {
+            throw new InvalidRequestException("Assists cannot be negative");
+        }
         if(player.getRed_cards() == null) {
             throw new InvalidRequestException("Red cards cannot be null");
+        }
+        if(player.getRed_cards() < 0) {
+            throw new InvalidRequestException("Red cards cannot be negative");
         }
         if(player.getYellow_cards() == null) {
             throw new InvalidRequestException("Yellow cards cannot be null");
         }
+        if(player.getYellow_cards() < 0) {
+            throw new InvalidRequestException("Yellow cards cannot be negative");
+        }
         if(player.getClean_sheets() == null) {
             throw new InvalidRequestException("Clean sheets cannot be null");
+        }
+        if(player.getClean_sheets() < 0) {
+            throw new InvalidRequestException("Clean sheets cannot be negative");
         }
         if(player.getPoints() == null) {
             throw new InvalidRequestException("Points cannot be null");
