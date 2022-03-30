@@ -51,7 +51,7 @@ public class PlayerController {
 
     @GetMapping(path = "player/club/{player_club}")
     public List<Player> getPlayersByClub(@PathVariable("player_club") String player_club){
-        return playerService.selectPlayersByClub(Club.valueOf(player_club)); //converts string input for player_club
-        // into an ENUM
+        return playerService.selectPlayersByClub(player_club.toUpperCase()); //converts string to uppercase for better
+        //UEx
     }
 }

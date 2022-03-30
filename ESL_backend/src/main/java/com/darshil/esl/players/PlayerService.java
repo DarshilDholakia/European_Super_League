@@ -4,6 +4,7 @@ import com.darshil.esl.exception.PlayerNotFoundException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -78,11 +79,26 @@ public class PlayerService {
         return playerList;
     }
 
-    public List<Player> selectPlayersByClub(Club player_club){
+    public List<Player> selectPlayersByClub(String player_club){
+        System.out.println(Arrays.toString(Club.values()));
 
         //check if player_club exists in enum
+//        if (!Arrays.asList(Club.values()).contains(player_club)) {
+//            throw new InvalidRequestException("Your club is shite pal.");
+//        }
+        Boolean validTeam = false;
+        for (int i = 0; i < Club.values().length; i++) {
+            if (Club.values()[i].name().equals(player_club)) {
+                validTeam = true;
+            }
+        }
+        if (!validTeam) {
+            throw new InvalidRequestException("Your club is shite pal.");
+        }
 
-        List<Player> playerList = playerDao.selectPlayersByClub(player_club);
+
+
+        List<Player> playerList = playerDao.selectPlayersByClub(Club.valueOf(player_club));
         if (playerList==null){
             throw new InvalidRequestException("No players found for that club");
         }
