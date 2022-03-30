@@ -20,7 +20,7 @@ public class UserDataAccessService implements UserDao {
                   VALUES (?, ?, ?, ?)
                   """;
           return jdbcTemplate.update(sql,
-                  user.getEmail(),user.getPassword(),user.getTeamName(),user.getTotalPoints());
+                  user.getEmail(),user.getPassword(),user.getTeamName(),0);
      }
 
      @Override

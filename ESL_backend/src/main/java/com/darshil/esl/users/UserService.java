@@ -3,6 +3,7 @@ package com.darshil.esl.users;
 import com.darshil.esl.exception.EmptyFieldException;
 import com.darshil.esl.exception.InvalidRequestException;
 import com.darshil.esl.exception.UserNotFoundException;
+import com.darshil.esl.players.Player;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -28,14 +29,7 @@ public class UserService {
     }
 
     public int addNewUser(User user) {
-        if(user == null){
-            throw new EmptyFieldException("User Field cannot be empty, Please try again");
-        }
-        if (user.getEmail() == null ||
-            user.getPassword() == null ||
-            user.getTeamName() == null) {
-            throw new EmptyFieldException("User cannot have empty fields");
-        }
+        checkUserInputProperties(user);
 
         String uInput;
         uInput = user.getEmail();
@@ -59,7 +53,13 @@ public class UserService {
         if (exists){
             throw new RuntimeException("User with id" + user.getId() + " already exists");
         }
-        //TODO Input potential function to check
+
+        List<User> allUsers = findAllUsers();
+        for (int i = 0; i < allUsers.size(); i++) {
+            if (allUsers.get(i).getTeamName().equals(user.getTeamName())) {
+                throw new InvalidRequestException("Team name already taken!");
+            }
+        }
 
         int result = userDao.insertUser(user);
         if(result != 1) {
@@ -86,26 +86,21 @@ public class UserService {
         try {
             return userDao.selectAllUsers();
         } catch (EmptyResultDataAccessException e) {
-           throw new UserNotFoundException("No User List Found.");
+           throw new UserNotFoundException("No Users in the Database!");
         }
     }
 
     public int updateUser(Integer id, User update) {
-        if (update == null) {
-            throw new IllegalArgumentException("User cannot be null");
-        }else if (update.getEmail() == null ||
-                update.getPassword() == null ||
-                update.getTeamName() == null) {
-            throw new EmptyFieldException("User cannot have empty fields");
-        } else {
-            try {
-                return userDao.updateUser(id, update);
-            } catch (EmptyResultDataAccessException e) {
-                throw new UserNotFoundException("User with id " + id + "not found");
-            }
+        checkUserInputProperties(update);
+
+        try {
+            return userDao.updateUser(id, update);
+        } catch (EmptyResultDataAccessException e) {
+            throw new UserNotFoundException("User with id " + id + "not found");
         }
 
     }
+
     public int deleteUserById(Integer id) {
         boolean exists = doesUserWithIdExist(id);
         if (exists) {
@@ -114,6 +109,18 @@ public class UserService {
             return userDao.deleteUser(id);
         } else {
             throw new UserNotFoundException("Patient with id" + id + " not found");
+        }
+    }
+
+    private void checkUserInputProperties(User user) {
+        if(user.getTeamName() == null) {
+            throw new InvalidRequestException("Team Name cannot be null");
+        }
+        if(user.getEmail() == null) {
+            throw new InvalidRequestException("Email cannot be null");
+        }
+        if(user.getPassword() == null) {
+            throw new InvalidRequestException("Password field cannot be null");
         }
     }
 

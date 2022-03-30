@@ -1,6 +1,7 @@
 package com.darshil.esl.assignment;
 
 import com.darshil.esl.exception.AssignmentNotFoundException;
+import com.darshil.esl.exception.EmptyFieldException;
 import com.darshil.esl.exception.InvalidRequestException;
 import com.darshil.esl.exception.RowNotChangedException;
 import com.darshil.esl.players.Player;
@@ -17,8 +18,12 @@ public class AssignmentService {
     }
 
     public List<Assignments> selectAllAssignments() {
-        //TODO: select all assignments checks
-        return assignmentDao.selectAllAssignments();
+
+        List<Assignments> assignments = assignmentDao.selectAllAssignments();
+        if (assignments.isEmpty()) {
+            throw new InvalidRequestException("No assignments exist!");
+        }
+        return assignments;
     }
 
     
@@ -35,7 +40,13 @@ public class AssignmentService {
     }
 
     public void insertAssignment(Assignments assignments) {
-        //TODO check if assignment to be added already exists
+        List<Player> playerList = selectAllPlayersForUser(assignments.getUser_id());
+        for (int i = 0; i < playerList.size(); i++) {
+            if (playerList.get(i).getId() == assignments.getPlayer_id()) {
+                throw new InvalidRequestException("You already have the player!");
+            }
+        }
+
         if(assignments.getUser_id() == null) {
             throw new InvalidRequestException("User id cannot be null");
         }
