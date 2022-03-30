@@ -33,7 +33,24 @@ public class Player {
         this.red_cards = red_cards;
         this.yellow_cards = yellow_cards;
         this.clean_sheets = clean_sheets;
-        this.points = points;
+        this.points = 5*goals + 3*assists -3*red_cards -1*yellow_cards + 4*clean_sheets;
+    }
+
+
+    public Player(Integer id, String player_name, Position player_position, Club player_club, Integer price,
+                  Integer goals,
+                  Integer assists, Integer red_cards, Integer yellow_cards, Integer clean_sheets) {
+        this.id = id;
+        this.player_name = player_name;
+        this.player_position = player_position;
+        this.player_club = player_club;
+        this.price = price;
+        this.goals = goals;
+        this.assists = assists;
+        this.red_cards = red_cards;
+        this.yellow_cards = yellow_cards;
+        this.clean_sheets = clean_sheets;
+        this.points = 5*goals + 3*assists -3*red_cards -1*yellow_cards + 4*clean_sheets;
     }
 
     public Integer getId() {

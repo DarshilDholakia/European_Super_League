@@ -147,9 +147,9 @@ public class PlayerService {
         if(player.getClean_sheets() < 0) {
             throw new InvalidRequestException("Clean sheets cannot be negative");
         }
-        if(player.getPoints() == null) {
-            throw new InvalidRequestException("Points cannot be null");
-        }
+//        if(player.getPoints() == null) {
+//            throw new InvalidRequestException("Points cannot be null");
+//        }
     }
 
 
