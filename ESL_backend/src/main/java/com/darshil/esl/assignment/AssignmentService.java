@@ -21,18 +21,21 @@ public class AssignmentService {
         return assignmentDao.selectAllAssignments();
     }
 
+    
+
     public List<Player> selectAllPlayersForUser(Integer user_id) {
         checkIfIdValid(user_id);
 
-        try {
-            return assignmentDao.selectAllPlayersForUser(user_id);
-        }
-        catch (Exception e) {
+        List<Player> assignments = assignmentDao.selectAllPlayersForUser(user_id);
+
+        if(assignments == null) {
             throw new InvalidRequestException("No players found, please try again.");
         }
+            return assignments;
     }
 
     public void insertAssignment(Assignments assignments) {
+        //TODO check if assignment to be added already exists
         if(assignments.getUser_id() == null) {
             throw new InvalidRequestException("User id cannot be null");
         }
