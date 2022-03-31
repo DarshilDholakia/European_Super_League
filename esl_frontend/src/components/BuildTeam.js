@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Player from './Player';
+import pitchImage from '../assets/pitch.png'
 
 const BuildTeam = ({ playerList }) => {
 
@@ -79,7 +80,7 @@ const BuildTeam = ({ playerList }) => {
         <>
             <h1>Assemble your squad</h1>
             <div className='Main-container'>
-                <div className="pitch-element"> </div>
+                <div className="pitch-element"> <img src={pitchImage} alt='Pitch image' width="200" height="200"></img> </div>
                 <table className='table-element'>
                     <thead>
                         <tr>
