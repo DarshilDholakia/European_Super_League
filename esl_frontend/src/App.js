@@ -10,6 +10,7 @@ import { Route, Link, Routes } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import InitialNavBar from './components/InitialNavBar';
 
+
 function App() {
 
   const [userList, setUserList] = useState([])
@@ -138,6 +139,7 @@ function App() {
           userList={userList}
            />} />
         </Routes>
+        <BuildTeam></BuildTeam>
       </BrowserRouter>
     </ div>
 

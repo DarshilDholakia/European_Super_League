@@ -77,7 +77,24 @@ const BuildTeam = () => {
 
 
     return (
+        <>
         <h1>Assemble your squad</h1>
+        <div className='Main-container'>
+            <div className="pitch-element"> </div>
+            <table className='table-element'>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Club</th>
+                    <th>Total Points</th>
+                    <th>Select</th>
+                </tr>
+            </table>
+    
+        </div>
+      
+        </>
     )
 
 }
