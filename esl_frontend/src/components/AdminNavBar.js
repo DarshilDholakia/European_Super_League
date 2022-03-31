@@ -13,7 +13,6 @@ const AdminNavBar = () => {
             </li>
         </ul>
     )
-
 }
 
 export default AdminNavBar;

@@ -16,7 +16,6 @@ const UserNavBar = () => {
             </li>
         </ul>
     )
-
 }
 
 export default UserNavBar;
