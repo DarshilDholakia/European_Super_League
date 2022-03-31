@@ -1,3 +1,29 @@
 .App {
   text-align: center;
 }
+
+/* Build Team styling */
+.Main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.pitch-image {
+  width: 90%;
+  height: auto;
+}
+.table-and-filter {
+  margin: auto;
+}
+table {
+  text-align: justify;
+}
+thead {
+  display: block;
+  border: 2px solid black;
+}
+tbody {
+  height: 500px; 
+  overflow: scroll;
+  display: block;
+  border: 2px solid black;
+}

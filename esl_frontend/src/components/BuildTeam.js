@@ -67,8 +67,6 @@ const BuildTeam = ({ playerList }) => {
     }
 
 
-
-
     const playerMap = playerList.map(player => {
         return (
             <Player player={player} key={player.id} />
@@ -80,21 +78,33 @@ const BuildTeam = ({ playerList }) => {
         <>
             <h1>Assemble your squad</h1>
             <div className='Main-container'>
-                <div className="pitch-element"> <img src={pitchImage} alt='Pitch image' width="200" height="200"></img> </div>
-                <table className='table-element'>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Club</th>
-                            <th>Total Points</th>
-                            <th>Select</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {playerMap}
-                    </tbody>
-                </table>
+                <div className="pitch-element">
+                    <img className='pitch-image' src={pitchImage} alt='Pitch image' width="200" height="200"></img>
+                </div>
+                <div className='table-and-filter'>
+                    <label htmlFor='positions'>Position</label>
+                    <select name="positions">
+                        <option>Pick A Position</option>
+                        <option value="goalkeeper">GOALKEEPER</option>
+                        <option value="defender">DEFENDER</option>
+                        <option value="midfielder">MIDFIELDER</option>
+                        <option value="forward">FORWARD</option>
+                    </select>
+                    <table className='table-element'>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Club</th>
+                                <th>Total Points</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {playerMap}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </>
     )
