@@ -6,11 +6,68 @@
 .Main-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  height: 1000px;
+  width: auto;
 }
-.pitch-image {
-  width: 90%;
-  height: auto;
+
+.pitch-container{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
+
+.pitch-image{
+  position: relative;
+  top: 0;
+  left: 0; 
+}
+
+.player-buttons{
+  display: flex;
+  justify-content:space-between;
+}
+
+.forward-container{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 22%;  
+  left: 47%;
+}
+
+.midfielder1-container{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 33%;  
+  left: 30%;
+}
+
+.midfielder2-container{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 33%;  
+  left: 65%;
+}
+
+.defender-container{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 41%;  
+  left: 47%;
+}
+
+.goalkeeper-container{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 54%;  
+  left: 47%;
+}
+
 .table-and-filter {
   margin: auto;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Player from './Player';
-import pitchImage from '../assets/pitch.png'
+import pitchImage from '../assets/pitch.png';
+import nonSelectedPlayer from '../assets/nonSelectedPlayer.png'
 
 const BuildTeam = ({ playerList }) => {
 
@@ -121,9 +122,54 @@ const BuildTeam = ({ playerList }) => {
         <>
             <h1>Assemble your squad</h1>
             <div className='Main-container'>
-                <div className="pitch-element">
-                    <img className='pitch-image' src={pitchImage} alt='Pitch image' width="200" height="200"></img>
+                {/* <div className="pitch-element">
+                    <img className='player1' src={nonSelectedPlayer} alt='Player1' width="50" height="50"></img>
+                </div> */}
+                <div className = "pitch-container">
+                <img className='pitch-image' src={pitchImage} alt='pitch image' width = "100%"></img>
+
+                    <div className = "forward-container">
+                        <div className = "player-buttons">
+                            <button> x </button>
+                            <button> + </button>
+                        </div>
+                        <img className='forward' src={nonSelectedPlayer} alt='Forward'></img>
+                    </div>
+
+                    <div className = "midfielder1-container">
+                        <div className = "player-buttons">
+                            <button> x </button>
+                            <button> + </button>
+                        </div>
+                        <img className='midfielder1' src={nonSelectedPlayer} alt='Midfielder 1'></img>
+                    </div>
+
+                    <div className = "midfielder2-container">
+                        <div className = "player-buttons">
+                            <button> x </button>
+                            <button> + </button>
+                        </div>
+                        <img className='midfielder2' src={nonSelectedPlayer} alt='Midfielder 2'></img>
+                    </div>
+
+                    <div className = "defender-container">
+                        <div className = "player-buttons">
+                            <button> x </button>
+                            <button> + </button>
+                        </div>
+                        <img className='defender' src={nonSelectedPlayer} alt='Defender'></img>
+                    </div>
+
+
+                    <div className = "goalkeeper-container">
+                        <div className = "player-buttons">
+                            <button> x </button>
+                            <button> + </button>
+                        </div>
+                        <img className='goalkeeper' src={nonSelectedPlayer} alt='Goalkeeper'></img>
+                    </div>
                 </div>
+            
                 <div className='table-and-filter'>
 
                     <label htmlFor='positions'>Position</label>
