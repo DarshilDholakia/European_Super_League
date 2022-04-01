@@ -5,9 +5,11 @@ import pitchImage from '../assets/pitch.png'
 const BuildTeam = ({ playerList }) => {
 
     const [assignmentList, setAssignmentList] = useState([])
-    const [playerNameFilter, setPlayerNameFilter] = useState([])
-    const [playerPositionFilter, setPlayerPositionFilter] = useState([])
-    const [playerClubFilter, setPlayerClubFilter] = useState([])
+    // const [playerNameFilter, setPlayerNameFilter] = useState([])
+    // const [playerPositionFilter, setPlayerPositionFilter] = useState([])
+    // const [playerClubFilter, setPlayerClubFilter] = useState([])
+
+    const [filteredList, setFilteredList] = useState([]); 
 
     const fetchAllAssignments = () => {
         fetch("http://localhost:8080/assignments/all")
@@ -45,27 +47,26 @@ const BuildTeam = ({ playerList }) => {
 
     //PLAYER FUNCTIONS 
 
-    const fetchPlayerbyName = (name) => {
+    const fetchPlayerByName = (name) => {
         fetch(`http://localhost:8080/player/name/${name}`)
             .then((response) => response.json())
-            .then(data => setPlayerNameFilter(data))
+            .then(data => setFilteredList(data))
             .catch((error) => console.error(error))
     }
 
-    const fetchPlayerbyPosition = (player_position) => {
+    const fetchPlayerByPosition = (player_position) => {
         fetch(`http://localhost:8080/player/position/${player_position}`)
             .then((response) => response.json())
-            .then(data => setPlayerPositionFilter(data))
+            .then(data => setFilteredList(data))
             .catch((error) => console.error(error))
     }
 
-    const fetchPlayerbyClub = (player_club) => {
+    const fetchPlayerByClub = (player_club) => {
         fetch(`http://localhost:8080/player/club/${player_club}`)
             .then((response) => response.json())
-            .then(data => setPlayerClubFilter(data))
+            .then(data => setFilteredList(data))
             .catch((error) => console.error(error))
     }
-
 
     const playerMap = playerList.map(player => {
         return (
@@ -73,6 +74,13 @@ const BuildTeam = ({ playerList }) => {
         )
     });
 
+    const handlePositionFilter = event => {
+        if (event.value === 'ALL') {
+            return playerList;
+        } else {
+        fetchPlayerByPosition(event.value)
+        }
+    }
 
     return (
         <>
@@ -83,12 +91,28 @@ const BuildTeam = ({ playerList }) => {
                 </div>
                 <div className='table-and-filter'>
                     <label htmlFor='positions'>Position</label>
-                    <select name="positions">
-                        <option>Pick A Position</option>
-                        <option value="goalkeeper">GOALKEEPER</option>
-                        <option value="defender">DEFENDER</option>
-                        <option value="midfielder">MIDFIELDER</option>
-                        <option value="forward">FORWARD</option>
+                    <select onChange={handlePositionFilter} name="positions">
+                    <option value="ALL">All</option>
+                        <option value="GOALKEEPER">GOALKEEPER</option>
+                        <option value="DEFENDER">DEFENDER</option>
+                        <option value="MIDFIELDER">MIDFIELDER</option>
+                        <option value="FORWARD">FORWARD</option>
+                    </select>
+                    <label htmlFor='clubs'>Position</label>
+                    <select name="clubs">
+                    <option selected disabled hidden>Select a Club</option>
+                        <option value="UNITED">UNITED</option>
+                        <option value="PSG">PSG</option>
+                        <option value="LIVERPOOL">LIVERPOOL</option>
+                        <option value="REAL_MADRID">REAL MADRID</option>
+                        <option value="JUVENTUS">JUVENTUS</option>
+                        <option value="CITY">CITY</option>
+                        <option value="MILAN">MILAN</option>
+                        <option value="WEST_HAM">WEST HAM</option>
+                        <option value="INTER">INTER</option>
+                        <option value="ARSENAL">ARSENAL</option>
+                        <option value="BARCELONA">BARCELONA</option>
+                        <option value="ATLETICO">ATLETICO</option>
                     </select>
                     <table className='table-element'>
                         <thead>
@@ -101,7 +125,7 @@ const BuildTeam = ({ playerList }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {playerMap}
+                            {filteredList !== [] ? filteredList : playerMap}
                         </tbody>
                     </table>
                 </div>

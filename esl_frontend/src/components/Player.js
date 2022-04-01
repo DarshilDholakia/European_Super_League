@@ -7,7 +7,7 @@ const Player = ({ player }) => {
                 <td>{player.player_position}</td>
                 <td>{player.player_club}</td>
                 <td>{player.points}</td>
-                <td>Select</td>
+                <td><button>Select</button></td>
             </tr>
         </>
     )
