@@ -85,9 +85,9 @@ const BuildTeam = ({ playerList }) => {
         )
     });
 
-    const filteredCombinedList = filteredClubList.map(clubPlayer => {
+    const filteredCombinedMap = filteredClubList.map(clubPlayer => {
         for (let i = 0; i < filteredPositionList.length; i++) {
-            if (clubPlayer === filteredPositionList[i]) {
+            if (clubPlayer.id === filteredPositionList[i].id) {
                 return <Player player={clubPlayer} key={clubPlayer.id}/>
             }
         }
@@ -100,7 +100,6 @@ const BuildTeam = ({ playerList }) => {
     // })
 
     const handlePositionFilter = event => {
-        console.log(filteredCombinedList);
         if (event.target.value === 'ALL') {
             setFilteredPositionList([])
             return playerList;
@@ -164,7 +163,7 @@ const BuildTeam = ({ playerList }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {(filteredClubList.length > 0) && (filteredPositionList.length > 0) ? filteredCombinedList : filteredPositionList.length > 0 && filteredClubList.length === 0 
+                            {(filteredClubList.length > 0) && (filteredPositionList.length > 0) ? filteredCombinedMap : filteredPositionList.length > 0 && filteredClubList.length === 0 
                             ? filteredPositionListMap : filteredClubList.length > 0 && filteredPositionList.length === 0 ? filteredClubListMap : playerMap}
                             {/* {filteredCombinedMap} */}
                         </tbody>
