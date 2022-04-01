@@ -118,6 +118,82 @@ const BuildTeam = ({ playerList }) => {
         }
     }
 
+// ---------------------------------
+
+    // console.log("Blah")
+
+    // const h1 = document.querySelector("h1");
+
+    // h1.innerText = "YAY IT'S MONDAY";
+    // h1.style.color = "red";
+
+    // const div = document.querySelector("#demo-div");
+
+    // const p1 = document.createElement("p");
+    // p1.innerText = "I'm the first paragraph";
+
+    // const p2 = document.createElement("p");
+    // p2.innerText = "I'm second";
+
+    // const p3 = document.createElement("p");
+    // p3.innerText = "I'm third";
+
+    // div.appendChild(p1);
+    // div.appendChild(p2);
+    // div.appendChild(p3);
+
+    // const paragraphs = document.querySelectorAll("p");
+
+    // console.log(paragraphs);
+
+    // const makeTextBlue = function () {
+    //     for (let i = 0; i < paragraphs.length; i++) {
+    //         paragraphs[i].classList.add("blue-text");
+    //     }
+    // };
+
+    // const textChanger = document.querySelector("#text-changer");
+
+    // textChanger.addEventListener("click", makeTextBlue);
+
+// ---------------------------------
+
+    const [testState, setTestState] = useState(false);
+
+    const manageForward = () => {
+        if (testState==false){
+            fetchPlayerByPosition("FORWARD");
+            setTestState(true);
+
+        } else{
+            setFilteredPositionList([]);
+            setFilteredClubList([])
+            setTestState(false);
+        }
+    }
+
+
+    const addMidfielder1 = () => {
+        fetchPlayerByPosition("MIDFIELDER");
+    }
+
+    const addMidfielder2 = () => {
+        fetchPlayerByPosition("MIDFIELDER");
+    }
+
+    const addDefender = () => {
+        fetchPlayerByPosition("DEFENDER");
+    }
+
+    const addGoalkeeper = () => {
+        fetchPlayerByPosition("GOALKEEPER");
+    }
+
+    // const removePlayer = () => {
+    //     setFilteredPositionList([]);
+    //     setFilteredClubList([])
+    // }
+
     return (
         <>
             <h1>Assemble your squad</h1>
@@ -130,32 +206,34 @@ const BuildTeam = ({ playerList }) => {
 
                     <div className = "forward-container">
                         <div className = "player-buttons">
-                            <button> x </button>
-                            <button> + </button>
+                            <button onClick={manageForward}> {testState ? "x" : "+"} </button>
+
+                            {/* <button onClick={removePlayer}> x </button> */}
+                            {/* <button onClick={addForward}> + </button> */}
                         </div>
-                        <img className='forward' src={nonSelectedPlayer} alt='Forward'></img>
+                        <img className={`forward${testState ? " player-after-add" : ""}`}  src={nonSelectedPlayer} alt='Forward'></img>
                     </div>
 
                     <div className = "midfielder1-container">
                         <div className = "player-buttons">
-                            <button> x </button>
-                            <button> + </button>
+                            {/* <button onClick={removePlayer}> x </button> */}
+                            <button onClick={addMidfielder1}> + </button>
                         </div>
                         <img className='midfielder1' src={nonSelectedPlayer} alt='Midfielder 1'></img>
                     </div>
 
                     <div className = "midfielder2-container">
                         <div className = "player-buttons">
-                            <button> x </button>
-                            <button> + </button>
+                            {/* <button onClick={removePlayer}> x </button> */}
+                            <button onClick={addMidfielder2}> + </button>
                         </div>
                         <img className='midfielder2' src={nonSelectedPlayer} alt='Midfielder 2'></img>
                     </div>
 
                     <div className = "defender-container">
                         <div className = "player-buttons">
-                            <button> x </button>
-                            <button> + </button>
+                        {/* <button onClick={removePlayer}> x </button> */}
+                            <button onClick={addDefender}> + </button>
                         </div>
                         <img className='defender' src={nonSelectedPlayer} alt='Defender'></img>
                     </div>
@@ -163,8 +241,8 @@ const BuildTeam = ({ playerList }) => {
 
                     <div className = "goalkeeper-container">
                         <div className = "player-buttons">
-                            <button> x </button>
-                            <button> + </button>
+                            {/* <button onClick={removePlayer}> x </button> */}
+                            <button onClick={addGoalkeeper}> + </button>
                         </div>
                         <img className='goalkeeper' src={nonSelectedPlayer} alt='Goalkeeper'></img>
                     </div>

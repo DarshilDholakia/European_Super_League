@@ -28,6 +28,10 @@
   justify-content:space-between;
 }
 
+.player-after-add{
+  filter: brightness(70%)
+}
+
 .forward-container{
   display: flex;
   flex-direction: column;
