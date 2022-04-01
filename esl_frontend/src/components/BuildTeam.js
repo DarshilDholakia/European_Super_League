@@ -9,7 +9,8 @@ const BuildTeam = ({ playerList }) => {
     // const [playerPositionFilter, setPlayerPositionFilter] = useState([])
     // const [playerClubFilter, setPlayerClubFilter] = useState([])
 
-    const [filteredList, setFilteredList] = useState([]); 
+    const [filteredPositionList, setFilteredPositionList] = useState([]);
+    const [filteredClubList, setFilteredClubList] = useState([]); 
 
     const fetchAllAssignments = () => {
         fetch("http://localhost:8080/assignments/all")
@@ -18,8 +19,6 @@ const BuildTeam = ({ playerList }) => {
             .catch((error) => console.error(error));
 
     }
-
-    useEffect(fetchAllAssignments, [])
 
     //ADD NEW ASSIGNMENT
 
@@ -47,26 +46,38 @@ const BuildTeam = ({ playerList }) => {
 
     //PLAYER FUNCTIONS 
 
-    const fetchPlayerByName = (name) => {
-        fetch(`http://localhost:8080/player/name/${name}`)
-            .then((response) => response.json())
-            .then(data => setFilteredList(data))
-            .catch((error) => console.error(error))
-    }
+    // const fetchPlayerByName = (name) => {
+    //     fetch(`http://localhost:8080/player/name/${name}`)
+    //         .then((response) => response.json())
+    //         .then(data => setFilteredList(data))
+    //         .catch((error) => console.error(error))
+    // }
 
     const fetchPlayerByPosition = (player_position) => {
         fetch(`http://localhost:8080/player/position/${player_position}`)
             .then((response) => response.json())
-            .then(data => setFilteredList(data))
+            .then(data => setFilteredPositionList(data))
             .catch((error) => console.error(error))
     }
 
     const fetchPlayerByClub = (player_club) => {
         fetch(`http://localhost:8080/player/club/${player_club}`)
             .then((response) => response.json())
-            .then(data => setFilteredList(data))
+            .then(data => setFilteredClubList(data))
             .catch((error) => console.error(error))
     }
+
+    const filteredPositionListMap = filteredPositionList.map(filteredPlayer => {
+        return (
+            <Player player={filteredPlayer} key={filteredPlayer.id} />
+        )
+    })
+
+    const filteredClubListMap = filteredClubList.map(filteredPlayer => {
+        return (
+            <Player player={filteredPlayer} key={filteredPlayer.id} />
+        )
+    })
 
     const playerMap = playerList.map(player => {
         return (
@@ -74,11 +85,36 @@ const BuildTeam = ({ playerList }) => {
         )
     });
 
+    const filteredCombinedList = filteredClubList.map(clubPlayer => {
+        for (let i = 0; i < filteredPositionList.length; i++) {
+            if (clubPlayer === filteredPositionList[i]) {
+                return <Player player={clubPlayer} key={clubPlayer.id}/>
+            }
+        }
+    })
+
+    // const filteredCombinedMap = filteredCombinedList.map(combinedPlayer => {
+    //     return (
+    //         <Player player={combinedPlayer} key={combinedPlayer.id} />
+    //     )
+    // })
+
     const handlePositionFilter = event => {
-        if (event.value === 'ALL') {
+        console.log(filteredCombinedList);
+        if (event.target.value === 'ALL') {
+            setFilteredPositionList([])
             return playerList;
         } else {
-        fetchPlayerByPosition(event.value)
+            fetchPlayerByPosition(event.target.value)
+        }
+    }
+
+    const handleClubFilter = event => {
+        if (event.target.value === 'ALL') {
+            setFilteredClubList([])
+            return playerList;
+        } else {
+            fetchPlayerByClub(event.target.value)
         }
     }
 
@@ -90,17 +126,19 @@ const BuildTeam = ({ playerList }) => {
                     <img className='pitch-image' src={pitchImage} alt='Pitch image' width="200" height="200"></img>
                 </div>
                 <div className='table-and-filter'>
+
                     <label htmlFor='positions'>Position</label>
                     <select onChange={handlePositionFilter} name="positions">
-                    <option value="ALL">All</option>
+                        <option value="ALL">All</option>
                         <option value="GOALKEEPER">GOALKEEPER</option>
                         <option value="DEFENDER">DEFENDER</option>
                         <option value="MIDFIELDER">MIDFIELDER</option>
                         <option value="FORWARD">FORWARD</option>
                     </select>
-                    <label htmlFor='clubs'>Position</label>
-                    <select name="clubs">
-                    <option selected disabled hidden>Select a Club</option>
+
+                    <label htmlFor='clubs'>Clubs</label>
+                    <select onChange={handleClubFilter} name="clubs">
+                        <option value="ALL">All</option>
                         <option value="UNITED">UNITED</option>
                         <option value="PSG">PSG</option>
                         <option value="LIVERPOOL">LIVERPOOL</option>
@@ -114,6 +152,7 @@ const BuildTeam = ({ playerList }) => {
                         <option value="BARCELONA">BARCELONA</option>
                         <option value="ATLETICO">ATLETICO</option>
                     </select>
+
                     <table className='table-element'>
                         <thead>
                             <tr>
@@ -125,7 +164,9 @@ const BuildTeam = ({ playerList }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {filteredList !== [] ? filteredList : playerMap}
+                            {(filteredClubList.length > 0) && (filteredPositionList.length > 0) ? filteredCombinedList : filteredPositionList.length > 0 && filteredClubList.length === 0 
+                            ? filteredPositionListMap : filteredClubList.length > 0 && filteredPositionList.length === 0 ? filteredClubListMap : playerMap}
+                            {/* {filteredCombinedMap} */}
                         </tbody>
                     </table>
                 </div>
