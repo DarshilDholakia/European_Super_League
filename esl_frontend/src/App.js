@@ -36,7 +36,7 @@ function App() {
 
   useEffect(fetchAllUsers, [])
 
-  //ADD NEW PLAYER 
+  // ADD NEW PLAYER 
   const addNewPlayer = (newPlayer) => {
     fetch("http://localhost:8080/player", {
       method: "POST",
@@ -49,7 +49,7 @@ function App() {
       .catch((error) => console.error(error))
   };
 
-  //ADD NEW USER 
+  // ADD NEW USER 
 
   const addNewUser = (newUser) => {
     fetch("http://localhost:8080/user", {
@@ -63,7 +63,7 @@ function App() {
       .catch((error) => console.error(error))
   };
 
-  //DELETE PLAYER
+  // DELETE PLAYER
 
   const deletePlayerById = (id) => {
     fetch(`http://localhost:8080/player/${id}`, {
@@ -73,7 +73,7 @@ function App() {
       .catch((error) => console.error(error))
   };
 
-  //DELETE USER
+  // DELETE USER
 
   const deleteUserById = (id) => {
     fetch(`http://localhost:8080/user/${id}`, {
@@ -83,7 +83,7 @@ function App() {
       .catch((error) => console.error(error))
   };
 
-  //UPDATE PLAYER BY ID
+  // UPDATE PLAYER BY ID
 
   const updatePlayerById = (id, updatedPlayer) => {
     fetch(`http://localhost:8080/player/${id}`, {
@@ -97,7 +97,7 @@ function App() {
       .catch((error) => console.error(error))
   }
 
-  //UPDATE USER BY ID
+  // UPDATE USER BY ID
 
   const updateUserById = (id, updatedUser) => {
     fetch(`http://localhost:8080/user/${id}`, {

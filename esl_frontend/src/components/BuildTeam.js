@@ -2,13 +2,22 @@ import React, { useEffect, useState } from 'react';
 import Player from './Player';
 import pitchImage from '../assets/pitch.png';
 import nonSelectedPlayer from '../assets/nonSelectedPlayer.png'
+import arsenalKit from '../assets/arsenalKit.png'
+import atleticoKit from '../assets/atleticoKit.png'
+import barcelonaKit from '../assets/barcelonaKit.png'
+import interKit from '../assets/interKit.png'
+import milanKit from '../assets/milanKit.png'
+import cityKit from '../assets/cityKit.png'
+import liverpoolKit from '../assets/liverpoolKit.png'
+import unitedKit from '../assets/unitedKit.png'
+import real_madridKit from '../assets/real_madridKit.png'
+import psgKit from '../assets/psgKit.png'
+import juventusKit from '../assets/juventusKit.png'
+import west_hamKit from '../assets/west_hamKit.png'
 
 const BuildTeam = ({ playerList }) => {
 
     const [assignmentList, setAssignmentList] = useState([])
-    // const [playerNameFilter, setPlayerNameFilter] = useState([])
-    // const [playerPositionFilter, setPlayerPositionFilter] = useState([])
-    // const [playerClubFilter, setPlayerClubFilter] = useState([])
 
     const [filteredPositionList, setFilteredPositionList] = useState([]);
     const [filteredClubList, setFilteredClubList] = useState([]);
@@ -21,7 +30,7 @@ const BuildTeam = ({ playerList }) => {
 
     }
 
-    //ADD NEW ASSIGNMENT
+    // ADD NEW ASSIGNMENT
 
     const addNewAssignment = (newAssignment) => {
         fetch("http://localhost:8080/assignments", {
@@ -35,7 +44,7 @@ const BuildTeam = ({ playerList }) => {
             .catch((error) => console.error(error))
     };
 
-    //DELETE ASSSIGNMENT
+    // DELETE ASSIGNMENT
 
     const deleteAssignmentById = (id) => {
         fetch(`http://localhost:8080/assignments/assignment_id/${id}`, {
@@ -44,15 +53,6 @@ const BuildTeam = ({ playerList }) => {
             .then(() => fetchAllAssignments())
             .catch((error) => console.error(error))
     };
-
-    //PLAYER FUNCTIONS 
-
-    // const fetchPlayerByName = (name) => {
-    //     fetch(`http://localhost:8080/player/name/${name}`)
-    //         .then((response) => response.json())
-    //         .then(data => setFilteredList(data))
-    //         .catch((error) => console.error(error))
-    // }
 
     const fetchPlayerByPosition = (player_position) => {
         fetch(`http://localhost:8080/player/position/${player_position}`)
@@ -94,12 +94,6 @@ const BuildTeam = ({ playerList }) => {
         }
     })
 
-    // const filteredCombinedMap = filteredCombinedList.map(combinedPlayer => {
-    //     return (
-    //         <Player player={combinedPlayer} key={combinedPlayer.id} />
-    //     )
-    // })
-
     const handlePositionFilter = event => {
         if (event.target.value === 'ALL') {
             setFilteredPositionList([])
@@ -117,46 +111,6 @@ const BuildTeam = ({ playerList }) => {
             fetchPlayerByClub(event.target.value)
         }
     }
-
-    // ---------------------------------
-
-    // console.log("Blah")
-
-    // const h1 = document.querySelector("h1");
-
-    // h1.innerText = "YAY IT'S MONDAY";
-    // h1.style.color = "red";
-
-    // const div = document.querySelector("#demo-div");
-
-    // const p1 = document.createElement("p");
-    // p1.innerText = "I'm the first paragraph";
-
-    // const p2 = document.createElement("p");
-    // p2.innerText = "I'm second";
-
-    // const p3 = document.createElement("p");
-    // p3.innerText = "I'm third";
-
-    // div.appendChild(p1);
-    // div.appendChild(p2);
-    // div.appendChild(p3);
-
-    // const paragraphs = document.querySelectorAll("p");
-
-    // console.log(paragraphs);
-
-    // const makeTextBlue = function () {
-    //     for (let i = 0; i < paragraphs.length; i++) {
-    //         paragraphs[i].classList.add("blue-text");
-    //     }
-    // };
-
-    // const textChanger = document.querySelector("#text-changer");
-
-    // textChanger.addEventListener("click", makeTextBlue);
-
-    // ---------------------------------
 
     const [forwardState, setForwardState] = useState(false);
     const [midfielder1State, setMidfielder1State] = useState(false);
@@ -239,11 +193,6 @@ const BuildTeam = ({ playerList }) => {
         }
     }
 
-    // const removePlayer = () => {
-    //     setFilteredPositionList([]);
-    //     setFilteredClubList([])
-    // }
-
     return (
         <>
             <h1>Assemble your squad</h1>
@@ -253,7 +202,6 @@ const BuildTeam = ({ playerList }) => {
 
                     <div className="forward-container">
                         <div className="player-buttons">
-                            {/* <button onClick={removePlayer}> x </button> */}
                             <button onClick={manageForward}> {forwardState ? "x" : "+"} </button>
                         </div>
                         <img className={`forward${forwardState ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Forward'></img>
@@ -261,7 +209,6 @@ const BuildTeam = ({ playerList }) => {
 
                     <div className="midfielder1-container">
                         <div className="player-buttons">
-                            {/* <button onClick={removePlayer}> x </button> */}
                             <button onClick={manageMidfielder1}> {midfielder1State ? "x" : "+"} </button>
                         </div>
                         <img className={`midfielder1${midfielder1State ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Midfielder1'></img>
@@ -269,7 +216,6 @@ const BuildTeam = ({ playerList }) => {
 
                     <div className="midfielder2-container">
                         <div className="player-buttons">
-                            {/* <button onClick={removePlayer}> x </button> */}
                             <button onClick={manageMidfielder2}> {midfielder2State ? "x" : "+"} </button>
                         </div>
                         <img className={`midfielder2${midfielder2State ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Midfielder2'></img>
@@ -277,7 +223,6 @@ const BuildTeam = ({ playerList }) => {
 
                     <div className="defender-container">
                         <div className="player-buttons">
-                            {/* <button onClick={removePlayer}> x </button> */}
                             <button onClick={manageDefender}> {defenderState ? "x" : "+"} </button>
                         </div>
                         <img className={`defender${defenderState ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Defender'></img>
@@ -286,7 +231,6 @@ const BuildTeam = ({ playerList }) => {
 
                     <div className="goalkeeper-container">
                         <div className="player-buttons">
-                            {/* <button onClick={removePlayer}> x </button> */}
                             <button onClick={manageGoalkeeper}> {goalkeeperState ? "x" : "+"} </button>
                         </div>
                         <img className={`goalkeeper${goalkeeperState ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Goalkeeper'></img>
@@ -334,7 +278,6 @@ const BuildTeam = ({ playerList }) => {
                         <tbody>
                             {(filteredClubList.length > 0) && (filteredPositionList.length > 0) ? filteredCombinedMap : filteredPositionList.length > 0 && filteredClubList.length === 0
                                 ? filteredPositionListMap : filteredClubList.length > 0 && filteredPositionList.length === 0 ? filteredClubListMap : playerMap}
-                            {/* {filteredCombinedMap} */}
                         </tbody>
                     </table>
                 </div>
