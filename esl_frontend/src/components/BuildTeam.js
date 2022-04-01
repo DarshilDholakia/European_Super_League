@@ -11,7 +11,7 @@ const BuildTeam = ({ playerList }) => {
     // const [playerClubFilter, setPlayerClubFilter] = useState([])
 
     const [filteredPositionList, setFilteredPositionList] = useState([]);
-    const [filteredClubList, setFilteredClubList] = useState([]); 
+    const [filteredClubList, setFilteredClubList] = useState([]);
 
     const fetchAllAssignments = () => {
         fetch("http://localhost:8080/assignments/all")
@@ -89,7 +89,7 @@ const BuildTeam = ({ playerList }) => {
     const filteredCombinedMap = filteredClubList.map(clubPlayer => {
         for (let i = 0; i < filteredPositionList.length; i++) {
             if (clubPlayer.id === filteredPositionList[i].id) {
-                return <Player player={clubPlayer} key={clubPlayer.id}/>
+                return <Player player={clubPlayer} key={clubPlayer.id} />
             }
         }
     })
@@ -118,7 +118,7 @@ const BuildTeam = ({ playerList }) => {
         }
     }
 
-// ---------------------------------
+    // ---------------------------------
 
     // console.log("Blah")
 
@@ -156,37 +156,87 @@ const BuildTeam = ({ playerList }) => {
 
     // textChanger.addEventListener("click", makeTextBlue);
 
-// ---------------------------------
+    // ---------------------------------
 
-    const [testState, setTestState] = useState(false);
+    const [forwardState, setForwardState] = useState(false);
+    const [midfielder1State, setMidfielder1State] = useState(false);
+    const [midfielder2State, setMidfielder2State] = useState(false);
+    const [defenderState, setDefenderState] = useState(false);
+    const [goalkeeperState, setGoalkeeperState] = useState(false);
 
     const manageForward = () => {
-        if (testState==false){
+        if (forwardState == false) {
             fetchPlayerByPosition("FORWARD");
-            setTestState(true);
-
-        } else{
+            setForwardState(true);
+            setMidfielder1State(false);
+            setMidfielder2State(false);
+            setDefenderState(false);
+            setGoalkeeperState(false);
+        } else {
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setTestState(false);
+            setForwardState(false);
         }
     }
 
-
-    const addMidfielder1 = () => {
-        fetchPlayerByPosition("MIDFIELDER");
+    const manageMidfielder1 = () => {
+        if (midfielder1State == false) {
+            fetchPlayerByPosition("MIDFIELDER");
+            setMidfielder1State(true);
+            setForwardState(false);
+            setMidfielder2State(false);
+            setDefenderState(false);
+            setGoalkeeperState(false);
+        } else {
+            setFilteredPositionList([]);
+            setFilteredClubList([])
+            setMidfielder1State(false);
+        }
     }
 
-    const addMidfielder2 = () => {
-        fetchPlayerByPosition("MIDFIELDER");
+    const manageMidfielder2 = () => {
+        if (midfielder2State == false) {
+            fetchPlayerByPosition("MIDFIELDER");
+            setMidfielder2State(true);
+            setForwardState(false);
+            setMidfielder1State(false);
+            setDefenderState(false);
+            setGoalkeeperState(false);
+        } else {
+            setFilteredPositionList([]);
+            setFilteredClubList([])
+            setMidfielder2State(false);
+        }
     }
 
-    const addDefender = () => {
-        fetchPlayerByPosition("DEFENDER");
+    const manageDefender = () => {
+        if (defenderState == false) {
+            fetchPlayerByPosition("DEFENDER");
+            setDefenderState(true);
+            setForwardState(false);
+            setMidfielder1State(false);
+            setMidfielder2State(false);
+            setGoalkeeperState(false);
+        } else {
+            setFilteredPositionList([]);
+            setFilteredClubList([])
+            setDefenderState(false);
+        }
     }
 
-    const addGoalkeeper = () => {
-        fetchPlayerByPosition("GOALKEEPER");
+    const manageGoalkeeper = () => {
+        if (goalkeeperState == false) {
+            fetchPlayerByPosition("GOALKEEPER");
+            setGoalkeeperState(true);
+            setForwardState(false);
+            setMidfielder1State(false);
+            setMidfielder2State(false);
+            setDefenderState(false);
+        } else {
+            setFilteredPositionList([]);
+            setFilteredClubList([])
+            setGoalkeeperState(false);
+        }
     }
 
     // const removePlayer = () => {
@@ -198,56 +248,51 @@ const BuildTeam = ({ playerList }) => {
         <>
             <h1>Assemble your squad</h1>
             <div className='Main-container'>
-                {/* <div className="pitch-element">
-                    <img className='player1' src={nonSelectedPlayer} alt='Player1' width="50" height="50"></img>
-                </div> */}
-                <div className = "pitch-container">
-                <img className='pitch-image' src={pitchImage} alt='pitch image' width = "100%"></img>
+                <div className="pitch-container">
+                    <img className='pitch-image' src={pitchImage} alt='pitch image' width="100%"></img>
 
-                    <div className = "forward-container">
-                        <div className = "player-buttons">
-                            <button onClick={manageForward}> {testState ? "x" : "+"} </button>
-
+                    <div className="forward-container">
+                        <div className="player-buttons">
                             {/* <button onClick={removePlayer}> x </button> */}
-                            {/* <button onClick={addForward}> + </button> */}
+                            <button onClick={manageForward}> {forwardState ? "x" : "+"} </button>
                         </div>
-                        <img className={`forward${testState ? " player-after-add" : ""}`}  src={nonSelectedPlayer} alt='Forward'></img>
+                        <img className={`forward${forwardState ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Forward'></img>
                     </div>
 
-                    <div className = "midfielder1-container">
-                        <div className = "player-buttons">
+                    <div className="midfielder1-container">
+                        <div className="player-buttons">
                             {/* <button onClick={removePlayer}> x </button> */}
-                            <button onClick={addMidfielder1}> + </button>
+                            <button onClick={manageMidfielder1}> {midfielder1State ? "x" : "+"} </button>
                         </div>
-                        <img className='midfielder1' src={nonSelectedPlayer} alt='Midfielder 1'></img>
+                        <img className={`midfielder1${midfielder1State ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Midfielder1'></img>
                     </div>
 
-                    <div className = "midfielder2-container">
-                        <div className = "player-buttons">
+                    <div className="midfielder2-container">
+                        <div className="player-buttons">
                             {/* <button onClick={removePlayer}> x </button> */}
-                            <button onClick={addMidfielder2}> + </button>
+                            <button onClick={manageMidfielder2}> {midfielder2State ? "x" : "+"} </button>
                         </div>
-                        <img className='midfielder2' src={nonSelectedPlayer} alt='Midfielder 2'></img>
+                        <img className={`midfielder2${midfielder2State ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Midfielder2'></img>
                     </div>
 
-                    <div className = "defender-container">
-                        <div className = "player-buttons">
-                        {/* <button onClick={removePlayer}> x </button> */}
-                            <button onClick={addDefender}> + </button>
+                    <div className="defender-container">
+                        <div className="player-buttons">
+                            {/* <button onClick={removePlayer}> x </button> */}
+                            <button onClick={manageDefender}> {defenderState ? "x" : "+"} </button>
                         </div>
-                        <img className='defender' src={nonSelectedPlayer} alt='Defender'></img>
+                        <img className={`defender${defenderState ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Defender'></img>
                     </div>
 
 
-                    <div className = "goalkeeper-container">
-                        <div className = "player-buttons">
+                    <div className="goalkeeper-container">
+                        <div className="player-buttons">
                             {/* <button onClick={removePlayer}> x </button> */}
-                            <button onClick={addGoalkeeper}> + </button>
+                            <button onClick={manageGoalkeeper}> {goalkeeperState ? "x" : "+"} </button>
                         </div>
-                        <img className='goalkeeper' src={nonSelectedPlayer} alt='Goalkeeper'></img>
+                        <img className={`goalkeeper${goalkeeperState ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Goalkeeper'></img>
                     </div>
                 </div>
-            
+
                 <div className='table-and-filter'>
 
                     <label htmlFor='positions'>Position</label>
@@ -287,8 +332,8 @@ const BuildTeam = ({ playerList }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {(filteredClubList.length > 0) && (filteredPositionList.length > 0) ? filteredCombinedMap : filteredPositionList.length > 0 && filteredClubList.length === 0 
-                            ? filteredPositionListMap : filteredClubList.length > 0 && filteredPositionList.length === 0 ? filteredClubListMap : playerMap}
+                            {(filteredClubList.length > 0) && (filteredPositionList.length > 0) ? filteredCombinedMap : filteredPositionList.length > 0 && filteredClubList.length === 0
+                                ? filteredPositionListMap : filteredClubList.length > 0 && filteredPositionList.length === 0 ? filteredClubListMap : playerMap}
                             {/* {filteredCombinedMap} */}
                         </tbody>
                     </table>
