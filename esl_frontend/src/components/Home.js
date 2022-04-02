@@ -69,7 +69,7 @@ const Home = () => {
                     </div>
                     <div className="west_ham-logo">
                         <a href = "https://www.whufc.com/">
-                        <img src={west_hamLogo} alt="West Ham Logo" width="175" height="200" />
+                        <img src={west_hamLogo} alt="West Ham Logo" width="180" height="200" />
                         </a>
                     </div>
                     <div className="barcelona-logo">

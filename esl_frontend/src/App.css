@@ -3,7 +3,7 @@
   --yellow: #ffba08;
   --pink:  #ff2882;
   --purple: #963cff;
-  
+  --BNTA_purple: #37003c;
 }
 
 .App {
@@ -12,7 +12,7 @@
 
 /* Nav Bar styling */
 .navbar {
-  background-color: #37003c;
+  background-color: var(--BNTA_purple);
   display: flex;
   margin-top: 3%;
   justify-content: space-around;
@@ -107,38 +107,106 @@
 .table-and-filter {
   margin: auto;
 }
+
 table {
   text-align: justify;
 }
+
 thead {
   display: block;
   border: 2px solid black;
 }
+
 tbody {
   height: 500px; 
   overflow: scroll;
   display: block;
   border: 2px solid black;
 }
+
 .team-logos {
   display: grid;
   grid-template-columns: repeat(3, auto); 
   width: 40%;
   column-gap: 15%;
   row-gap: 5%;
-  grid-column-start: 2;
+  /* grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
-  grid-row-end: 2;
+  grid-row-end: 2; */
+  /* background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%); */
 }
+
+/* ===========TEAM LOGO BACKGROUNDS START============== */
+.united-logo {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  border-radius: 10px;
+}
+
+.psg-logo {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  border-radius: 10px;
+}
+
+.arsenal-logo {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  border-radius: 10px;
+}
+
+.city-logo {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  border-radius: 10px;
+}
+
+.inter-logo {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  border-radius: 10px;
+}
+
+.juventus-logo {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  border-radius: 10px;
+}
+
+.liverpool-logo {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  border-radius: 10px;
+}
+
+.milan-logo {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  border-radius: 10px;
+}
+
+.west_ham-logo {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  border-radius: 10px;
+}
+
+.barcelona-logo {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  border-radius: 10px;
+}
+
+.real_madrid-logo {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  border-radius: 10px;
+}
+
+.atletico-logo {
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  border-radius: 10px;
+}
+/* ===========TEAM LOGO BACKGROUNDS END============== */
+
 .main-home-container {
   display: grid;
   padding-top: 3%;
   row-gap: 5%;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(auto-fill, 1000px);
-  /* grid-auto-rows: 50%; */
 }
+
 .result-table {
   width: 60%;
   margin-left: auto;
@@ -149,14 +217,15 @@ tbody {
   grid-row-start: 1;
   grid-row-end: 2;
 }
+
 .league-logos {
   display: grid;
-  /* position: relative; */
-  /* top: 300px; */
   margin-left: auto;
   margin-right: auto;
   gap: 253px;
-  border-top: 2px solid black ;
+  /* ASK A TRAINER ABOUT THIS GAP STYLE */
+  border-top: 10px solid purple;
+  padding-top: 50px;
   align-items: center;
   grid-template-columns: repeat(4,auto);
   grid-column-start: 1;
