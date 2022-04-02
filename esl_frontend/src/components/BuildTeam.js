@@ -31,7 +31,6 @@ const BuildTeam = ({ playerList }) => {
             .then(response => response.json())
             .then(data => setAssignmentList(data))
             .catch((error) => console.error(error));
-
     }
 
     const fetchAssignmentByUser = () => {
@@ -303,7 +302,7 @@ const BuildTeam = ({ playerList }) => {
         } else {
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setForwardState({selected: false, kit: forwardState.kit});
+            setForwardState({selected: false, kit: nonSelectedPlayer});
         }
     }
 
@@ -318,7 +317,7 @@ const BuildTeam = ({ playerList }) => {
         } else {
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setMidfielder1State({selected: false, kit: midfielder1State.kit});
+            setMidfielder1State({selected: false, kit: nonSelectedPlayer});
         }
     }
 
@@ -333,7 +332,7 @@ const BuildTeam = ({ playerList }) => {
         } else {
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setMidfielder2State({selected: false, kit: midfielder2State.kit});
+            setMidfielder2State({selected: false, kit: nonSelectedPlayer});
         }
     }
 
@@ -348,7 +347,7 @@ const BuildTeam = ({ playerList }) => {
         } else {
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setDefenderState({selected: false, kit: defenderState.kit});
+            setDefenderState({selected: false, kit: nonSelectedPlayer});
         }
     }
 
@@ -363,7 +362,7 @@ const BuildTeam = ({ playerList }) => {
         } else {
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setGoalkeeperState({selected: false, kit: goalkeeperState.kit});
+            setGoalkeeperState({selected: false, kit: nonSelectedPlayer});
         }
     }
 
