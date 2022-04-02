@@ -1,4 +1,4 @@
-const Player = ({ player }) => {
+const Player = ({ player,handlePlayerSelect }) => {
 
     return (
         <>
@@ -7,7 +7,7 @@ const Player = ({ player }) => {
                 <td>{player.player_position}</td>
                 <td>{player.player_club}</td>
                 <td>{player.points}</td>
-                <td><button>Select</button></td>
+                <td><button onClick={() => handlePlayerSelect(player.player_club)}>Select</button></td>
             </tr>
         </>
     )

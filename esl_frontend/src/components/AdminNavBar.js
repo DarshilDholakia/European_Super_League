@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const AdminNavBar = () => {
 
     return(
-        <ul>
+        <ul className="navbar">
             <li>
                 <Link to="/"> Home </Link>
             </li>

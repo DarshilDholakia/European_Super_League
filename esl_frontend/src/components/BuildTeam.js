@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Player from './Player';
 import pitchImage from '../assets/pitch.png';
 import nonSelectedPlayer from '../assets/nonSelectedPlayer.png'
@@ -14,10 +14,14 @@ import real_madridKit from '../assets/real_madridKit.png'
 import psgKit from '../assets/psgKit.png'
 import juventusKit from '../assets/juventusKit.png'
 import west_hamKit from '../assets/west_hamKit.png'
+import { UserContext } from './UserContext';
 
 const BuildTeam = ({ playerList }) => {
 
+    const {user} = useContext(UserContext);
+
     const [assignmentList, setAssignmentList] = useState([])
+    const [userAssignmentList, setUserAssignmentList] = useState([])
 
     const [filteredPositionList, setFilteredPositionList] = useState([]);
     const [filteredClubList, setFilteredClubList] = useState([]);
@@ -29,6 +33,14 @@ const BuildTeam = ({ playerList }) => {
             .catch((error) => console.error(error));
 
     }
+
+    const fetchAssignmentByUser = () => {
+        fetch(`http://localhost:8080/assignments/user_id/${user.id}`)
+            .then(response => response.json())
+            .then(data => setUserAssignmentList(data))
+            .catch((error) => console.error(error));
+    }
+    useEffect(fetchAssignmentByUser, []);
 
     // ADD NEW ASSIGNMENT
 
@@ -68,28 +80,189 @@ const BuildTeam = ({ playerList }) => {
             .catch((error) => console.error(error))
     }
 
+    // const [kitState,setKitState] = useState(nonSelectedPlayer);
+
+    const handlePlayerSelect = (club) => {
+        if (club==="UNITED") {
+            if (forwardState.selected) {
+                setForwardState({selected: true, kit: unitedKit})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({selected: true, kit: unitedKit})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({selected: true, kit: unitedKit})
+            } else if (defenderState.selected) {
+                setDefenderState({selected: true, kit: unitedKit})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({selected: true, kit: unitedKit})
+            }
+            
+        } else if (club==="PSG") {
+            if (forwardState.selected) {
+                setForwardState({selected: true, kit: psgKit})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({selected: true, kit: psgKit})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({selected: true, kit: psgKit})
+            } else if (defenderState.selected) {
+                setDefenderState({selected: true, kit: psgKit})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({selected: true, kit: psgKit})
+            }
+
+        } else if (club==="LIVERPOOL") {
+            if (forwardState.selected) {
+                setForwardState({selected: true, kit: liverpoolKit})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({selected: true, kit: liverpoolKit})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({selected: true, kit: liverpoolKit})
+            } else if (defenderState.selected) {
+                setDefenderState({selected: true, kit: liverpoolKit})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({selected: true, kit: liverpoolKit})
+            }
+
+        } else if (club==="REAL_MADRID") {
+            if (forwardState.selected) {
+                setForwardState({selected: true, kit: real_madridKit})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({selected: true, kit: real_madridKit})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({selected: true, kit: real_madridKit})
+            } else if (defenderState.selected) {
+                setDefenderState({selected: true, kit: real_madridKit})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({selected: true, kit: real_madridKit})
+            }
+
+        } else if (club==="JUVENTUS") {
+            if (forwardState.selected) {
+                setForwardState({selected: true, kit: juventusKit})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({selected: true, kit: juventusKit})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({selected: true, kit: juventusKit})
+            } else if (defenderState.selected) {
+                setDefenderState({selected: true, kit: juventusKit})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({selected: true, kit: juventusKit})
+            }
+
+        } else if (club==="CITY") {
+            if (forwardState.selected) {
+                setForwardState({selected: true, kit: cityKit})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({selected: true, kit: cityKit})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({selected: true, kit: cityKit})
+            } else if (defenderState.selected) {
+                setDefenderState({selected: true, kit: cityKit})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({selected: true, kit: cityKit})
+            } 
+
+        } else if (club==="INTER") {
+            if (forwardState.selected) {
+                setForwardState({selected: true, kit: interKit})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({selected: true, kit: interKit})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({selected: true, kit: interKit})
+            } else if (defenderState.selected) {
+                setDefenderState({selected: true, kit: interKit})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({selected: true, kit: interKit})
+            } 
+
+        } else if (club==="WEST_HAM") {
+            if (forwardState.selected) {
+                setForwardState({selected: true, kit: west_hamKit})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({selected: true, kit: west_hamKit})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({selected: true, kit: west_hamKit})
+            } else if (defenderState.selected) {
+                setDefenderState({selected: true, kit: west_hamKit})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({selected: true, kit: west_hamKit})
+            } 
+
+        } else if (club==="MILAN") {
+            if (forwardState.selected) {
+                setForwardState({selected: true, kit: milanKit})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({selected: true, kit: milanKit})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({selected: true, kit: milanKit})
+            } else if (defenderState.selected) {
+                setDefenderState({selected: true, kit: milanKit})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({selected: true, kit: milanKit})
+            } 
+
+        } else if (club==="ARSENAL") {
+            if (forwardState.selected) {
+                setForwardState({selected: true, kit: arsenalKit})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({selected: true, kit: arsenalKit})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({selected: true, kit: arsenalKit})
+            } else if (defenderState.selected) {
+                setDefenderState({selected: true, kit: arsenalKit})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({selected: true, kit: arsenalKit})
+            } 
+
+        } else if (club==="BARCELONA") {
+            if (forwardState.selected) {
+                setForwardState({selected: true, kit: barcelonaKit})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({selected: true, kit: barcelonaKit})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({selected: true, kit: barcelonaKit})
+            } else if (defenderState.selected) {
+                setDefenderState({selected: true, kit: barcelonaKit})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({selected: true, kit: barcelonaKit})
+            } 
+
+        } else {
+            if (forwardState.selected) {
+                setForwardState({selected: true, kit: atleticoKit})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({selected: true, kit: atleticoKit})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({selected: true, kit: atleticoKit})
+            } else if (defenderState.selected) {
+                setDefenderState({selected: true, kit: atleticoKit})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({selected: true, kit: atleticoKit})
+            } 
+        }
+    }
+
     const filteredPositionListMap = filteredPositionList.map(filteredPlayer => {
         return (
-            <Player player={filteredPlayer} key={filteredPlayer.id} />
+            <Player handlePlayerSelect={handlePlayerSelect} player={filteredPlayer} key={filteredPlayer.id} />
         )
     })
 
     const filteredClubListMap = filteredClubList.map(filteredPlayer => {
         return (
-            <Player player={filteredPlayer} key={filteredPlayer.id} />
+            <Player handlePlayerSelect={handlePlayerSelect} player={filteredPlayer} key={filteredPlayer.id} />
         )
     })
 
     const playerMap = playerList.map(player => {
         return (
-            <Player player={player} key={player.id} />
+            <Player handlePlayerSelect={handlePlayerSelect} player={player} key={player.id} />
         )
     });
 
     const filteredCombinedMap = filteredClubList.map(clubPlayer => {
         for (let i = 0; i < filteredPositionList.length; i++) {
             if (clubPlayer.id === filteredPositionList[i].id) {
-                return <Player player={clubPlayer} key={clubPlayer.id} />
+                return <Player handlePlayerSelect={handlePlayerSelect()} player={clubPlayer} key={clubPlayer.id} />
             }
         }
     })
@@ -112,84 +285,85 @@ const BuildTeam = ({ playerList }) => {
         }
     }
 
-    const [forwardState, setForwardState] = useState(false);
-    const [midfielder1State, setMidfielder1State] = useState(false);
-    const [midfielder2State, setMidfielder2State] = useState(false);
-    const [defenderState, setDefenderState] = useState(false);
-    const [goalkeeperState, setGoalkeeperState] = useState(false);
+    // delete this to restore to this stage
+    const [forwardState, setForwardState] = useState({selected: false, kit: nonSelectedPlayer});
+    const [midfielder1State, setMidfielder1State] = useState({selected: false, kit: nonSelectedPlayer});
+    const [midfielder2State, setMidfielder2State] = useState({selected: false, kit: nonSelectedPlayer});
+    const [defenderState, setDefenderState] = useState({selected: false, kit: nonSelectedPlayer});
+    const [goalkeeperState, setGoalkeeperState] = useState({selected: false, kit: nonSelectedPlayer});
 
     const manageForward = () => {
-        if (forwardState == false) {
+        if (forwardState.selected == false) {
             fetchPlayerByPosition("FORWARD");
-            setForwardState(true);
-            setMidfielder1State(false);
-            setMidfielder2State(false);
-            setDefenderState(false);
-            setGoalkeeperState(false);
+            setForwardState({selected: true, kit: forwardState.kit});
+            setMidfielder1State({selected: false, kit: midfielder1State.kit});
+            setMidfielder2State({selected: false, kit: midfielder2State.kit});
+            setDefenderState({selected: false, kit: defenderState.kit});
+            setGoalkeeperState({selected: false, kit: goalkeeperState.kit});
         } else {
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setForwardState(false);
+            setForwardState({selected: false, kit: forwardState.kit});
         }
     }
 
     const manageMidfielder1 = () => {
-        if (midfielder1State == false) {
+        if (midfielder1State.selected == false) {
             fetchPlayerByPosition("MIDFIELDER");
-            setMidfielder1State(true);
-            setForwardState(false);
-            setMidfielder2State(false);
-            setDefenderState(false);
-            setGoalkeeperState(false);
+            setMidfielder1State({selected: true, kit: midfielder1State.kit});
+            setForwardState({selected: false, kit: forwardState.kit});
+            setMidfielder2State({selected: false, kit: midfielder2State.kit});
+            setDefenderState({selected: false, kit: defenderState.kit});
+            setGoalkeeperState({selected: false, kit: goalkeeperState.kit});
         } else {
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setMidfielder1State(false);
+            setMidfielder1State({selected: false, kit: midfielder1State.kit});
         }
     }
 
     const manageMidfielder2 = () => {
-        if (midfielder2State == false) {
+        if (midfielder2State.selected == false) {
             fetchPlayerByPosition("MIDFIELDER");
-            setMidfielder2State(true);
-            setForwardState(false);
-            setMidfielder1State(false);
-            setDefenderState(false);
-            setGoalkeeperState(false);
+            setMidfielder2State({selected: true, kit: midfielder2State.kit});
+            setForwardState({selected: false, kit: forwardState.kit});
+            setMidfielder1State({selected: false, kit: midfielder1State.kit});
+            setDefenderState({selected: false, kit: defenderState.kit});
+            setGoalkeeperState({selected: false, kit: goalkeeperState.kit});
         } else {
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setMidfielder2State(false);
+            setMidfielder2State({selected: false, kit: midfielder2State.kit});
         }
     }
 
     const manageDefender = () => {
-        if (defenderState == false) {
+        if (defenderState.selected == false) {
             fetchPlayerByPosition("DEFENDER");
-            setDefenderState(true);
-            setForwardState(false);
-            setMidfielder1State(false);
-            setMidfielder2State(false);
-            setGoalkeeperState(false);
+            setDefenderState({selected: true, kit: defenderState.kit});
+            setForwardState({selected: false, kit: forwardState.kit});
+            setMidfielder1State({selected: false, kit: midfielder1State.kit});
+            setMidfielder2State({selected: false, kit: midfielder2State.kit});
+            setGoalkeeperState({selected: false, kit: goalkeeperState.kit});
         } else {
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setDefenderState(false);
+            setDefenderState({selected: false, kit: defenderState.kit});
         }
     }
 
     const manageGoalkeeper = () => {
-        if (goalkeeperState == false) {
+        if (goalkeeperState.selected == false) {
             fetchPlayerByPosition("GOALKEEPER");
-            setGoalkeeperState(true);
-            setForwardState(false);
-            setMidfielder1State(false);
-            setMidfielder2State(false);
-            setDefenderState(false);
+            setGoalkeeperState({selected: true, kit: goalkeeperState.kit});
+            setForwardState({selected: false, kit: forwardState.kit});
+            setMidfielder1State({selected: false, kit: midfielder1State.kit});
+            setMidfielder2State({selected: false, kit: midfielder2State.kit});
+            setDefenderState({selected: false, kit: defenderState.kit});
         } else {
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setGoalkeeperState(false);
+            setGoalkeeperState({selected: false, kit: goalkeeperState.kit});
         }
     }
 
@@ -202,38 +376,38 @@ const BuildTeam = ({ playerList }) => {
 
                     <div className="forward-container">
                         <div className="player-buttons">
-                            <button onClick={manageForward}> {forwardState ? "x" : "+"} </button>
+                            <button onClick={manageForward}> {forwardState.selected ? "x" : "+"} </button>
                         </div>
-                        <img className={`forward${forwardState ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Forward'></img>
+                        <img className={`forward${forwardState.selected ? " player-after-add" : ""}`} src={forwardState.kit} alt='Forward'></img>
                     </div>
 
                     <div className="midfielder1-container">
                         <div className="player-buttons">
-                            <button onClick={manageMidfielder1}> {midfielder1State ? "x" : "+"} </button>
+                            <button onClick={manageMidfielder1}> {midfielder1State.selected ? "x" : "+"} </button>
                         </div>
-                        <img className={`midfielder1${midfielder1State ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Midfielder1'></img>
+                        <img className={`midfielder1${midfielder1State.selected ? " player-after-add" : ""}`} src={midfielder1State.kit} alt='Midfielder1'></img>
                     </div>
 
                     <div className="midfielder2-container">
                         <div className="player-buttons">
-                            <button onClick={manageMidfielder2}> {midfielder2State ? "x" : "+"} </button>
+                            <button onClick={manageMidfielder2}> {midfielder2State.selected ? "x" : "+"} </button>
                         </div>
-                        <img className={`midfielder2${midfielder2State ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Midfielder2'></img>
+                        <img className={`midfielder2${midfielder2State.selected ? " player-after-add" : ""}`} src={midfielder2State.kit} alt='Midfielder2'></img>
                     </div>
 
                     <div className="defender-container">
                         <div className="player-buttons">
-                            <button onClick={manageDefender}> {defenderState ? "x" : "+"} </button>
+                            <button onClick={manageDefender}> {defenderState.selected ? "x" : "+"} </button>
                         </div>
-                        <img className={`defender${defenderState ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Defender'></img>
+                        <img className={`defender${defenderState.selected ? " player-after-add" : ""}`} src={defenderState.kit} alt='Defender'></img>
                     </div>
 
 
                     <div className="goalkeeper-container">
                         <div className="player-buttons">
-                            <button onClick={manageGoalkeeper}> {goalkeeperState ? "x" : "+"} </button>
+                            <button onClick={manageGoalkeeper}> {goalkeeperState.selected ? "x" : "+"} </button>
                         </div>
-                        <img className={`goalkeeper${goalkeeperState ? " player-after-add" : ""}`} src={nonSelectedPlayer} alt='Goalkeeper'></img>
+                        <img className={`goalkeeper${goalkeeperState.selected ? " player-after-add" : ""}`} src={goalkeeperState.kit} alt='Goalkeeper'></img>
                     </div>
                 </div>
 

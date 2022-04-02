@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
 import Home from './components/Home';
 import AdminHub from './components/AdminHub';
@@ -6,15 +6,18 @@ import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage';
 import BuildTeam from './components/BuildTeam';
 import Leaderboard from './components/Leaderboard';
-import { Route, Link, Routes } from 'react-router-dom';
+import { Route, Link, Routes, Navigate } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import InitialNavBar from './components/InitialNavBar';
+import UserNavBar from './components/UserNavBar'
+import { UserContext } from './components/UserContext';
 
 
 function App() {
 
   const [userList, setUserList] = useState([])
   const [playerList, setPlayerList] = useState([])
+  const {user} = useContext(UserContext);
 
   const fetchAllPlayers = () => {
     fetch("http://localhost:8080/player/all")
@@ -117,7 +120,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <InitialNavBar />
+        {user.auth ? <UserNavBar /> : <InitialNavBar />}
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/admin-hub" element={<AdminHub
@@ -130,11 +133,9 @@ function App() {
             updatePlayerById={updatePlayerById}
             updateUserById={updateUserById}
           />} />
-          <Route exact path="/login" element={<LoginPage />} />
+          <Route exact path="/login" element={!user.auth ? <LoginPage userList={userList} /> : <Navigate replace to="/build-team" />} />
           <Route exact path="/sign-up" element={<SignupPage />} />
-          <Route exact path="/build-team" element={<BuildTeam
-            playerList={playerList}
-          />} />
+          <Route exact path="/build-team" element={user.auth ? <BuildTeam playerList={playerList} /> : <Navigate replace to="/" />} />
           <Route exact path="/leaderboard" element={<Leaderboard
             userList={userList}
           />} />

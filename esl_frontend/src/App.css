@@ -2,6 +2,17 @@
   text-align: center;
 }
 
+/* Nav Bar styling */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
 /* Build Team styling */
 .Main-container {
   display: grid;
@@ -26,6 +37,10 @@
 .player-buttons{
   display: flex;
   justify-content:space-between;
+}
+
+.hide {
+  display: none;
 }
 
 .player-after-add{
