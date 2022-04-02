@@ -1,16 +1,33 @@
+:root {
+  --dark-green: #264653; 
+  --yellow: #ffba08;
+  --pink:  #ff2882;
+  --purple: #963cff;
+  
+}
+
 .App {
   text-align: center;
 }
 
 /* Nav Bar styling */
 .navbar {
+  background-color: #37003c;
   display: flex;
+  margin-top: 3%;
   justify-content: space-around;
   list-style-type: none;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  align-items: center;
+  font-size: x-large;
+  /* border-top: 2px solid black;
+  border-bottom: 2px solid black; */
+}
+.navbar a {
+  text-decoration: none;
+  color: white;
+
 }
 
 /* Build Team styling */
@@ -107,7 +124,7 @@ tbody {
   display: grid;
   grid-template-columns: repeat(3, auto); 
   width: 40%;
-  column-gap: 5%;
+  column-gap: 15%;
   row-gap: 5%;
   grid-column-start: 2;
   grid-column-end: 3;
@@ -116,12 +133,17 @@ tbody {
 }
 .main-home-container {
   display: grid;
+  padding-top: 3%;
+  row-gap: 5%;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(auto-fill, 1000px);
   /* grid-auto-rows: 50%; */
 }
 .result-table {
   width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
@@ -130,8 +152,12 @@ tbody {
 .league-logos {
   display: grid;
   /* position: relative; */
-  background-color: aqua;
   /* top: 300px; */
+  margin-left: auto;
+  margin-right: auto;
+  gap: 253px;
+  border-top: 2px solid black ;
+  align-items: center;
   grid-template-columns: repeat(4,auto);
   grid-column-start: 1;
   grid-column-end: 3;

@@ -23,8 +23,9 @@ const Home = () => {
             <div className="main-home-container">
                 <div className="result-table">
                     <h1>blah</h1>
+                    
                 </div>
-
+                
                 <div className="team-logos">
                     <div className="united-logo">
                         <a href = "https://www.manutd.com/">
@@ -87,7 +88,12 @@ const Home = () => {
                         </a>
                     </div>
                 </div>
-
+                <hr style={{
+                    color: "red",
+                    backgroundColor: "blue",
+                    height: 5
+                }}
+                />
                 <div className="league-logos">
                     <div className="prem-logo">
                         <a href = "https://www.premierleague.com/home">
