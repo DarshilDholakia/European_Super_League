@@ -22,8 +22,96 @@ const Home = () => {
         <div>
             <div className="main-home-container">
                 <div className="result-table">
-                    <h1>blah</h1>
-                    
+                    <h1>Matchweek Scores:</h1>
+                    <ul className="result-list">
+                        <h2>Gameweek 1</h2>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+
+                        <h2>Gameweek 2</h2>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+
+                        <h2>Gameweek 3</h2>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+
+                        <h2>Gameweek 4</h2>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+
+                        <h2>Gameweek 5</h2>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+
+                        <h2>Gameweek 6</h2>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+
+                        <h2>Gameweek 7</h2>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+
+                        <h2>Gameweek 8</h2>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+
+                        <h2>Gameweek 9</h2>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+
+                        <h2>Gameweek 10</h2>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+
+                        <h2>Gameweek 11</h2>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                        <li>Manchester United 0 - 5 Liverpool</li>
+                    </ul>
                 </div>
                 
                 <div className="team-logos">
