@@ -91,7 +91,7 @@ const Home = () => {
                 <div className="league-logos">
                     <div className="prem-logo">
                         <a href = "https://www.premierleague.com/home">
-                            <img src={premLogo} alt="Premier League Logo" width="400" height="100" />
+                            <img src={premLogo} alt="Premier League Logo" width="250" height="100" />
                             </a>
                     </div>
                     <div className="la_liga-logo">

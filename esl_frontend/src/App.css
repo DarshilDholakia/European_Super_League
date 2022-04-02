@@ -116,9 +116,9 @@ tbody {
 }
 .main-home-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  grid-template-rows: 80% 20%;
-  grid-auto-rows: 50%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto-fill, 1000px);
+  /* grid-auto-rows: 50%; */
 }
 .result-table {
   width: 60%;
@@ -129,6 +129,9 @@ tbody {
 }
 .league-logos {
   display: grid;
+  /* position: relative; */
+  background-color: aqua;
+  /* top: 300px; */
   grid-template-columns: repeat(4,auto);
   grid-column-start: 1;
   grid-column-end: 3;
