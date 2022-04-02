@@ -130,6 +130,7 @@ tbody {
   width: 40%;
   column-gap: 15%;
   row-gap: 5%;
+  /* place-items: center; */
   /* grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
@@ -166,6 +167,7 @@ tbody {
 .juventus-logo {
   background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
   border-radius: 10px;
+  padding: 5px;
 }
 
 .liverpool-logo {
@@ -181,6 +183,7 @@ tbody {
 .west_ham-logo {
   background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
   border-radius: 10px;
+  padding: 7.5px;
 }
 
 .barcelona-logo {
