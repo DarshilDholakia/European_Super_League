@@ -1,19 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Player from './Player';
 import pitchImage from '../assets/pitch.png';
-import nonSelectedPlayer from '../assets/nonSelectedPlayer.png'
-import arsenalKit from '../assets/arsenalKit.png'
-import atleticoKit from '../assets/atleticoKit.png'
-import barcelonaKit from '../assets/barcelonaKit.png'
-import interKit from '../assets/interKit.png'
-import milanKit from '../assets/milanKit.png'
-import cityKit from '../assets/cityKit.png'
-import liverpoolKit from '../assets/liverpoolKit.png'
-import unitedKit from '../assets/unitedKit.png'
-import real_madridKit from '../assets/real_madridKit.png'
-import psgKit from '../assets/psgKit.png'
-import juventusKit from '../assets/juventusKit.png'
-import west_hamKit from '../assets/west_hamKit.png'
+import nonSelectedPlayer from '../assets/kits/nonSelectedPlayer.png'
+import arsenalKit from '../assets/kits/arsenalKit.png'
+import atleticoKit from '../assets/kits/atleticoKit.png'
+import barcelonaKit from '../assets/kits/barcelonaKit.png'
+import interKit from '../assets/kits/interKit.png'
+import milanKit from '../assets/kits/milanKit.png'
+import cityKit from '../assets/kits/cityKit.png'
+import liverpoolKit from '../assets/kits/liverpoolKit.png'
+import unitedKit from '../assets/kits/unitedKit.png'
+import real_madridKit from '../assets/kits/real_madridKit.png'
+import psgKit from '../assets/kits/psgKit.png'
+import juventusKit from '../assets/kits/juventusKit.png'
+import west_hamKit from '../assets/kits/west_hamKit.png'
 import { UserContext } from './UserContext';
 
 const BuildTeam = ({ playerList }) => {
@@ -64,8 +64,8 @@ const BuildTeam = ({ playerList }) => {
             .then(() => fetchAllAssignments())
             .catch((error) => console.error(error))
     };
-
-    const fetchPlayerByPosition = (player_position) => {
+   
+    const fetchPlayerByPosition = (player_position) => {   
         fetch(`http://localhost:8080/player/position/${player_position}`)
             .then((response) => response.json())
             .then(data => setFilteredPositionList(data))
