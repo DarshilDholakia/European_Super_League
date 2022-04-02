@@ -109,10 +109,29 @@ tbody {
   width: 40%;
   column-gap: 5%;
   row-gap: 5%;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 .main-home-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-template-rows: 80% 20%;
+  grid-auto-rows: 50%;
 }
 .result-table {
   width: 60%;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.league-logos {
+  display: grid;
+  grid-template-columns: repeat(4,auto);
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
