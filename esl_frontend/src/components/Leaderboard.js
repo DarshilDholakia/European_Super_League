@@ -1,10 +1,27 @@
 import React from "react";
+import User from "./User";
 
-const Leaderboard = () => {
+const Leaderboard = ({userList}) => {
 
-    return(
-        <h1>4th Arsenal</h1>
-    )
-}
+    const userMap = userList.map(user => {
+        return (
+            <User user={user} key={user.id}/>
+        )
+    })
 
-export default Leaderboard;
+        return(
+            <table className='leaderboard-table'>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Team Name</th>
+                    <th>Total Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                {userMap}
+            </tbody>
+        </table>
+        )
+    }
+    export default Leaderboard;

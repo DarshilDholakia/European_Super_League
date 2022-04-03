@@ -136,9 +136,9 @@ function App() {
           <Route exact path="/login" element={!user.auth ? <LoginPage userList={userList} /> : <Navigate replace to="/build-team" />} />
           <Route exact path="/sign-up" element={<SignupPage />} />
           <Route exact path="/build-team" element={user.auth ? <BuildTeam playerList={playerList} /> : <Navigate replace to="/" />} />
-          <Route exact path="/leaderboard" element={<Leaderboard
+          <Route exact path="/leaderboard" element={ user.auth ? <Leaderboard 
             userList={userList}
-          />} />
+          />:<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>
     </ div>
