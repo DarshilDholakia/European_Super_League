@@ -1,6 +1,7 @@
 import React from "react";
-import "./FooterBar.css";
-
+import twitterLogo from "../assets/socialMediaLogos/TwitterLogo.png"
+import instagramLogo from "../assets/socialMediaLogos/InstagramLogo.png"
+import facebookLogo from "../assets/socialMediaLogos/FacebookLogo.png"
 
 const FooterBar = () => {
     return (
@@ -43,9 +44,9 @@ const FooterBar = () => {
                     <div className="footer-col">
                         <h4>Follow us</h4>
                         <div className="social-links">
-                            <a className="social-media-icons" href=""><img className="Twitter" src={TwitterLogo} alt="Twitter logo"/></a>
-                            <a className="social-media-icons" href=""><img className="Instagram" src={InstagramLogo} alt="Instagram logo"/></a>
-                            <a className="social-media-icons"  href=""><img className="Facebook" src={FacebookLogo} alt="Facebook logo"/></a>
+                            <a className="social-media-icons" href=""><img className="Twitter" src={twitterLogo} alt="Twitter logo"/></a>
+                            <a className="social-media-icons" href=""><img className="Instagram" src={instagramLogo} alt="Instagram logo"/></a>
+                            <a className="social-media-icons"  href=""><img className="Facebook" src={facebookLogo} alt="Facebook logo"/></a>
                         
                         </div>
                         <p className="footer-description"> © 2022 CohortGroup-1. All rights reserved.</p>

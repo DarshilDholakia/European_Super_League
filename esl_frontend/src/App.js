@@ -11,6 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 import InitialNavBar from './components/InitialNavBar';
 import UserNavBar from './components/UserNavBar'
 import { UserContext } from './components/UserContext';
+import FooterBar from './components/FooterBar';
 
 
 function App() {
@@ -141,6 +142,7 @@ function App() {
           />} />
         </Routes>
       </BrowserRouter>
+      <FooterBar />
     </ div>
   );
 }

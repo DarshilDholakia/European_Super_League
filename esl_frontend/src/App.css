@@ -235,6 +235,7 @@ tbody {
   /* ASK A TRAINER ABOUT THIS GAP STYLE */
   border-top: 10px solid purple;
   padding-top: 50px;
+  padding-bottom: 100px;
   align-items: center;
   grid-template-columns: repeat(4,auto);
   grid-column-start: 1;
@@ -242,3 +243,129 @@ tbody {
   grid-row-start: 2;
   grid-row-end: 3;
 }
+
+/* ======================= Footer Styling ============================= */
+.footer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color:var(--BNTA_purple);
+  padding: 50px 0;
+
+}
+.container{
+  width: 100%;
+  justify-content: center;
+  max-width: 2500px;
+  margin: 0;
+}
+ul{
+  list-style: none;
+}
+.row{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-col{
+  width: 15%;
+  padding: 0 30px;
+  margin-left: -10px;
+}
+.footer-col h4{
+  font-size: 18px;
+  color: #ffff;
+  text-transform:capitalize;
+  margin-bottom: 10px;
+  margin-left: 30px;
+  position: relative;
+  text-align: left;
+}
+.footer-col h4::before{
+  content: '';
+  position: absolute;
+  left: -20;
+  bottom: -5px;
+  background-color: #F7EFEE;
+  height: 2px;
+  box-sizing: border-box;
+  width: 80px;
+}
+.footer-col ul li:not(:last-child){
+  margin-bottom: 15px;
+}
+.footer-col ul li a{
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #ffff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #ffff;
+  display: block;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+.footer-col ul li a:hover{
+  color: #ffff;
+  padding-left: 20px;
+}
+.footer-col .social-links a{
+  display: inline-block;
+  height: 75px;
+  width: 75px;
+  background-color: rgb(255, 255, 255);
+  margin: 0 20px 20px 0;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  color: #ffff;
+  transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover{
+  /* color: #24262b; */
+  background-color: var(--yellow);
+  align-items: center;
+}
+
+/* responsive */
+@media(max-width: 767px){
+  .footer-col {
+      width: 25%;
+      margin-bottom: 15px;
+  }
+}
+
+.footer-description{
+  font-size: 14px;
+  color: #ffff;
+  margin-bottom: 20;
+}
+
+.social-media-icons{
+  width: 20px;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.Twitter{
+  flex: auto;
+  position: relative;
+  margin-top: 7%;
+}
+.Facebook{
+  flex: auto;
+  position: relative;
+  margin-top: 10%;
+}
+.Instagram{
+  flex: auto;
+  position: relative;
+  margin-top: 15%;
+}
+/* ======================= Footer Styling ============================= */
