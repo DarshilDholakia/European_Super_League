@@ -7,14 +7,25 @@ const LoginPage = ({userList}) => {
     const {user, login} = useContext(UserContext);
 
     const handleIdChange = (event) => {
-        setId(event.target.value);
+        setId(event.target.value); 
     }
+
+    const doesUserExist = () => {
+        const found_user = userList.find(user => user.id === parseInt(id))
+        if (found_user) {
+            login(id)
+        } else {
+            alert("Please enter a valid ID")
+        }
+    }
+
+
 
     return(
         <>
             <h1>Player Login here</h1>
-            <form onSubmit={() => login(id)}>
-                <input placeholder="Enter User ID..." onChange={handleIdChange} min={1} max={userList.length} required/>
+            <form onSubmit={doesUserExist}>
+                <input type="number" placeholder="Enter User ID..." onChange={handleIdChange} required />
                 <input type="submit" value="Login"/>
             </form>
 
