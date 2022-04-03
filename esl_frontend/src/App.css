@@ -116,3 +116,29 @@ tbody {
 .result-table {
   width: 60%;
 }
+/* TODO: double check padding on leaderboard table */
+.leaderboard-table{
+  border-collapse: collapse;
+  width: 50%;
+  margin: auto;
+
+}
+
+.leaderboard-headings{
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.leaderboard-content {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 24px;
+  font-size: 25px;
+
+}
+.leaderboard-element {
+  text-align: left;
+}

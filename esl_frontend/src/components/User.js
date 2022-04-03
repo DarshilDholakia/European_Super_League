@@ -4,11 +4,10 @@ const User =({user})=> {
 
     return (
         <>
-        <tr>
-            <td>{user.id}</td>
-            <td>{user.teamName}</td>
-            <td>{user.totalPoints}</td>
-
+        <tr className="leaderboard-content">
+            <td className="leaderboard-element">{user.id}</td>
+            <td className="leaderboard-element">{user.teamName}</td>
+            <td className="leaderboard-element">{user.totalPoints}</td>
         </tr>
         </>
 

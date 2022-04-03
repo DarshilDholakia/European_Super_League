@@ -12,7 +12,7 @@ const Leaderboard = ({userList}) => {
         return(
             <table className='leaderboard-table'>
             <thead>
-                <tr>
+                <tr className="leaderboard-headings">
                     <th>Rank</th>
                     <th>Team Name</th>
                     <th>Total Points</th>
