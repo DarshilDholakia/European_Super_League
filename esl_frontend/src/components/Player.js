@@ -1,4 +1,8 @@
-const Player = ({ player,handlePlayerSelect }) => {
+const Player = ({ player, handlePlayerSelect, updateAssignmentById }) => {
+
+// const AssignmentIdFinder =(() => {
+
+// })
 
     return (
         <>
@@ -7,7 +11,9 @@ const Player = ({ player,handlePlayerSelect }) => {
                 <td>{player.player_position}</td>
                 <td>{player.player_club}</td>
                 <td>{player.points}</td>
-                <td><button onClick={() => handlePlayerSelect(player.player_club)}>Select</button></td>
+                <td><button onClick={() => {
+                                            // updateAssignmentById()
+                                            handlePlayerSelect(player.player_club)}}>Select</button></td>
             </tr>
         </>
     )

@@ -32,11 +32,6 @@ const Home = () => {
                             <img src={unitedLogo} alt="United Logo" width="200" height="200" />
                             </a>
                     </div>
-                    <div className="psg-logo">
-                        <a href = "https://en.psg.fr/">
-                        <img src={psgLogo} alt="PSG Logo" width="200" height="200" />
-                        </a>
-                    </div>
                     <div className="arsenal-logo">
                         <a href = "https://www.arsenal.com/">
                         <img src={arsenalLogo} alt="Arsenal Logo" width="175" height="200" />
@@ -45,6 +40,21 @@ const Home = () => {
                     <div className="city-logo">
                         <a href = "https://www.mancity.com/">
                         <img src={cityLogo} alt="City Logo" width="200" height="200" />
+                        </a>
+                    </div>
+                    <div className="liverpool-logo">
+                        <a href = "https://www.liverpoolfc.com/">
+                        <img src={liverpoolLogo} alt="Liverpool Logo" width="150" height="200" />
+                        </a>
+                    </div>
+                    <div className="west_ham-logo">
+                        <a href = "https://www.whufc.com/">
+                        <img src={west_hamLogo} alt="West Ham Logo" width="180" height="200" />
+                        </a>
+                    </div>
+                    <div className="psg-logo">
+                        <a href = "https://en.psg.fr/">
+                        <img src={psgLogo} alt="PSG Logo" width="200" height="200" />
                         </a>
                     </div>
                     <div className="inter-logo">
@@ -57,19 +67,9 @@ const Home = () => {
                         <img src={juventusLogo} alt="Juventus Logo" width="150" height="200" />
                         </a>
                     </div>
-                    <div className="liverpool-logo">
-                        <a href = "https://www.liverpoolfc.com/">
-                        <img src={liverpoolLogo} alt="Liverpool Logo" width="150" height="200" />
-                        </a>
-                    </div>
                     <div className="milan-logo">
                         <a href = "https://www.acmilan.com/en">
-                        <img src={milanLogo} alt="Milan Logo" width="150" height="200" />
-                        </a>
-                    </div>
-                    <div className="west_ham-logo">
-                        <a href = "https://www.whufc.com/">
-                        <img src={west_hamLogo} alt="West Ham Logo" width="180" height="200" />
+                        <img src={milanLogo} alt="Milan Logo" width="150" height="220" />
                         </a>
                     </div>
                     <div className="barcelona-logo">
