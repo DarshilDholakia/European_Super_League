@@ -5,19 +5,16 @@ const Player = ({ player, handlePlayerSelect, updateAssignmentById, assignmentLi
 
     const { user } = useContext(UserContext)
 
-
     const correctAssignment =
         assignmentList.find(assignment => {
-            assignment.user_id = user.id
-            assignment.player_id = player.id
+            assignment.user_id === user.id
+            assignment.player_id === player.id
         })
 
     const updatedPlayer = {
         user_id: user.id,
         player_id: player.player_id
     }
-
-
 
     return (
         <>

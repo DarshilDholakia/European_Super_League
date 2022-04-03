@@ -320,7 +320,7 @@ const BuildTeam = ({ playerList }) => {
         ["ARSENAL", arsenalKit],
         ["BARCELONA", barcelonaKit],
         ["ATLETICO", atleticoKit]
-    ]);
+    ]); 
 
     let midfielderCount = 1;
 
