@@ -32,10 +32,10 @@ const FooterBar = () => {
                     <div className="footer-col">
                         <h4>Store</h4>
                         <ul>
-                            <li><a href="">FAQ</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=8waokty2b3o" target="__blank">FAQ</a></li>
                             <li><a href="">Buy Aaaron a New Tech Fleece</a></li>
                             <li><a href="">Adib needs new Pokemon Fluffies</a></li>
-                            <li><a href="">Suj needs a 12 pack of beer</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=w_3BWbGUrfc" target="__blank">Suj needs a 12 pack of beer</a></li>
                             <li><a href="">Abdi wants a Third Job</a></li>
                             <li><a href="">Michael's Mac is too old he doesn't want to give away the MacBook</a></li>
                         </ul>

@@ -18,7 +18,7 @@ function App() {
 
   const [userList, setUserList] = useState([])
   const [playerList, setPlayerList] = useState([])
-  const {user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const fetchAllPlayers = () => {
     fetch("http://localhost:8080/player/all")
@@ -137,9 +137,9 @@ function App() {
           <Route exact path="/login" element={!user.auth ? <LoginPage userList={userList} /> : <Navigate replace to="/build-team" />} />
           <Route exact path="/sign-up" element={<SignupPage />} />
           <Route exact path="/build-team" element={user.auth ? <BuildTeam playerList={playerList} /> : <Navigate replace to="/" />} />
-          <Route exact path="/leaderboard" element={ user.auth ? <Leaderboard 
+          <Route exact path="/leaderboard" element={user.auth ? <Leaderboard
             userList={userList}
-          />:<Navigate replace to="/" />} />
+          /> : <Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>
       <FooterBar />
