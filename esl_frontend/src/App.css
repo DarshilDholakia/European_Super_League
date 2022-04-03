@@ -213,6 +213,13 @@ tbody {
 
 .result-table {
   width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
   overflow: scroll;
   display: block;
 }
