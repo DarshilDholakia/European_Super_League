@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import bntaLogo from '../assets/bntaLogo.png'
 
 const InitialNavBar = () => {
 
     return(
         <ul className="navbar">
+            <li>
+                <img src={bntaLogo} alt="bnta logo" width="75" height="100" />
+            </li>
+           
             <li>
                 <Link to="/"> Home </Link>
             </li>
