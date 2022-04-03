@@ -256,6 +256,7 @@ const BuildTeam = ({ playerList }) => {
     const filteredPositionListMap = filteredPositionList.map(filteredPlayer => {
         return (
             <Player handlePlayerSelect={handlePlayerSelect}
+                assignmentList={assignmentList}
                 updateAssignmentById={updateAssignmentById}
                 player={filteredPlayer} key={filteredPlayer.id} />
         )
@@ -264,6 +265,7 @@ const BuildTeam = ({ playerList }) => {
     const filteredClubListMap = filteredClubList.map(filteredPlayer => {
         return (
             <Player handlePlayerSelect={handlePlayerSelect}
+                assignmentList={assignmentList}
                 updateAssignmentById={updateAssignmentById}
                 player={filteredPlayer} key={filteredPlayer.id} />
         )
@@ -272,6 +274,7 @@ const BuildTeam = ({ playerList }) => {
     const playerMap = playerList.map(player => {
         return (
             <Player handlePlayerSelect={handlePlayerSelect}
+                assignmentList={assignmentList}
                 updateAssignmentById={updateAssignmentById}
                 player={player} key={player.id} />
         )
@@ -280,7 +283,8 @@ const BuildTeam = ({ playerList }) => {
     const filteredCombinedMap = filteredClubList.map(clubPlayer => {
         for (let i = 0; i < filteredPositionList.length; i++) {
             if (clubPlayer.id === filteredPositionList[i].id) {
-                return <Player handlePlayerSelect={handlePlayerSelect()} player={clubPlayer} key={clubPlayer.id} />
+                return <Player handlePlayerSelect={handlePlayerSelect()} player={clubPlayer} key={clubPlayer.id}
+                assignmentList={assignmentList} />
             }
         }
     })

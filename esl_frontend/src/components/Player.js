@@ -1,8 +1,17 @@
-const Player = ({ player, handlePlayerSelect, updateAssignmentById }) => {
+import { UserContext } from "./UserContext"
+import { useContext } from "react"
 
-// const AssignmentIdFinder =(() => {
+const Player = ({ player, handlePlayerSelect, updateAssignmentById, assignmentList }) => {
 
-// })
+    const {user} = useContext(UserContext)
+    
+
+ const correctAssignment =
+     assignmentList.find(assignment => {
+         assignment.user_id = user.id
+        assignment.player_id = player.id     
+
+    })
 
     return (
         <>
@@ -12,7 +21,7 @@ const Player = ({ player, handlePlayerSelect, updateAssignmentById }) => {
                 <td>{player.player_club}</td>
                 <td>{player.points}</td>
                 <td><button onClick={() => {
-                                            // updateAssignmentById()
+                                            updateAssignmentById(correctAssignment.id, {user_id: user.id, player_id: player.player_id})
                                             handlePlayerSelect(player.player_club)}}>Select</button></td>
             </tr>
         </>
