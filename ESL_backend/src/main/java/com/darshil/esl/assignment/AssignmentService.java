@@ -26,8 +26,6 @@ public class AssignmentService {
         return assignments;
     }
 
-    
-
     public List<Player> selectAllPlayersForUser(Integer user_id) {
         checkIfIdValid(user_id);
 
@@ -37,6 +35,18 @@ public class AssignmentService {
             throw new InvalidRequestException("No players found, please try again.");
         }
             return assignments;
+    }
+
+    public List<Assignments> selectAssignmentByUserIdAndPlayerId(Integer user_id, Integer player_id) {
+        checkIfIdValid(user_id);
+        checkIfIdValid(player_id);
+
+        List<Assignments> assignments = assignmentDao.selectAssignmentByUserIdAndPlayerId(user_id, player_id);
+
+        if(assignments == null) {
+            throw new InvalidRequestException("No assignments found, please try again.");
+        }
+        return assignments;
     }
 
     public void insertAssignment(Assignments assignments) {
