@@ -31,7 +31,8 @@ const BuildTeam = ({ playerList }) => {
             .then(response => response.json())
             .then(data => setAssignmentList(data))
             .catch((error) => console.error(error));
-    }
+    } 
+    useEffect(fetchAllAssignments, []);
 
     const fetchAssignmentByUser = () => {
         fetch(`http://localhost:8080/assignments/user_id/${user.id}`)
@@ -64,6 +65,20 @@ const BuildTeam = ({ playerList }) => {
             .then(() => fetchAllAssignments())
             .catch((error) => console.error(error))
     };
+
+    // UPDATE ASSIGNMENT
+
+    const updateAssignmentById = (assignment_id, updatedAssignment) => {
+        fetch(`http://localhost:8080/assignments/assignment_id/${assignment_id}`, {
+            method: 'PUT',
+            headers:{
+              'Content-Type':'application/json'
+            },
+            body: JSON.stringify(updatedAssignment)
+          })
+          .then(() => fetchAssignmentByUser(user.id))
+          .catch((error) => console.error(error))  
+    }
    
     const fetchPlayerByPosition = (player_position) => {   
         fetch(`http://localhost:8080/player/position/${player_position}`)
@@ -240,19 +255,25 @@ const BuildTeam = ({ playerList }) => {
 
     const filteredPositionListMap = filteredPositionList.map(filteredPlayer => {
         return (
-            <Player handlePlayerSelect={handlePlayerSelect} player={filteredPlayer} key={filteredPlayer.id} />
+            <Player handlePlayerSelect={handlePlayerSelect} 
+            updateAssignmentById={updateAssignmentById}
+            player={filteredPlayer} key={filteredPlayer.id} />
         )
     })
 
     const filteredClubListMap = filteredClubList.map(filteredPlayer => {
         return (
-            <Player handlePlayerSelect={handlePlayerSelect} player={filteredPlayer} key={filteredPlayer.id} />
+            <Player handlePlayerSelect={handlePlayerSelect} 
+            updateAssignmentById={updateAssignmentById}
+            player={filteredPlayer} key={filteredPlayer.id} />
         )
     })
 
     const playerMap = playerList.map(player => {
         return (
-            <Player handlePlayerSelect={handlePlayerSelect} player={player} key={player.id} />
+            <Player handlePlayerSelect={handlePlayerSelect} 
+            updateAssignmentById={updateAssignmentById}
+            player={player} key={player.id} />
         )
     });
 
