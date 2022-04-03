@@ -322,6 +322,8 @@ const BuildTeam = ({ playerList }) => {
         ["ATLETICO", atleticoKit]
     ]);
 
+    let midfielderCount = 1;
+
     const findUserPlayers = () => {
         for (let i = 0; i < userAssignmentList.length; i++) {
             let position = userAssignmentList[i].player_position
@@ -332,9 +334,11 @@ const BuildTeam = ({ playerList }) => {
             } else if (position === "DEFENDER") {
                 setDefenderState({selected: defenderState.selected, kit: kit})
             } else if (position === "MIDFIELDER") {
-                if (midfielder1State.kit === nonSelectedPlayer) {
+                if (midfielderCount === 1) {
                     setMidfielder1State({selected: midfielder1State.selected, kit: kit})
+                    midfielderCount++;
                 } else{
+                    console.log("MIDFIELDER 2")
                     setMidfielder2State({selected: midfielder2State.selected, kit: kit})
                 }
             } else if (position === "FORWARD") {
