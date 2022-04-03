@@ -74,6 +74,20 @@ public class AssignmentService {
         }
     }
 
+    public void updateAssignment (Integer assignment_id, Assignments assignment) {
+        checkIfIdValid(assignment_id);
+
+        Assignments assignments = assignmentDao.selectAssignmentById(assignment_id);
+        if (assignments == null) {
+            throw new AssignmentNotFoundException("Assignment with ID " + assignment_id + " does not exist.");
+        }
+
+        Integer rowsAffected = assignmentDao.updateAssignment(assignment_id, assignment);
+        if (rowsAffected != 1) {
+            throw new RowNotChangedException("Assignment with ID " + assignment_id + " was not deleted");
+        }
+    }
+
     public void checkIfIdValid(Integer id) {
         if (id == null || id <= 0) {
             throw new InvalidRequestException("Please enter a valid ID");

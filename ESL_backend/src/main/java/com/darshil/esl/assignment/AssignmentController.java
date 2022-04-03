@@ -33,4 +33,9 @@ public class AssignmentController {
     public void deleteAssignment(@PathVariable("assignment_id") Integer id) {
         assignmentService.deleteAssignment(id);
     }
+
+    @PutMapping (path = "assignments/assignment_id/{assignment_id}")
+    public void updateAssignment(@PathVariable("assignment_id") Integer assignment_id, @RequestBody Assignments assignment) {
+        assignmentService.updateAssignment(assignment_id,assignment);
+    }
 }

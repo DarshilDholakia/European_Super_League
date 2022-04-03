@@ -68,4 +68,15 @@ public class AssignmentDataAccessService implements AssignmentDao {
                 """;
         return jdbcTemplate.update(sql, assignment_id);
     }
+
+    @Override
+    public int updateAssignment(Integer assignment_id, Assignments assignment) {
+        String sql = """
+                UPDATE player_assignment SET (user_id, player_id) = (?, ?)
+                WHERE id = ?
+                """;
+
+        int rowsAffected = jdbcTemplate.update(sql, assignment.getUser_id(), assignment.getPlayer_id(), assignment_id);
+        return rowsAffected;
+    }
 }
