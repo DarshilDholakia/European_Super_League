@@ -26,6 +26,8 @@ const BuildTeam = ({ playerList }) => {
     const [filteredPositionList, setFilteredPositionList] = useState([]);
     const [filteredClubList, setFilteredClubList] = useState([]);
 
+    const [specificUserAssignment, setSpecificUserAssignment] = useState([]);
+
     const fetchAllAssignments = () => {
         fetch("http://localhost:8080/assignments/all")
             .then(response => response.json())
@@ -80,18 +82,26 @@ const BuildTeam = ({ playerList }) => {
             .catch((error) => console.error(error))
     }
 
-    const fetchPlayerByPosition = (player_position) => {
+    const fetchPlayersByPosition = (player_position) => {
         fetch(`http://localhost:8080/player/position/${player_position}`)
             .then((response) => response.json())
             .then(data => setFilteredPositionList(data))
             .catch((error) => console.error(error))
     }
 
-    const fetchPlayerByClub = (player_club) => {
+    const fetchPlayersByClub = (player_club) => {
         fetch(`http://localhost:8080/player/club/${player_club}`)
             .then((response) => response.json())
             .then(data => setFilteredClubList(data))
             .catch((error) => console.error(error))
+    }
+
+    // Specific assignment being found
+    const selectAssignmentByUserIdAndPlayerId = (player_id) => {
+        fetch(`http://localhost:8080/assignments/user_id/${user.id}/player_id/${player_id}`)
+            .then(response => response.json())
+            .then(data => setSpecificUserAssignment(data))
+            .catch((error) => console.error(error));
     }
 
     const handlePlayerSelect = (club) => {
@@ -294,7 +304,7 @@ const BuildTeam = ({ playerList }) => {
             setFilteredPositionList([])
             return playerList;
         } else {
-            fetchPlayerByPosition(event.target.value)
+            fetchPlayersByPosition(event.target.value)
         }
     }
 
@@ -303,7 +313,7 @@ const BuildTeam = ({ playerList }) => {
             setFilteredClubList([])
             return playerList;
         } else {
-            fetchPlayerByClub(event.target.value)
+            fetchPlayersByClub(event.target.value)
         }
     }
 
@@ -338,7 +348,6 @@ const BuildTeam = ({ playerList }) => {
                     setMidfielder1State({selected: midfielder1State.selected, kit: kit})
                     midfielderCount++;
                 } else{
-                    console.log("MIDFIELDER 2")
                     setMidfielder2State({selected: midfielder2State.selected, kit: kit})
                 }
             } else if (position === "FORWARD") {
@@ -359,7 +368,7 @@ const BuildTeam = ({ playerList }) => {
 
     const manageForward = () => {
         if (forwardState.selected == false) {
-            fetchPlayerByPosition("FORWARD");
+            fetchPlayersByPosition("FORWARD");
             setForwardState({ selected: true, kit: forwardState.kit });
             setMidfielder1State({ selected: false, kit: midfielder1State.kit });
             setMidfielder2State({ selected: false, kit: midfielder2State.kit });
@@ -374,7 +383,7 @@ const BuildTeam = ({ playerList }) => {
 
     const manageMidfielder1 = () => {
         if (midfielder1State.selected == false) {
-            fetchPlayerByPosition("MIDFIELDER");
+            fetchPlayersByPosition("MIDFIELDER");
             setMidfielder1State({ selected: true, kit: midfielder1State.kit });
             setForwardState({ selected: false, kit: forwardState.kit });
             setMidfielder2State({ selected: false, kit: midfielder2State.kit });
@@ -389,7 +398,7 @@ const BuildTeam = ({ playerList }) => {
 
     const manageMidfielder2 = () => {
         if (midfielder2State.selected == false) {
-            fetchPlayerByPosition("MIDFIELDER");
+            fetchPlayersByPosition("MIDFIELDER");
             setMidfielder2State({ selected: true, kit: midfielder2State.kit });
             setForwardState({ selected: false, kit: forwardState.kit });
             setMidfielder1State({ selected: false, kit: midfielder1State.kit });
@@ -404,7 +413,7 @@ const BuildTeam = ({ playerList }) => {
 
     const manageDefender = () => {
         if (defenderState.selected == false) {
-            fetchPlayerByPosition("DEFENDER");
+            fetchPlayersByPosition("DEFENDER");
             setDefenderState({ selected: true, kit: defenderState.kit });
             setForwardState({ selected: false, kit: forwardState.kit });
             setMidfielder1State({ selected: false, kit: midfielder1State.kit });
@@ -419,7 +428,7 @@ const BuildTeam = ({ playerList }) => {
 
     const manageGoalkeeper = () => {
         if (goalkeeperState.selected == false) {
-            fetchPlayerByPosition("GOALKEEPER");
+            fetchPlayersByPosition("GOALKEEPER");
             setGoalkeeperState({ selected: true, kit: goalkeeperState.kit });
             setForwardState({ selected: false, kit: forwardState.kit });
             setMidfielder1State({ selected: false, kit: midfielder1State.kit });
