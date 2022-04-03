@@ -15,6 +15,7 @@ import psgKit from '../assets/kits/psgKit.png'
 import juventusKit from '../assets/kits/juventusKit.png'
 import west_hamKit from '../assets/kits/west_hamKit.png'
 import { UserContext } from './UserContext';
+import userEvent from '@testing-library/user-event';
 
 const BuildTeam = ({ playerList }) => {
 
