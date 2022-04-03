@@ -25,7 +25,7 @@ const LoginPage = ({userList}) => {
         <>
             <h1>Player Login here</h1>
             <form onSubmit={doesUserExist}>
-                <input type="number" placeholder="Enter User ID..." onChange={handleIdChange} required />
+                <input type="number" placeholder="Enter User ID..." min={1} onChange={handleIdChange} required />
                 <input type="submit" value="Login"/>
             </form>
 
