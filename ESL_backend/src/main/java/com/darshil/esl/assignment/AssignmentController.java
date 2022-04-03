@@ -20,7 +20,7 @@ public class AssignmentController {
     }
 
     @GetMapping(path = "assignments/user_id/{user_id}")
-    public List<Player> selectAllPlayersForUser(@PathVariable ("user_id") Integer user_id) {
+    public List<Player> selectAllPlayersForUser(@PathVariable("user_id") Integer user_id) {
         return assignmentService.selectAllPlayersForUser(user_id);
     }
 
