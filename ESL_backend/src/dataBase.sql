@@ -222,6 +222,6 @@ INSERT INTO users (email, password, team_name, total_points) VALUES ('darshil@ma
 INSERT INTO users (email, password, team_name, total_points) VALUES ('adib@mail.co.uk', 'password', 'Obi-Wan Iwobi', 0);
 INSERT INTO users (email, password, team_name, total_points) VALUES ('abdi@mail.co.uk', 'password', 'Somali Allstars', 0);
 INSERT INTO users (email, password, team_name, total_points) VALUES ('suj@mail.co.uk', 'password', 'Giroud Awakening', 0);
-INSERT INTO users (email, password, team_name, total_points) VALUES ('a_a_ron@mail.co.uk', 'password', 'Dunk and Disorderly',
+INSERT INTO users (email, password, team_name, total_points) VALUES ('aaron@mail.co.uk', 'password', 'Pashun Merchants',
  0);
 INSERT INTO users (email, password, team_name, total_points) VALUES ('michael@mail.co.uk', 'password', 'The Wizard of Özil', 0);
