@@ -3,97 +3,190 @@ import { useState } from "react";
 
 const AdminHub = ({addNewPlayer, deletePlayerById, updatePlayerById}) => {
     
-        const [name, setName] = useState("");
-        const [position, setPosition] = useState("");
-        const [club, setClub] = useState("");
-        const [price, setPrice] = useState(0);
-        const [goals, setGoals] = useState(0);
-        const [assists, setAssists] = useState(0);
-        const [red_cards, setRedCards] = useState(0);
-        const [yellow_cards, setYellowCards] = useState(0);
-        const [clean_sheets, setCleanSheets] = useState(0);
-    
-        const handleNameChange = event => setName(event.target.value);
-    
-        const handlePositionChange = event => setPosition(event.target.value);
-    
-        const handleClubChange = event => setClub(event.target.value);
-    
-        const handlePriceChange = event => setPrice(event.target.value);
+        // ADD PLAYER STATES
+        const [addPlayerName, setAddPlayerName] = useState("");
+        const [addPlayerPosition, setAddPlayerPosition] = useState("");
+        const [addPlayerClub, setAddPlayerClub] = useState("");
+        const [addPlayerPrice, setAddPlayerPrice] = useState(0);
+        const [addPlayerGoals, setAddPlayerGoals] = useState(0);
+        const [addPlayerAssists, setAddPlayerAssists] = useState(0);
+        const [addPlayerRed_cards, setAddPlayerRedCards] = useState(0);
+        const [addPlayerYellow_cards, setAddPlayerYellowCards] = useState(0);
+        const [addPlayerClean_sheets, setAddPlayerCleanSheets] = useState(0);
 
-        const handleGoalsChange = event => setGoals(event.target.value);
-
-        const handleAssistsChange = event => setAssists(event.target.value);
-
-        const handleRedCardsChange = event => setRedCards(event.target.value);
-
-        const handleYellowCardsChange = event => setYellowCards(event.target.value);
+        // UPDATE PLAYER STATES
+        const [updatePlayerId, setUpdatePlayerId] = useState(0);
+        const [updatePlayerName, setUpdatePlayerName] = useState("");
+        const [updatePlayerPosition, setUpdatePlayerPosition] = useState("");
+        const [updatePlayerClub, setUpdatePlayerClub] = useState("");
+        const [updatePlayerPrice, setUpdatePlayerPrice] = useState(0);
+        const [updatePlayerGoals, setUpdatePlayerGoals] = useState(0);
+        const [updatePlayerAssists, setUpdatePlayerAssists] = useState(0);
+        const [updatePlayerRed_cards, setUpdatePlayerRedCards] = useState(0);
+        const [updatePlayerYellow_cards, setUpdatePlayerYellowCards] = useState(0);
+        const [updatePlayerClean_sheets, setUpdatePlayerCleanSheets] = useState(0);
     
-        const handleCleanSheetsChange = event => setCleanSheets(event.target.value);
+        // ADD PLAYER EVENT HANDLERS
+        const handleAddNameChange = event => setAddPlayerName(event.target.value);
+        const handleAddPositionChange = event => setAddPlayerPosition(event.target.value);
+        const handleAddClubChange = event => setAddPlayerClub(event.target.value);
+        const handleAddPriceChange = event => setAddPlayerPrice(event.target.value);
+        const handleAddGoalsChange = event => setAddPlayerGoals(event.target.value);
+        const handleAddAssistsChange = event => setAddPlayerAssists(event.target.value);
+        const handleAddRedCardsChange = event => setAddPlayerRedCards(event.target.value);
+        const handleAddYellowCardsChange = event => setAddPlayerYellowCards(event.target.value);
+        const handleAddCleanSheetsChange = event => setAddPlayerCleanSheets(event.target.value);
 
-        const handleFormSubmit = event => {
+        // UPDATE PLAYER EVENT HANDLERS
+        const handleUpdatePlayerIdChange = event => setUpdatePlayerId(event.target.value);
+        const handleUpdateNameChange = event => setUpdatePlayerName(event.target.value);
+        const handleUpdatePositionChange = event => setUpdatePlayerPosition(event.target.value);
+        const handleUpdateClubChange = event => setUpdatePlayerClub(event.target.value);
+        const handleUpdatePriceChange = event => setUpdatePlayerPrice(event.target.value);
+        const handleUpdateGoalsChange = event => setUpdatePlayerGoals(event.target.value);
+        const handleUpdateAssistsChange = event => setUpdatePlayerAssists(event.target.value);
+        const handleUpdateRedCardsChange = event => setUpdatePlayerRedCards(event.target.value);
+        const handleUpdateYellowCardsChange = event => setUpdatePlayerYellowCards(event.target.value);
+        const handleUpdateCleanSheetsChange = event => setUpdatePlayerCleanSheets(event.target.value);
+
+
+        // ==========ADD PLAYER FUNCTIONALITY==========
+        const handleAddPlayerFormSubmit = event => {
             event.preventDefault();
     
-            if(!name || !position || !club || !price || !goals || !assists || !red_cards || !yellow_cards || !clean_sheets){
+            if(!addPlayerName || !addPlayerPosition || !addPlayerClub || !addPlayerPrice || !addPlayerGoals || !addPlayerAssists || !addPlayerRed_cards || !addPlayerYellow_cards || !addPlayerClean_sheets){
                 alert("missing information");
             }
     
             const newPlayer = {
-                name: name,
-                position: position,
-                club: club,
-                price: price,
-                goals: goals,
-                assists: assists,
-                red_cards: red_cards,
-                yellow_cards: yellow_cards,
-                clean_sheets: clean_sheets
+                player_name: addPlayerName,
+                player_position: addPlayerPosition,
+                player_club: addPlayerClub,
+                price: addPlayerPrice,
+                goals: addPlayerGoals,
+                assists: addPlayerAssists,
+                red_cards: addPlayerRed_cards,
+                yellow_cards: addPlayerYellow_cards,
+                clean_sheets: addPlayerClean_sheets
             }
             
             addNewPlayer(newPlayer)
     
-            setName("");
-            setPosition("");
-            setClub("");
-            setPrice("");
-            setGoals("");
-            setAssists("");
-            setRedCards("");
-            setYellowCards("");
-            setCleanSheets("");
+            setAddPlayerName("");
+            setAddPlayerPosition("");
+            setAddPlayerClub("");
+            setAddPlayerPrice(0);
+            setAddPlayerGoals(0);
+            setAddPlayerAssists(0);
+            setAddPlayerRedCards(0);
+            setAddPlayerYellowCards(0);
+            setAddPlayerCleanSheets(0);
+        }
+
+        // =========UPDATE PLAYER FUNCTIONALITY============
+        const handleUpdatePlayerFormSubmit = event => {
+            event.preventDefault();
+    
+            if(!updatePlayerId || !updatePlayerName || !updatePlayerPosition || !updatePlayerClub || !updatePlayerPrice || !updatePlayerGoals || !updatePlayerAssists || !updatePlayerRed_cards || !updatePlayerYellow_cards || !updatePlayerClean_sheets){
+                alert("missing information");
+            }
+    
+            const updatedPlayer = {
+                player_name: updatePlayerName,
+                player_position: updatePlayerPosition,
+                player_club: updatePlayerClub,
+                price: updatePlayerPrice,
+                goals: updatePlayerGoals,
+                assists: updatePlayerAssists,
+                red_cards: updatePlayerRed_cards,
+                yellow_cards: updatePlayerYellow_cards,
+                clean_sheets: updatePlayerClean_sheets
+            }
+            
+            updatePlayerById(updatePlayerId, updatedPlayer)
+    
+            setUpdatePlayerId(0);
+            setUpdatePlayerName("");
+            setUpdatePlayerPosition("");
+            setUpdatePlayerClub("");
+            setUpdatePlayerPrice(0);
+            setUpdatePlayerGoals(0);
+            setUpdatePlayerAssists(0);
+            setUpdatePlayerRedCards(0);
+            setUpdatePlayerYellowCards(0);
+            setUpdatePlayerCleanSheets(0);
         }
 
     return(
-        <form onSubmit={handleFormSubmit}>
+        <>
+            {/* ADD PLAYER FORM */}
+            <form onSubmit={handleAddPlayerFormSubmit}>
+                <label htmlFor="name">Name:</label>
+                <input type="text" id="name" value={addPlayerName} onChange={handleAddNameChange}/>
+
+                <label htmlFor="position">Position:</label>
+                <input type="text" id="position" value={addPlayerPosition} onChange={handleAddPositionChange}/>
+
+                <label htmlFor="club">Club:</label>
+                <input type="text" id="club" value={addPlayerClub} onChange={handleAddClubChange}/>
+
+                <label htmlFor="price">Price:</label>
+                <input type="number" id="price" value={addPlayerPrice} onChange={handleAddPriceChange}/>
+
+                <label htmlFor="goals">Goals:</label>
+                <input type="number" id="goals" value={addPlayerGoals} onChange={handleAddGoalsChange}/>
+
+                <label htmlFor="assists">Assists:</label>
+                <input type="number" id="assists" value={addPlayerAssists} onChange={handleAddAssistsChange}/>
+
+                <label htmlFor="red_cards">Red Cards:</label>
+                <input type="number" id="red_cards" value={addPlayerRed_cards} onChange={handleAddRedCardsChange}/>
+
+                <label htmlFor="yellow_cards">Yellow Cards:</label>
+                <input type="number" id="yellow_cards" value={addPlayerYellow_cards} onChange={handleAddYellowCardsChange}/>
+
+                <label htmlFor="clean_sheets">Clean Sheets:</label>
+                <input type="number" id="clean_sheets" value={addPlayerClean_sheets} onChange={handleAddCleanSheetsChange}/>
+
+                <input type="submit" value="Submit New Player"/>
+            </form>
+
+            {/* UPDATE PLAYER FORM */}
+            <form onSubmit={handleUpdatePlayerFormSubmit}>
+            <label htmlFor="id">id:</label>
+            <input type="number" id="id" value={updatePlayerId} onChange={handleUpdatePlayerIdChange}/>
+            
             <label htmlFor="name">Name:</label>
-            <input type="text" id="name" value={name} onChange={handleNameChange}/>
+            <input type="text" id="name" value={updatePlayerName} onChange={handleUpdateNameChange}/>
 
             <label htmlFor="position">Position:</label>
-            <input type="text" id="position" value={position} onChange={handlePositionChange}/>
+            <input type="text" id="position" value={updatePlayerPosition} onChange={handleUpdatePositionChange}/>
 
             <label htmlFor="club">Club:</label>
-            <input type="text" id="club" value={club} onChange={handleClubChange}/>
+            <input type="text" id="club" value={updatePlayerClub} onChange={handleUpdateClubChange}/>
 
             <label htmlFor="price">Price:</label>
-            <input type="number" id="price" value={price} onChange={handlePriceChange}/>
+            <input type="number" id="price" value={updatePlayerPrice} onChange={handleUpdatePriceChange}/>
 
             <label htmlFor="goals">Goals:</label>
-            <input type="number" id="goals" value={goals} onChange={handleGoalsChange}/>
+            <input type="number" id="goals" value={updatePlayerGoals} onChange={handleUpdateGoalsChange}/>
 
             <label htmlFor="assists">Assists:</label>
-            <input type="number" id="assists" value={assists} onChange={handleAssistsChange}/>
+            <input type="number" id="assists" value={updatePlayerAssists} onChange={handleUpdateAssistsChange}/>
 
             <label htmlFor="red_cards">Red Cards:</label>
-            <input type="number" id="red_cards" value={red_cards} onChange={handleRedCardsChange}/>
+            <input type="number" id="red_cards" value={updatePlayerRed_cards} onChange={handleUpdateRedCardsChange}/>
 
             <label htmlFor="yellow_cards">Yellow Cards:</label>
-            <input type="number" id="yellow_cards" value={yellow_cards} onChange={handleYellowCardsChange}/>
+            <input type="number" id="yellow_cards" value={updatePlayerYellow_cards} onChange={handleUpdateYellowCardsChange}/>
 
             <label htmlFor="clean_sheets">Clean Sheets:</label>
-            <input type="number" id="clean_sheets" value={clean_sheets} onChange={handleCleanSheetsChange}/>
+            <input type="number" id="clean_sheets" value={updatePlayerClean_sheets} onChange={handleUpdateCleanSheetsChange}/>
 
-            <input type="submit" value="Submit New Player"/>
-        </form> 
+            <input type="submit" value="Update Player"/>
+            </form> 
+        </>
+        
     )
 }
 
