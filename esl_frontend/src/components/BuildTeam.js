@@ -232,162 +232,34 @@ const BuildTeam = ({ playerList }) => {
         }
     }
 
+    let kitMap = new Map([
+        ["UNITED", unitedKit],
+        ["PSG", psgKit],
+        ["LIVERPOOL", liverpoolKit],
+        ["REAL_MADRID", real_madridKit],
+        ["JUVENTUS", juventusKit],
+        ["CITY", cityKit],
+        ["INTER", interKit],
+        ["WEST_HAM", west_hamKit],
+        ["MILAN", milanKit],
+        ["ARSENAL", arsenalKit],
+        ["BARCELONA", barcelonaKit],
+        ["ATLETICO", atleticoKit]
+    ]);
+
     const handleTransferTablePlayerSelect = (id, club) => {
 
-        if (club === "UNITED") {
+        for (var key in kitMap){
             if (forwardState.selected) {
-                setForwardState({ selected: true, kit: unitedKit })
+                setForwardState({ selected: true, kit: kitMap.get(key)})
             } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: unitedKit })
+                setMidfielder1State({ selected: true, kit: kitMap.get(key)})
             } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: unitedKit })
+                setMidfielder2State({ selected: true, kit: kitMap.get(key)})
             } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: unitedKit })
+                setDefenderState({ selected: true, kit: kitMap.get(key)})
             } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: unitedKit })
-            }
-
-        } else if (club === "PSG") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: psgKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: psgKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: psgKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: psgKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: psgKit })
-            }
-
-        } else if (club === "LIVERPOOL") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: liverpoolKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: liverpoolKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: liverpoolKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: liverpoolKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: liverpoolKit })
-            }
-
-        } else if (club === "REAL_MADRID") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: real_madridKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: real_madridKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: real_madridKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: real_madridKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: real_madridKit })
-            }
-
-        } else if (club === "JUVENTUS") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: juventusKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: juventusKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: juventusKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: juventusKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: juventusKit })
-            }
-
-        } else if (club === "CITY") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: cityKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: cityKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: cityKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: cityKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: cityKit })
-            }
-
-        } else if (club === "INTER") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: interKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: interKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: interKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: interKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: interKit })
-            }
-
-        } else if (club === "WEST_HAM") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: west_hamKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: west_hamKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: west_hamKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: west_hamKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: west_hamKit })
-            }
-
-        } else if (club === "MILAN") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: milanKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: milanKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: milanKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: milanKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: milanKit })
-            }
-
-        } else if (club === "ARSENAL") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: arsenalKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: arsenalKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: arsenalKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: arsenalKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: arsenalKit })
-            }
-
-        } else if (club === "BARCELONA") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: barcelonaKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: barcelonaKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: barcelonaKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: barcelonaKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: barcelonaKit })
-            }
-
-        } else {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: atleticoKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: atleticoKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: atleticoKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: atleticoKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: atleticoKit })
+                setGoalkeeperState({ selected: true, kit: kitMap.get(key)})
             }
         }
     }
@@ -458,20 +330,6 @@ const BuildTeam = ({ playerList }) => {
         }
     }
 
-    let kitMap = new Map([
-        ["UNITED", unitedKit],
-        ["PSG", psgKit],
-        ["LIVERPOOL", liverpoolKit],
-        ["REAL_MADRID", real_madridKit],
-        ["JUVENTUS", juventusKit],
-        ["CITY", cityKit],
-        ["INTER", interKit],
-        ["WEST_HAM", west_hamKit],
-        ["MILAN", milanKit],
-        ["ARSENAL", arsenalKit],
-        ["BARCELONA", barcelonaKit],
-        ["ATLETICO", atleticoKit]
-    ]);
 
     let midfielderCount = 1;
 
