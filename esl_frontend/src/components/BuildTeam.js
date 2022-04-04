@@ -119,7 +119,6 @@ const BuildTeam = ({ playerList }) => {
     const [midfielder2State, setMidfielder2State] = useState({ selected: false, kit: nonSelectedPlayer });
     const [defenderState, setDefenderState] = useState({ selected: false, kit: nonSelectedPlayer });
     const [goalkeeperState, setGoalkeeperState] = useState({ selected: false, kit: nonSelectedPlayer });
-    const [newPlayerIdState, setNewPlayerIdState] = useState(0);
 
     const [currentAssignmentIdState, setCurrentAssignmentIdState] = useState([])
 
@@ -142,7 +141,7 @@ const BuildTeam = ({ playerList }) => {
 
 
 
-            
+
 
             // you want to get the forward player of the user
             // get the player id of that player
@@ -234,8 +233,6 @@ const BuildTeam = ({ playerList }) => {
     }
 
     const handleTransferTablePlayerSelect = (id, club) => {
-
-        setNewPlayerIdState(id);
 
         if (club === "UNITED") {
             if (forwardState.selected) {
