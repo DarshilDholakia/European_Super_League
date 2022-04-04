@@ -111,15 +111,9 @@ const BuildTeam = ({ playerList }) => {
     useEffect(() => {
         if (specificUserAssignmentState.length > 0) {
             setCurrentAssignmentIdState((specificUserAssignmentState[0]).id)    
+            // ^ you need [0] above because the method returns an array of objects eventho its just 1 object
         }
     }, [specificUserAssignmentState])
-
-    //when user clicks + button on a player, we find the player id with that position
-    //we then find the assignment id using that player id (and the user id) 
-    // we set the changeState to assignment id and player id
-    // now in handleTransferTablePlayerSelect, we have the player id selected at the top
-    // we grab the assignment id from the changeState
-    // and bish bash bosh
 
     const [forwardState, setForwardState] = useState({ selected: false, kit: nonSelectedPlayer });
     const [midfielder1State, setMidfielder1State] = useState({ selected: false, kit: nonSelectedPlayer });
@@ -133,27 +127,8 @@ const BuildTeam = ({ playerList }) => {
         if (forwardState.selected == false) {
             setPlayerOnPitchChangeSelected(true);
             let userCurrentForwardPlayer = userPlayerList.find(player => player.player_position === "FORWARD");
-            console.log({userCurrentForwardPlayer});
-            let userCurrentForwardPlayerID = userCurrentForwardPlayer.id;
-            console.log({userCurrentForwardPlayerID});
-
-            selectAssignmentByUserIdAndPlayerId(userCurrentForwardPlayerID);
-            // ^ this is the function that should set specificUserAssignmentState
-            console.log({specificUserAssignmentState}); //this doesnt work on the first try - comes back as empty array in console
-            // look at line 106 where specificUserAssignmentState should be set
-            // async issue? 
-            // setCurrentAssignmentIdState((specificUserAssignmentState[0]).id); 
-            // ^ you need [0] above because the method returns an array of objects eventho its just 1 object
-
-
-
-
-
-            // you want to get the forward player of the user
-            // get the player id of that player
-            // use player id (and user id) to find the assignment id
-            // set currentChangeState to this assignment id
-            // you get the newplayerstateid and use the assignment id to update it with that
+            let userCurrentForwardPlayerId = userCurrentForwardPlayer.id;
+            selectAssignmentByUserIdAndPlayerId(userCurrentForwardPlayerId);
 
             fetchPlayersByPosition("FORWARD"); //shows the forward players on the transfer table
             setForwardState({ selected: true, kit: forwardState.kit });
@@ -173,6 +148,10 @@ const BuildTeam = ({ playerList }) => {
     const manageMidfielder1 = () => {
         if (midfielder1State.selected == false) {
             setPlayerOnPitchChangeSelected(true);
+            let userCurrentMidfielder1Player = userPlayerList.find(player => player.player_position === "MIDFIELDER");
+            let userCurrentMidfielder1PlayerId = userCurrentMidfielder1Player.id;
+            selectAssignmentByUserIdAndPlayerId(userCurrentMidfielder1PlayerId);
+
             fetchPlayersByPosition("MIDFIELDER");
             setMidfielder1State({ selected: true, kit: midfielder1State.kit });
             setForwardState({ selected: false, kit: forwardState.kit });
@@ -190,6 +169,21 @@ const BuildTeam = ({ playerList }) => {
     const manageMidfielder2 = () => {
         if (midfielder2State.selected == false) {
             setPlayerOnPitchChangeSelected(true);
+            let midfielderNumber = 0;
+            let userCurrentMidfielder2Player = "";
+
+            for (let i = 0; i < userPlayerList.length; i++) {
+                if ((userPlayerList[i]).player_position === "MIDFIELDER"){
+                    midfielderNumber++
+                }
+                if (midfielderNumber === 2){
+                    userCurrentMidfielder2Player = userPlayerList[i];
+                }
+            }
+
+            let userCurrentMidfielder2PlayerId = userCurrentMidfielder2Player.id;
+            selectAssignmentByUserIdAndPlayerId(userCurrentMidfielder2PlayerId);
+
             fetchPlayersByPosition("MIDFIELDER");
             setMidfielder2State({ selected: true, kit: midfielder2State.kit });
             setForwardState({ selected: false, kit: forwardState.kit });
@@ -207,6 +201,10 @@ const BuildTeam = ({ playerList }) => {
     const manageDefender = () => {
         if (defenderState.selected == false) {
             setPlayerOnPitchChangeSelected(true);
+            let userCurrentDefenderPlayer = userPlayerList.find(player => player.player_position === "DEFENDER");
+            let userCurrentDefenderPlayerId = userCurrentDefenderPlayer.id;
+            selectAssignmentByUserIdAndPlayerId(userCurrentDefenderPlayerId);
+
             fetchPlayersByPosition("DEFENDER");
             setDefenderState({ selected: true, kit: defenderState.kit });
             setForwardState({ selected: false, kit: forwardState.kit });
@@ -224,6 +222,10 @@ const BuildTeam = ({ playerList }) => {
     const manageGoalkeeper = () => {
         if (goalkeeperState.selected == false) {
             setPlayerOnPitchChangeSelected(true);
+            let userCurrentGoalkeeperPlayer = userPlayerList.find(player => player.player_position === "GOALKEEPER");
+            let userCurrentGoalkeeperPlayerId = userCurrentGoalkeeperPlayer.id;
+            selectAssignmentByUserIdAndPlayerId(userCurrentGoalkeeperPlayerId);
+
             fetchPlayersByPosition("GOALKEEPER");
             setGoalkeeperState({ selected: true, kit: goalkeeperState.kit });
             setForwardState({ selected: false, kit: forwardState.kit });
@@ -400,21 +402,21 @@ const BuildTeam = ({ playerList }) => {
 
                     <div className="midfielder1-container">
                         <div className="player-buttons">
-                            <button onClick={manageMidfielder1}> {midfielder1State.selected ? "x" : "+"} </button>
+                            <button onClick={manageMidfielder1}> {midfielder1State.selected && playerOnPitchChangeSelected === true ? "x" : "+"} </button>
                         </div>
                         <img className={`midfielder1${midfielder1State.selected ? " player-after-add" : ""}`} src={midfielder1State.kit} alt='Midfielder1'></img>
                     </div>
 
                     <div className="midfielder2-container">
                         <div className="player-buttons">
-                            <button onClick={manageMidfielder2}> {midfielder2State.selected ? "x" : "+"} </button>
+                            <button onClick={manageMidfielder2}> {midfielder2State.selected && playerOnPitchChangeSelected === true ? "x" : "+"} </button>
                         </div>
                         <img className={`midfielder2${midfielder2State.selected ? " player-after-add" : ""}`} src={midfielder2State.kit} alt='Midfielder2'></img>
                     </div>
 
                     <div className="defender-container">
                         <div className="player-buttons">
-                            <button onClick={manageDefender}> {defenderState.selected ? "x" : "+"} </button>
+                            <button onClick={manageDefender}> {defenderState.selected && playerOnPitchChangeSelected === true ? "x" : "+"} </button>
                         </div>
                         <img className={`defender${defenderState.selected ? " player-after-add" : ""}`} src={defenderState.kit} alt='Defender'></img>
                     </div>
@@ -422,7 +424,7 @@ const BuildTeam = ({ playerList }) => {
 
                     <div className="goalkeeper-container">
                         <div className="player-buttons">
-                            <button onClick={manageGoalkeeper}> {goalkeeperState.selected ? "x" : "+"} </button>
+                            <button onClick={manageGoalkeeper}> {goalkeeperState.selected && playerOnPitchChangeSelected === true ? "x" : "+"} </button>
                         </div>
                         <img className={`goalkeeper${goalkeeperState.selected ? " player-after-add" : ""}`} src={goalkeeperState.kit} alt='Goalkeeper'></img>
                     </div>
