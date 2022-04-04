@@ -139,7 +139,8 @@ const AdminHub = ({addNewPlayer, deletePlayerById, updatePlayerById}) => {
     return(
         <>
             {/* ADD PLAYER FORM */}
-            <form onSubmit={handleAddPlayerFormSubmit}>
+            <h3>Add player to database:</h3>
+            <form onSubmit={handleAddPlayerFormSubmit} className="admin-player-forms">
                 <label htmlFor="name">Name:</label>
                 <input type="text" id="name" value={addPlayerName} onChange={handleAddNameChange}/>
 
@@ -170,12 +171,13 @@ const AdminHub = ({addNewPlayer, deletePlayerById, updatePlayerById}) => {
                 <input type="submit" value="Submit New Player"/>
             </form>
 
-            <br></br>
+            {/* <br></br>
             <hr ></hr>
-            <br></br>
+            <br></br> */}
 
             {/* UPDATE PLAYER FORM */}
-            <form onSubmit={handleUpdatePlayerFormSubmit}>
+            <h3>Update existing player:</h3>
+            <form onSubmit={handleUpdatePlayerFormSubmit} className="admin-player-forms">
             <label htmlFor="id">id:</label>
             <input type="number" id="id" value={updatePlayerId} onChange={handleUpdatePlayerIdChange}/>
             
@@ -209,12 +211,13 @@ const AdminHub = ({addNewPlayer, deletePlayerById, updatePlayerById}) => {
             <input type="submit" value="Update Player"/>
             </form>
 
-            <br></br>
+            {/* <br></br>
             <hr ></hr>
-            <br></br>
+            <br></br> */}
 
             {/* DELETE PLAYER FORM */}
-            <form onSubmit={handleDeletePlayerFormSubmit}>
+            <h3>Delete player:</h3>
+            <form onSubmit={handleDeletePlayerFormSubmit} className="admin-player-forms">
 
             <label htmlFor="id">id:</label>
             <input type="number" id="id" value={deletePlayerId} onChange={handleDeletePlayerIdChange}/>

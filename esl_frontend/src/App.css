@@ -452,3 +452,20 @@ ul{
   height: 50px;
   padding: 5px;
 } */
+
+/* ============ ADMIN PAGE STYLING ============== */
+.admin-player-forms{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  justify-content: center;
+  gap: 10px;
+  border: 2px solid purple;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+/* ============ SIGN-UP PAGE STYLING ============== */
+.sign-up-submit-button{
+margin-bottom: 20px;
+}

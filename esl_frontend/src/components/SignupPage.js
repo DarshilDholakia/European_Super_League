@@ -99,7 +99,10 @@ const SignupPage = ({addNewUser, userList}) => {
        <label className="label">Team Name</label>
        <input onChange={handleTeamName} className="input"
          value={teamName} type="text" />
-        <input type="submit" value="Sign-up"/>
+
+        <br></br>
+        <br></br>
+        <input type="submit" value="Sign-up" className="sign-up-submit-button"/>
 
        {/* <button onClick={handleSubmit} className="btn" type="submit">Submit</button> */}
        
