@@ -10,6 +10,7 @@ import { Route, Link, Routes, Navigate } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import InitialNavBar from './components/InitialNavBar';
 import UserNavBar from './components/UserNavBar'
+import AdminNavBar from './components/AdminNavBar';
 import { UserContext } from './components/UserContext';
 import FooterBar from './components/FooterBar';
 
@@ -18,7 +19,7 @@ function App() {
 
   const [userList, setUserList] = useState([])
   const [playerList, setPlayerList] = useState([])
-  const { user } = useContext(UserContext);
+  const { user,admin } = useContext(UserContext);
 
   const fetchAllPlayers = () => {
     fetch("http://localhost:8080/player/all")
@@ -121,10 +122,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {user.auth ? <UserNavBar /> : <InitialNavBar />}
+        {user.auth ? <UserNavBar /> : admin.auth ? <AdminNavBar /> : <InitialNavBar />}
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/admin-hub" element={<AdminHub
+          <Route exact path="/admin-hub" element={admin.auth ? <AdminHub
             userList={userList}
             playerList={playerList}
             addNewPlayer={addNewPlayer}
@@ -133,13 +134,11 @@ function App() {
             deleteUserById={deleteUserById}
             updatePlayerById={updatePlayerById}
             updateUserById={updateUserById}
-          />} />
-          <Route exact path="/login" element={!user.auth ? <LoginPage userList={userList} /> : <Navigate replace to="/build-team" />} />
+          /> : <Navigate replace to="/" />} />
+          <Route exact path="/login" element={user.auth ? <Navigate replace to="/build-team" /> : admin.auth ? <Navigate replace to="/admin-hub" /> : <LoginPage userList={userList} />} />
           <Route exact path="/sign-up" element={<SignupPage />} />
           <Route exact path="/build-team" element={user.auth ? <BuildTeam playerList={playerList} /> : <Navigate replace to="/" />} />
-          <Route exact path="/leaderboard" element={user.auth ? <Leaderboard
-            userList={userList}
-          /> : <Navigate replace to="/" />} />
+          <Route exact path="/leaderboard" element={user.auth ? <Leaderboard userList={userList}/> : <Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>
       <FooterBar />
