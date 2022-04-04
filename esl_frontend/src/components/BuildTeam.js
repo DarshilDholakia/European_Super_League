@@ -108,6 +108,7 @@ const BuildTeam = ({ playerList }) => {
             .then(data => setSpecificUserAssignmentState(data))
             .catch((error) => console.error(error));
     }
+
     useEffect(() => {
         if (specificUserAssignmentState.length > 0) {
             setCurrentAssignmentIdState((specificUserAssignmentState[0]).id)
@@ -145,32 +146,13 @@ const BuildTeam = ({ playerList }) => {
         }
     }
 
-    const [isMidFielder1AtTopOfUserPlayerList, setIsMidFielder1AtTopOfUserPlayerList] = useState(true);
-    // when player is updated, goes to the bottom in postman which creates a problem when 
-    // finding midfielder 1 or 2 so need to make sure the right one is retrieved
-
     const manageMidfielder1 = () => {
         if (midfielder1State.selected == false) {
             setPlayerOnPitchChangeSelected(true);
             let userCurrentMidfielder1Player = "";
-            if (isMidFielder1AtTopOfUserPlayerList === true) {
-                userCurrentMidfielder1Player = userPlayerList.find(player => player.player_position === "MIDFIELDER");
-                setIsMidFielder1AtTopOfUserPlayerList(false);
-            } else {
-                let midfielderNumber = 0;
-                for (let i = 0; i < userPlayerList.length; i++) {
-                    if ((userPlayerList[i]).player_position === "MIDFIELDER") {
-                        midfielderNumber++
-                    }
-                    if (midfielderNumber == 2) {
-                        userCurrentMidfielder1Player = userPlayerList[i];
-                        break;
-                    }
-                }
-            }
+            userCurrentMidfielder1Player = userPlayerList.find(player => player.player_position === "MIDFIELDER");
             let userCurrentMidfielder1PlayerId = userCurrentMidfielder1Player.id;
             selectAssignmentByUserIdAndPlayerId(userCurrentMidfielder1PlayerId);
-
             fetchPlayersByPosition("MIDFIELDER");
             setMidfielder1State({ selected: true, kit: midfielder1State.kit });
             setForwardState({ selected: false, kit: forwardState.kit });
@@ -190,20 +172,15 @@ const BuildTeam = ({ playerList }) => {
             console.log("midfielder 2 selected");
             setPlayerOnPitchChangeSelected(true);
             let userCurrentMidfielder2Player = "";
-             if (isMidFielder1AtTopOfUserPlayerList === true){
-                let midfielderNumber = 0;
-                for (let i = 0; i < userPlayerList.length; i++) {
-                    if ((userPlayerList[i]).player_position === "MIDFIELDER") {
-                        midfielderNumber++
-                    }
-                    if (midfielderNumber == 2) {
-                        userCurrentMidfielder2Player = userPlayerList[i];
-                        break;
-                    }
+            let midfielderNumber = 0;
+            for (let i = 0; i < userPlayerList.length; i++) {
+                if ((userPlayerList[i]).player_position === "MIDFIELDER") {
+                    midfielderNumber++
                 }
-            } else {
-                userCurrentMidfielder2Player = userPlayerList.find(player => player.player_position === "MIDFIELDER");
-                setIsMidFielder1AtTopOfUserPlayerList(true);
+                if (midfielderNumber == 2) {
+                    userCurrentMidfielder2Player = userPlayerList[i];
+                    break;
+                }
             }
 
             let userCurrentMidfielder2PlayerId = userCurrentMidfielder2Player.id;
@@ -310,7 +287,6 @@ const BuildTeam = ({ playerList }) => {
             <Player handleTransferTablePlayerSelect={handleTransferTablePlayerSelect}
                 playerOnPitchChangeSelected={playerOnPitchChangeSelected}
                 currentAssignmentId={currentAssignmentIdState}
-                assignmentList={assignmentList}
                 updateAssignmentById={updateAssignmentById}
                 player={filteredPlayer} key={filteredPlayer.id} />
         )
@@ -321,7 +297,6 @@ const BuildTeam = ({ playerList }) => {
             <Player handleTransferTablePlayerSelect={handleTransferTablePlayerSelect}
                 playerOnPitchChangeSelected={playerOnPitchChangeSelected}
                 currentAssignmentId={currentAssignmentIdState}
-                assignmentList={assignmentList}
                 updateAssignmentById={updateAssignmentById}
                 player={filteredPlayer} key={filteredPlayer.id} />
         )
@@ -332,7 +307,6 @@ const BuildTeam = ({ playerList }) => {
             <Player handleTransferTablePlayerSelect={handleTransferTablePlayerSelect}
                 playerOnPitchChangeSelected={playerOnPitchChangeSelected}
                 currentAssignmentId={currentAssignmentIdState}
-                assignmentList={assignmentList}
                 updateAssignmentById={updateAssignmentById}
                 player={player} key={player.id} />
         )
@@ -345,7 +319,6 @@ const BuildTeam = ({ playerList }) => {
                     <Player handleTransferTablePlayerSelect={handleTransferTablePlayerSelect}
                         playerOnPitchChangeSelected={playerOnPitchChangeSelected}
                         currentAssignmentId={currentAssignmentIdState}
-                        assignmentList={assignmentList}
                         updateAssignmentById={updateAssignmentById}
                         player={clubPlayer} key={clubPlayer.id} />
                 )

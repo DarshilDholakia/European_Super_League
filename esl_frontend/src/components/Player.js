@@ -1,7 +1,7 @@
 import { UserContext } from "./UserContext"
 import { useContext } from "react"
 
-const Player = ({ player, handleTransferTablePlayerSelect, updateAssignmentById, assignmentList, currentAssignmentId, playerOnPitchChangeSelected }) => {
+const Player = ({ player, handleTransferTablePlayerSelect, updateAssignmentById, currentAssignmentId, playerOnPitchChangeSelected }) => {
 
     const { user } = useContext(UserContext)
 
