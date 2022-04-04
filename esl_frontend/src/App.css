@@ -47,6 +47,7 @@
 
 .pitch-image{
   position: relative;
+  margin-left: 80px;
   top: 0;
   left: 0; 
 }
@@ -68,40 +69,46 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 22%;  
-  left: 47%;
+  top: 19%;  
+  left: 54%;
 }
 
 .midfielder1-container{
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 33%;  
-  left: 30%;
+  top: 30%;  
+  left: 35%;
 }
 
 .midfielder2-container{
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 33%;  
-  left: 65%;
+  top: 30%;  
+  left: 72%;
 }
 
 .defender-container{
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 41%;  
-  left: 47%;
+  top: 40%;  
+  left: 54%;
 }
 
 .goalkeeper-container{
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 54%;  
-  left: 47%;
+  top: 53%;  
+  left: 54%;
+}
+
+.player-label{
+  margin-top: 0px;
+  font-size: 10px;
+  background-color: yellow;
 }
 
 .table-and-filter {
