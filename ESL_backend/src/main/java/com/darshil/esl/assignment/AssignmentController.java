@@ -24,6 +24,11 @@ public class AssignmentController {
         return assignmentService.selectAllPlayersForUser(user_id);
     }
 
+    @GetMapping(path = "assignments/user_id/{user_id}/player_id/{player_id}")
+    public List<Assignments> selectAssignmentByUserIdAndPlayerId(@PathVariable("user_id") Integer user_id, @PathVariable("player_id") Integer player_id) {
+        return assignmentService.selectAssignmentByUserIdAndPlayerId(user_id, player_id);
+    }
+
     @PostMapping(path = "assignments")
     public void insertAssignments(@RequestBody Assignments assignments) {
         assignmentService.insertAssignment(assignments);
@@ -38,4 +43,6 @@ public class AssignmentController {
     public void updateAssignment(@PathVariable("assignment_id") Integer assignment_id, @RequestBody Assignments assignment) {
         assignmentService.updateAssignment(assignment_id,assignment);
     }
+
+
 }

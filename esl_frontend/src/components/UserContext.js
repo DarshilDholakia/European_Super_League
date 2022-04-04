@@ -5,6 +5,7 @@ const UserContext = createContext();
 const UserProvider = ({ children }) => {
     // User is the name of the "data" that gets stored in context
     const [user, setUser] = useState({ id: '', auth: false });
+    const [admin, setAdmin] = useState({username: '', password: '', auth: false});
   
     // Login updates the user data with a name parameter
     const login = (id) => {
@@ -21,9 +22,25 @@ const UserProvider = ({ children }) => {
         auth: false
       }));
     };
+
+    const adminLogin = (inputUsername, inputPassword) => {
+      setAdmin((admin) => ({
+        username: inputUsername, 
+        password: inputPassword, 
+        auth: true
+      }));
+    }
+
+    const adminLogout = () => {
+      setAdmin((admin) => ({
+        username: '', 
+        password: '', 
+        auth: false
+      }))
+    }
   
     return (
-      <UserContext.Provider value={{ user, login, logout }}>
+      <UserContext.Provider value={{ user, login, logout, admin, adminLogin, adminLogout }}>
         {children}
       </UserContext.Provider>
     );

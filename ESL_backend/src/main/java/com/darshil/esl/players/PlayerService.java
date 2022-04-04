@@ -1,6 +1,8 @@
 package com.darshil.esl.players;
+import com.darshil.esl.assignment.AssignmentService;
 import com.darshil.esl.exception.InvalidRequestException;
 import com.darshil.esl.exception.PlayerNotFoundException;
+import com.darshil.esl.users.UserService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +13,14 @@ import java.util.List;
 public class PlayerService {
 
     private PlayerDao playerDao;
+    private UserService userService;
+    private AssignmentService assignmentService;
 
-    public PlayerService(@Qualifier("player_postgres") PlayerDao playerDao){
+    public PlayerService(@Qualifier("player_postgres") PlayerDao playerDao, UserService userService, AssignmentService assignmentService){
+
         this.playerDao = playerDao;
+        this.userService = userService;
+        this.assignmentService = assignmentService;
     }
 
     public List<Player> selectAllPlayers(){
@@ -54,10 +61,14 @@ public class PlayerService {
         checkPlayerInputProperties(updatedPlayer);   // Check against our set of criteria for player entry properties,
         // since update method will require a new player entry
 
+
         Integer rowsAffected = playerDao.updatePlayerById(playerInDb.getId(), updatedPlayer);
         if (rowsAffected != 1) {
             throw new IllegalStateException("Could not update player...");
         }
+        List<Integer> userIdList = assignmentService.selectAllUsersWithPlayerId(id);
+        userService.tallyTotalUserPoints(userIdList);
+
         return rowsAffected;
     }
 

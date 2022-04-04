@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface AssignmentDao {
     List<Assignments> selectAllAssignments();
+    List<Assignments> selectAssignmentByUserIdAndPlayerId(Integer user_id, Integer player_id);
     Assignments selectAssignmentById(Integer assignment_id);
     List<Player> selectAllPlayersForUser(Integer user_id);
     int insertAssignment(Assignments assignments); //lets user add a player to their team

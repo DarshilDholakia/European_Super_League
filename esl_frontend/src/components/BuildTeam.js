@@ -16,15 +16,21 @@ import juventusKit from '../assets/kits/juventusKit.png'
 import west_hamKit from '../assets/kits/west_hamKit.png'
 import { UserContext } from './UserContext';
 
+//test line to be able to commit and push after lunch on Monday
+
 const BuildTeam = ({ playerList }) => {
 
     const { user } = useContext(UserContext);
 
     const [assignmentList, setAssignmentList] = useState([])
-    const [userAssignmentList, setUserAssignmentList] = useState([])
+    const [userPlayerList, setUserPlayerList] = useState([])
 
     const [filteredPositionList, setFilteredPositionList] = useState([]);
     const [filteredClubList, setFilteredClubList] = useState([]);
+
+    const [specificUserAssignmentState, setSpecificUserAssignmentState] = useState([]);
+
+    const [playerOnPitchChangeSelected, setPlayerOnPitchChangeSelected] = useState(false);
 
     const fetchAllAssignments = () => {
         fetch("http://localhost:8080/assignments/all")
@@ -37,7 +43,7 @@ const BuildTeam = ({ playerList }) => {
     const fetchAssignmentByUser = () => {
         fetch(`http://localhost:8080/assignments/user_id/${user.id}`)
             .then(response => response.json())
-            .then(data => setUserAssignmentList(data))
+            .then(data => setUserPlayerList(data))
             .catch((error) => console.error(error));
     }
     useEffect(fetchAssignmentByUser, []);
@@ -80,230 +86,155 @@ const BuildTeam = ({ playerList }) => {
             .catch((error) => console.error(error))
     }
 
-    const fetchPlayerByPosition = (player_position) => {
+    const fetchPlayersByPosition = (player_position) => {
         fetch(`http://localhost:8080/player/position/${player_position}`)
             .then((response) => response.json())
             .then(data => setFilteredPositionList(data))
             .catch((error) => console.error(error))
     }
 
-    const fetchPlayerByClub = (player_club) => {
+    const fetchPlayersByClub = (player_club) => {
         fetch(`http://localhost:8080/player/club/${player_club}`)
             .then((response) => response.json())
             .then(data => setFilteredClubList(data))
             .catch((error) => console.error(error))
     }
 
-    const handlePlayerSelect = (club) => {
-        if (club === "UNITED") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: unitedKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: unitedKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: unitedKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: unitedKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: unitedKit })
-            }
+    // Specific assignment being found
+    const selectAssignmentByUserIdAndPlayerId = (player_id) => {
+        fetch(`http://localhost:8080/assignments/user_id/${user.id}/player_id/${player_id}`)
+            .then((response) => response.json())
+            // .then(data => console.log(data)) <this works, the state is just not updating in time below
+            .then(data => setSpecificUserAssignmentState(data))
+            .catch((error) => console.error(error));
+    }
+    useEffect(() => {
+        if (specificUserAssignmentState.length > 0) {
+            setCurrentAssignmentIdState((specificUserAssignmentState[0]).id)    
+        }
+    }, [specificUserAssignmentState])
 
-        } else if (club === "PSG") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: psgKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: psgKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: psgKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: psgKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: psgKit })
-            }
+    //when user clicks + button on a player, we find the player id with that position
+    //we then find the assignment id using that player id (and the user id) 
+    // we set the changeState to assignment id and player id
+    // now in handleTransferTablePlayerSelect, we have the player id selected at the top
+    // we grab the assignment id from the changeState
+    // and bish bash bosh
 
-        } else if (club === "LIVERPOOL") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: liverpoolKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: liverpoolKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: liverpoolKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: liverpoolKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: liverpoolKit })
-            }
+    const [forwardState, setForwardState] = useState({ selected: false, kit: nonSelectedPlayer });
+    const [midfielder1State, setMidfielder1State] = useState({ selected: false, kit: nonSelectedPlayer });
+    const [midfielder2State, setMidfielder2State] = useState({ selected: false, kit: nonSelectedPlayer });
+    const [defenderState, setDefenderState] = useState({ selected: false, kit: nonSelectedPlayer });
+    const [goalkeeperState, setGoalkeeperState] = useState({ selected: false, kit: nonSelectedPlayer });
 
-        } else if (club === "REAL_MADRID") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: real_madridKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: real_madridKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: real_madridKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: real_madridKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: real_madridKit })
-            }
+    const [currentAssignmentIdState, setCurrentAssignmentIdState] = useState([])
 
-        } else if (club === "JUVENTUS") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: juventusKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: juventusKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: juventusKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: juventusKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: juventusKit })
-            }
+    const manageForward = () => {   //when you press the + button on the forward player
+        if (forwardState.selected == false) {
+            setPlayerOnPitchChangeSelected(true);
+            let userCurrentForwardPlayer = userPlayerList.find(player => player.player_position === "FORWARD");
+            console.log({userCurrentForwardPlayer});
+            let userCurrentForwardPlayerID = userCurrentForwardPlayer.id;
+            console.log({userCurrentForwardPlayerID});
 
-        } else if (club === "CITY") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: cityKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: cityKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: cityKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: cityKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: cityKit })
-            }
+            selectAssignmentByUserIdAndPlayerId(userCurrentForwardPlayerID);
+            // ^ this is the function that should set specificUserAssignmentState
+            console.log({specificUserAssignmentState}); //this doesnt work on the first try - comes back as empty array in console
+            // look at line 106 where specificUserAssignmentState should be set
+            // async issue? 
+            // setCurrentAssignmentIdState((specificUserAssignmentState[0]).id); 
+            // ^ you need [0] above because the method returns an array of objects eventho its just 1 object
 
-        } else if (club === "INTER") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: interKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: interKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: interKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: interKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: interKit })
-            }
 
-        } else if (club === "WEST_HAM") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: west_hamKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: west_hamKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: west_hamKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: west_hamKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: west_hamKit })
-            }
 
-        } else if (club === "MILAN") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: milanKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: milanKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: milanKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: milanKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: milanKit })
-            }
 
-        } else if (club === "ARSENAL") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: arsenalKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: arsenalKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: arsenalKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: arsenalKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: arsenalKit })
-            }
 
-        } else if (club === "BARCELONA") {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: barcelonaKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: barcelonaKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: barcelonaKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: barcelonaKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: barcelonaKit })
-            }
+            // you want to get the forward player of the user
+            // get the player id of that player
+            // use player id (and user id) to find the assignment id
+            // set currentChangeState to this assignment id
+            // you get the newplayerstateid and use the assignment id to update it with that
+
+            fetchPlayersByPosition("FORWARD"); //shows the forward players on the transfer table
+            setForwardState({ selected: true, kit: forwardState.kit });
+            setMidfielder1State({ selected: false, kit: midfielder1State.kit });
+            setMidfielder2State({ selected: false, kit: midfielder2State.kit });
+            setDefenderState({ selected: false, kit: defenderState.kit });
+            setGoalkeeperState({ selected: false, kit: goalkeeperState.kit });
 
         } else {
-            if (forwardState.selected) {
-                setForwardState({ selected: true, kit: atleticoKit })
-            } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: atleticoKit })
-            } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: atleticoKit })
-            } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: atleticoKit })
-            } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: atleticoKit })
-            }
-        }
-    }
-
-    const filteredPositionListMap = filteredPositionList.map(filteredPlayer => {
-        return (
-            <Player handlePlayerSelect={handlePlayerSelect}
-                assignmentList={assignmentList}
-                updateAssignmentById={updateAssignmentById}
-                player={filteredPlayer} key={filteredPlayer.id} />
-        )
-    })
-
-    const filteredClubListMap = filteredClubList.map(filteredPlayer => {
-        return (
-            <Player handlePlayerSelect={handlePlayerSelect}
-                assignmentList={assignmentList}
-                updateAssignmentById={updateAssignmentById}
-                player={filteredPlayer} key={filteredPlayer.id} />
-        )
-    })
-
-    const playerMap = playerList.map(player => {
-        return (
-            <Player handlePlayerSelect={handlePlayerSelect}
-                assignmentList={assignmentList}
-                updateAssignmentById={updateAssignmentById}
-                player={player} key={player.id} />
-        )
-    });
-
-    const filteredCombinedMap = filteredClubList.map(clubPlayer => {
-        for (let i = 0; i < filteredPositionList.length; i++) {
-            if (clubPlayer.id === filteredPositionList[i].id) {
-                return <Player handlePlayerSelect={handlePlayerSelect()} player={clubPlayer} key={clubPlayer.id}
-                assignmentList={assignmentList} />
-            }
-        }
-    })
-
-    const handlePositionFilter = event => {
-        if (event.target.value === 'ALL') {
-            setFilteredPositionList([])
-            return playerList;
-        } else {
-            fetchPlayerByPosition(event.target.value)
-        }
-    }
-
-    const handleClubFilter = event => {
-        if (event.target.value === 'ALL') {
+            setPlayerOnPitchChangeSelected(false);
+            setFilteredPositionList([]);
             setFilteredClubList([])
-            return playerList;
+            setForwardState({ selected: false, kit: nonSelectedPlayer });
+        }
+    }
+
+    const manageMidfielder1 = () => {
+        if (midfielder1State.selected == false) {
+            setPlayerOnPitchChangeSelected(true);
+            fetchPlayersByPosition("MIDFIELDER");
+            setMidfielder1State({ selected: true, kit: midfielder1State.kit });
+            setForwardState({ selected: false, kit: forwardState.kit });
+            setMidfielder2State({ selected: false, kit: midfielder2State.kit });
+            setDefenderState({ selected: false, kit: defenderState.kit });
+            setGoalkeeperState({ selected: false, kit: goalkeeperState.kit });
         } else {
-            fetchPlayerByClub(event.target.value)
+            setPlayerOnPitchChangeSelected(false);
+            setFilteredPositionList([]);
+            setFilteredClubList([])
+            setMidfielder1State({ selected: false, kit: nonSelectedPlayer });
+        }
+    }
+
+    const manageMidfielder2 = () => {
+        if (midfielder2State.selected == false) {
+            setPlayerOnPitchChangeSelected(true);
+            fetchPlayersByPosition("MIDFIELDER");
+            setMidfielder2State({ selected: true, kit: midfielder2State.kit });
+            setForwardState({ selected: false, kit: forwardState.kit });
+            setMidfielder1State({ selected: false, kit: midfielder1State.kit });
+            setDefenderState({ selected: false, kit: defenderState.kit });
+            setGoalkeeperState({ selected: false, kit: goalkeeperState.kit });
+        } else {
+            setPlayerOnPitchChangeSelected(false);
+            setFilteredPositionList([]);
+            setFilteredClubList([])
+            setMidfielder2State({ selected: false, kit: nonSelectedPlayer });
+        }
+    }
+
+    const manageDefender = () => {
+        if (defenderState.selected == false) {
+            setPlayerOnPitchChangeSelected(true);
+            fetchPlayersByPosition("DEFENDER");
+            setDefenderState({ selected: true, kit: defenderState.kit });
+            setForwardState({ selected: false, kit: forwardState.kit });
+            setMidfielder1State({ selected: false, kit: midfielder1State.kit });
+            setMidfielder2State({ selected: false, kit: midfielder2State.kit });
+            setGoalkeeperState({ selected: false, kit: goalkeeperState.kit });
+        } else {
+            setPlayerOnPitchChangeSelected(false);
+            setFilteredPositionList([]);
+            setFilteredClubList([])
+            setDefenderState({ selected: false, kit: nonSelectedPlayer });
+        }
+    }
+
+    const manageGoalkeeper = () => {
+        if (goalkeeperState.selected == false) {
+            setPlayerOnPitchChangeSelected(true);
+            fetchPlayersByPosition("GOALKEEPER");
+            setGoalkeeperState({ selected: true, kit: goalkeeperState.kit });
+            setForwardState({ selected: false, kit: forwardState.kit });
+            setMidfielder1State({ selected: false, kit: midfielder1State.kit });
+            setMidfielder2State({ selected: false, kit: midfielder2State.kit });
+            setDefenderState({ selected: false, kit: defenderState.kit });
+        } else {
+            setPlayerOnPitchChangeSelected(false);
+            setFilteredPositionList([]);
+            setFilteredClubList([])
+            setGoalkeeperState({ selected: false, kit: nonSelectedPlayer });
         }
     }
 
@@ -322,115 +253,136 @@ const BuildTeam = ({ playerList }) => {
         ["ATLETICO", atleticoKit]
     ]);
 
+    const handleTransferTablePlayerSelect = (id, club) => {
+
+        for (var key in kitMap){
+            if (forwardState.selected) {
+                setForwardState({ selected: true, kit: kitMap.get(key)})
+            } else if (midfielder1State.selected) {
+                setMidfielder1State({ selected: true, kit: kitMap.get(key)})
+            } else if (midfielder2State.selected) {
+                setMidfielder2State({ selected: true, kit: kitMap.get(key)})
+            } else if (defenderState.selected) {
+                setDefenderState({ selected: true, kit: kitMap.get(key)})
+            } else if (goalkeeperState.selected) {
+                setGoalkeeperState({ selected: true, kit: kitMap.get(key)})
+            }
+        }
+        setForwardState({ selected: false, kit: forwardState.kit });
+        setMidfielder1State({ selected: false, kit: midfielder1State.kit })
+        setMidfielder2State({ selected: false, kit: midfielder2State.kit })
+        setDefenderState({ selected: false, kit: defenderState.kit })
+        setForwardState({ selected: false, kit: forwardState.kit })
+        setPlayerOnPitchChangeSelected(false);
+    }
+
+    const filteredPositionListMap = filteredPositionList.map(filteredPlayer => {
+        return (
+            <Player handleTransferTablePlayerSelect={handleTransferTablePlayerSelect}
+                playerOnPitchChangeSelected={playerOnPitchChangeSelected}
+                currentAssignmentId={currentAssignmentIdState}
+                assignmentList={assignmentList}
+                updateAssignmentById={updateAssignmentById}
+                player={filteredPlayer} key={filteredPlayer.id} />
+        )
+    })
+
+    const filteredClubListMap = filteredClubList.map(filteredPlayer => {
+        return (
+            <Player handleTransferTablePlayerSelect={handleTransferTablePlayerSelect}
+                playerOnPitchChangeSelected={playerOnPitchChangeSelected}
+                currentAssignmentId={currentAssignmentIdState}
+                assignmentList={assignmentList}
+                updateAssignmentById={updateAssignmentById}
+                player={filteredPlayer} key={filteredPlayer.id} />
+        )
+    })
+
+    const playerMap = playerList.map(player => {
+        return (
+            <Player handleTransferTablePlayerSelect={handleTransferTablePlayerSelect}
+                playerOnPitchChangeSelected={playerOnPitchChangeSelected}
+                currentAssignmentId={currentAssignmentIdState}
+                assignmentList={assignmentList}
+                updateAssignmentById={updateAssignmentById}
+                player={player} key={player.id} />
+        )
+    });
+
+    const filteredCombinedMap = filteredClubList.map(clubPlayer => {
+        for (let i = 0; i < filteredPositionList.length; i++) {
+            if (clubPlayer.id === filteredPositionList[i].id) {
+                return (
+                    <Player handleTransferTablePlayerSelect={handleTransferTablePlayerSelect}
+                        playerOnPitchChangeSelected={playerOnPitchChangeSelected}
+                        currentAssignmentId={currentAssignmentIdState}
+                        assignmentList={assignmentList}
+                        updateAssignmentById={updateAssignmentById}
+                        player={clubPlayer} key={clubPlayer.id} />
+                )
+            }
+        }
+    })
+
+    const handlePositionFilter = event => {
+        if (event.target.value === 'ALL') {
+            setFilteredPositionList([])
+            return playerList;
+        } else {
+            fetchPlayersByPosition(event.target.value)
+        }
+    }
+
+    const handleClubFilter = event => {
+        if (event.target.value === 'ALL') {
+            setFilteredClubList([])
+            return playerList;
+        } else {
+            fetchPlayersByClub(event.target.value)
+        }
+    }
+
+
     let midfielderCount = 1;
 
     const findUserPlayers = () => {
-        for (let i = 0; i < userAssignmentList.length; i++) {
-            let position = userAssignmentList[i].player_position
-            let club = userAssignmentList[i].player_club
+        for (let i = 0; i < userPlayerList.length; i++) {
+            let position = userPlayerList[i].player_position
+            let club = userPlayerList[i].player_club
             let kit = kitMap.get(club)
             if (position === "GOALKEEPER") {
-                setGoalkeeperState({selected: goalkeeperState.selected, kit: kit})
+                setGoalkeeperState({ selected: goalkeeperState.selected, kit: kit })
             } else if (position === "DEFENDER") {
-                setDefenderState({selected: defenderState.selected, kit: kit})
+                setDefenderState({ selected: defenderState.selected, kit: kit })
             } else if (position === "MIDFIELDER") {
                 if (midfielderCount === 1) {
-                    setMidfielder1State({selected: midfielder1State.selected, kit: kit})
+                    setMidfielder1State({ selected: midfielder1State.selected, kit: kit })
                     midfielderCount++;
-                } else{
-                    console.log("MIDFIELDER 2")
-                    setMidfielder2State({selected: midfielder2State.selected, kit: kit})
+                } else {
+                    setMidfielder2State({ selected: midfielder2State.selected, kit: kit })
                 }
             } else if (position === "FORWARD") {
-                setForwardState({selected: forwardState.selected, kit: kit})
+                setForwardState({ selected: forwardState.selected, kit: kit })
             }
         }
     }
 
 
-    useEffect(findUserPlayers, [userAssignmentList])
+    useEffect(findUserPlayers, [userPlayerList])
 
-    // delete this to restore to this stage
-    const [forwardState, setForwardState] = useState({ selected: false, kit: nonSelectedPlayer });
-    const [midfielder1State, setMidfielder1State] = useState({ selected: false, kit: nonSelectedPlayer });
-    const [midfielder2State, setMidfielder2State] = useState({ selected: false, kit: nonSelectedPlayer });
-    const [defenderState, setDefenderState] = useState({ selected: false, kit: nonSelectedPlayer });
-    const [goalkeeperState, setGoalkeeperState] = useState({ selected: false, kit: nonSelectedPlayer });
 
-    const manageForward = () => {
-        if (forwardState.selected == false) {
-            fetchPlayerByPosition("FORWARD");
-            setForwardState({ selected: true, kit: forwardState.kit });
-            setMidfielder1State({ selected: false, kit: midfielder1State.kit });
-            setMidfielder2State({ selected: false, kit: midfielder2State.kit });
-            setDefenderState({ selected: false, kit: defenderState.kit });
-            setGoalkeeperState({ selected: false, kit: goalkeeperState.kit });
-        } else {
-            setFilteredPositionList([]);
-            setFilteredClubList([])
-            setForwardState({ selected: false, kit: nonSelectedPlayer });
-        }
-    }
-
-    const manageMidfielder1 = () => {
-        if (midfielder1State.selected == false) {
-            fetchPlayerByPosition("MIDFIELDER");
-            setMidfielder1State({ selected: true, kit: midfielder1State.kit });
-            setForwardState({ selected: false, kit: forwardState.kit });
-            setMidfielder2State({ selected: false, kit: midfielder2State.kit });
-            setDefenderState({ selected: false, kit: defenderState.kit });
-            setGoalkeeperState({ selected: false, kit: goalkeeperState.kit });
-        } else {
-            setFilteredPositionList([]);
-            setFilteredClubList([])
-            setMidfielder1State({ selected: false, kit: nonSelectedPlayer });
-        }
-    }
-
-    const manageMidfielder2 = () => {
-        if (midfielder2State.selected == false) {
-            fetchPlayerByPosition("MIDFIELDER");
-            setMidfielder2State({ selected: true, kit: midfielder2State.kit });
-            setForwardState({ selected: false, kit: forwardState.kit });
-            setMidfielder1State({ selected: false, kit: midfielder1State.kit });
-            setDefenderState({ selected: false, kit: defenderState.kit });
-            setGoalkeeperState({ selected: false, kit: goalkeeperState.kit });
-        } else {
-            setFilteredPositionList([]);
-            setFilteredClubList([])
-            setMidfielder2State({ selected: false, kit: nonSelectedPlayer });
-        }
-    }
-
-    const manageDefender = () => {
-        if (defenderState.selected == false) {
-            fetchPlayerByPosition("DEFENDER");
-            setDefenderState({ selected: true, kit: defenderState.kit });
-            setForwardState({ selected: false, kit: forwardState.kit });
-            setMidfielder1State({ selected: false, kit: midfielder1State.kit });
-            setMidfielder2State({ selected: false, kit: midfielder2State.kit });
-            setGoalkeeperState({ selected: false, kit: goalkeeperState.kit });
-        } else {
-            setFilteredPositionList([]);
-            setFilteredClubList([])
-            setDefenderState({ selected: false, kit: nonSelectedPlayer });
-        }
-    }
-
-    const manageGoalkeeper = () => {
-        if (goalkeeperState.selected == false) {
-            fetchPlayerByPosition("GOALKEEPER");
-            setGoalkeeperState({ selected: true, kit: goalkeeperState.kit });
-            setForwardState({ selected: false, kit: forwardState.kit });
-            setMidfielder1State({ selected: false, kit: midfielder1State.kit });
-            setMidfielder2State({ selected: false, kit: midfielder2State.kit });
-            setDefenderState({ selected: false, kit: defenderState.kit });
-        } else {
-            setFilteredPositionList([]);
-            setFilteredClubList([])
-            setGoalkeeperState({ selected: false, kit: nonSelectedPlayer });
-        }
-    }
+    const positionFilterDropDown = <>{playerOnPitchChangeSelected === false ?
+        <>
+            <label htmlFor='positions'>Position</label>
+            <select onChange={handlePositionFilter} name="positions">
+                <option value="ALL">All</option>
+                <option value="GOALKEEPER">GOALKEEPER</option>
+                <option value="DEFENDER">DEFENDER</option>
+                <option value="MIDFIELDER">MIDFIELDER</option>
+                <option value="FORWARD">FORWARD</option>
+            </select>
+        </>
+        : ""}</> //shouldnt be able to change filter if a player on the pitch is selected
 
     return (
         <>
@@ -441,7 +393,7 @@ const BuildTeam = ({ playerList }) => {
 
                     <div className="forward-container">
                         <div className="player-buttons">
-                            <button onClick={manageForward}> {forwardState.selected ? "x" : "+"} </button>
+                            <button onClick={manageForward}> {forwardState.selected && playerOnPitchChangeSelected === true ? "x" : "+"} </button>
                         </div>
                         <img className={`forward${forwardState.selected ? " player-after-add" : ""}`} src={forwardState.kit} alt='Forward'></img>
                     </div>
@@ -477,16 +429,7 @@ const BuildTeam = ({ playerList }) => {
                 </div>
 
                 <div className='table-and-filter'>
-
-                    <label htmlFor='positions'>Position</label>
-                    <select onChange={handlePositionFilter} name="positions">
-                        <option value="ALL">All</option>
-                        <option value="GOALKEEPER">GOALKEEPER</option>
-                        <option value="DEFENDER">DEFENDER</option>
-                        <option value="MIDFIELDER">MIDFIELDER</option>
-                        <option value="FORWARD">FORWARD</option>
-                    </select>
-
+                    {positionFilterDropDown}
                     <label htmlFor='clubs'>Clubs</label>
                     <select onChange={handleClubFilter} name="clubs">
                         <option value="ALL">All</option>

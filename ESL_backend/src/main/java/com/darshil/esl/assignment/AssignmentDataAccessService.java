@@ -64,7 +64,8 @@ public class AssignmentDataAccessService implements AssignmentDao {
     @Override
     public int deleteAssignment(Integer assignment_id) {
         String sql = """
-                DELETE FROM player_assignment WHERE id = ?;
+                DELETE FROM player_assignment 
+                WHERE id = ?;
                 """;
         return jdbcTemplate.update(sql, assignment_id);
     }
@@ -78,5 +79,17 @@ public class AssignmentDataAccessService implements AssignmentDao {
 
         int rowsAffected = jdbcTemplate.update(sql, assignment.getUser_id(), assignment.getPlayer_id(), assignment_id);
         return rowsAffected;
+    }
+
+    @Override
+    public List<Assignments> selectAssignmentByUserIdAndPlayerId(Integer user_id, Integer player_id) {
+        String sql = """
+                SELECT id,user_id,player_id 
+                FROM player_assignment 
+                WHERE user_id = ? 
+                AND player_id = ?;
+                """;
+
+        return jdbcTemplate.query(sql, new AssignmentMapper(), user_id, player_id);
     }
 }
