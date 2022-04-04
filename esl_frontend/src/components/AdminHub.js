@@ -25,6 +25,9 @@ const AdminHub = ({addNewPlayer, deletePlayerById, updatePlayerById}) => {
         const [updatePlayerRed_cards, setUpdatePlayerRedCards] = useState(0);
         const [updatePlayerYellow_cards, setUpdatePlayerYellowCards] = useState(0);
         const [updatePlayerClean_sheets, setUpdatePlayerCleanSheets] = useState(0);
+
+        // DELETE PLAYER STATES
+        const [deletePlayerId, setDeletePlayerId] = useState(0);
     
         // ADD PLAYER EVENT HANDLERS
         const handleAddNameChange = event => setAddPlayerName(event.target.value);
@@ -48,6 +51,9 @@ const AdminHub = ({addNewPlayer, deletePlayerById, updatePlayerById}) => {
         const handleUpdateRedCardsChange = event => setUpdatePlayerRedCards(event.target.value);
         const handleUpdateYellowCardsChange = event => setUpdatePlayerYellowCards(event.target.value);
         const handleUpdateCleanSheetsChange = event => setUpdatePlayerCleanSheets(event.target.value);
+
+        // DELETE PLAYER EVENT HANDLERS
+        const handleDeletePlayerIdChange = event => setDeletePlayerId(event.target.value);
 
 
         // ==========ADD PLAYER FUNCTIONALITY==========
@@ -117,6 +123,19 @@ const AdminHub = ({addNewPlayer, deletePlayerById, updatePlayerById}) => {
             setUpdatePlayerCleanSheets(0);
         }
 
+        // =========DELETE PLAYER FUNCTIONALITY============
+        const handleDeletePlayerFormSubmit = event => {
+            event.preventDefault();
+    
+            if(!deletePlayerId){
+                alert("missing information");
+            }
+
+            deletePlayerById(deletePlayerId)
+
+            setDeletePlayerId(0);
+        }
+
     return(
         <>
             {/* ADD PLAYER FORM */}
@@ -151,6 +170,10 @@ const AdminHub = ({addNewPlayer, deletePlayerById, updatePlayerById}) => {
                 <input type="submit" value="Submit New Player"/>
             </form>
 
+            <br></br>
+            <hr ></hr>
+            <br></br>
+
             {/* UPDATE PLAYER FORM */}
             <form onSubmit={handleUpdatePlayerFormSubmit}>
             <label htmlFor="id">id:</label>
@@ -184,7 +207,20 @@ const AdminHub = ({addNewPlayer, deletePlayerById, updatePlayerById}) => {
             <input type="number" id="clean_sheets" value={updatePlayerClean_sheets} onChange={handleUpdateCleanSheetsChange}/>
 
             <input type="submit" value="Update Player"/>
-            </form> 
+            </form>
+
+            <br></br>
+            <hr ></hr>
+            <br></br>
+
+            {/* DELETE PLAYER FORM */}
+            <form onSubmit={handleDeletePlayerFormSubmit}>
+
+            <label htmlFor="id">id:</label>
+            <input type="number" id="id" value={deletePlayerId} onChange={handleDeletePlayerIdChange}/>
+
+            <input type="submit" value="Delete Player"/>
+            </form>
         </>
         
     )

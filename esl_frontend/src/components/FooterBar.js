@@ -33,11 +33,18 @@ const FooterBar = () => {
                         <h4>Store</h4>
                         <ul>
                             <li><a href="https://www.youtube.com/watch?v=8waokty2b3o" target="__blank">FAQ</a></li>
-                            <li><a href="">Buy Aaaron a New Tech Fleece</a></li>
-                            <li><a href="">Adib needs new Pokemon Fluffies</a></li>
+
+                            <li><a href="https://www.nike.com/gb/w/mens-grey-tech-fleece-clothing-6s5r5z6sipkz6ymx6znik1" target="_blank">Buy Aaron a New Tech Fleece</a></li>
+
+                            <li><a href="https://www.etsy.com/uk/market/fluffy_pokemon" target="_blank">Adib needs new Pokemon Fluffies</a></li>
+
                             <li><a href="https://www.youtube.com/watch?v=w_3BWbGUrfc" target="__blank">Suj needs a 12 pack of beer</a></li>
-                            <li><a href="">Abdi wants a Third Job</a></li>
-                            <li><a href="">Michael's Mac is too old he doesn't want to give away the MacBook</a></li>
+
+                            <li><a href="https://www.brightnetwork.co.uk/graduate-jobs/" target="_blank">Abdi wants a Third Job</a></li>
+
+                            <li><a href="https://www.slough.gov.uk/visitor-information/sloughs-history/4#:~:text=The%20origin%20of%20the%20name,sloe%2Dbushes%20in%20the%20area." target="_blank">Darshil wants to relocate from Slough</a></li>
+
+                            <li><a href="https://www.techradar.com/uk/news/computing/apple/cheap-macbook-deals-1295699" target="_blank">Michael's Mac is too old he doesn't want to give away the MacBook</a></li>
                         </ul>
 
                     </ div>
