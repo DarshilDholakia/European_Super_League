@@ -77,15 +77,15 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 30%;  
-  left: 35%;
+  top: 28%;  
+  left: 36%;
 }
 
 .midfielder2-container{
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 30%;  
+  top: 28%;  
   left: 72%;
 }
 
@@ -93,7 +93,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 40%;  
+  top: 37%;  
   left: 54%;
 }
 
@@ -101,7 +101,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 53%;  
+  top: 51.5%;  
   left: 54%;
 }
 
