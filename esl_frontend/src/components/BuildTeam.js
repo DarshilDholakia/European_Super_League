@@ -110,7 +110,7 @@ const BuildTeam = ({ playerList }) => {
     }
     useEffect(() => {
         if (specificUserAssignmentState.length > 0) {
-            setCurrentAssignmentIdState((specificUserAssignmentState[0]).id)    
+            setCurrentAssignmentIdState((specificUserAssignmentState[0]).id)
             // ^ you need [0] above because the method returns an array of objects eventho its just 1 object
         }
     }, [specificUserAssignmentState])
@@ -145,10 +145,29 @@ const BuildTeam = ({ playerList }) => {
         }
     }
 
+    const [isMidFielder1AtTopOfUserPlayerList, setIsMidFielder1AtTopOfUserPlayerList] = useState(true);
+    // when player is updated, goes to the bottom in postman which creates a problem when 
+    // finding midfielder 1 or 2 so need to make sure the right one is retrieved
+
     const manageMidfielder1 = () => {
         if (midfielder1State.selected == false) {
             setPlayerOnPitchChangeSelected(true);
-            let userCurrentMidfielder1Player = userPlayerList.find(player => player.player_position === "MIDFIELDER");
+            let userCurrentMidfielder1Player = "";
+            if (isMidFielder1AtTopOfUserPlayerList === true) {
+                userCurrentMidfielder1Player = userPlayerList.find(player => player.player_position === "MIDFIELDER");
+                setIsMidFielder1AtTopOfUserPlayerList(false);
+            } else {
+                let midfielderNumber = 0;
+                for (let i = 0; i < userPlayerList.length; i++) {
+                    if ((userPlayerList[i]).player_position === "MIDFIELDER") {
+                        midfielderNumber++
+                    }
+                    if (midfielderNumber == 2) {
+                        userCurrentMidfielder1Player = userPlayerList[i];
+                        break;
+                    }
+                }
+            }
             let userCurrentMidfielder1PlayerId = userCurrentMidfielder1Player.id;
             selectAssignmentByUserIdAndPlayerId(userCurrentMidfielder1PlayerId);
 
@@ -167,21 +186,28 @@ const BuildTeam = ({ playerList }) => {
     }
 
     const manageMidfielder2 = () => {
-        if (midfielder2State.selected == false) {
+        if (midfielder2State.selected === false) {
+            console.log("midfielder 2 selected");
             setPlayerOnPitchChangeSelected(true);
-            let midfielderNumber = 0;
             let userCurrentMidfielder2Player = "";
-
-            for (let i = 0; i < userPlayerList.length; i++) {
-                if ((userPlayerList[i]).player_position === "MIDFIELDER"){
-                    midfielderNumber++
+             if (isMidFielder1AtTopOfUserPlayerList === true){
+                let midfielderNumber = 0;
+                for (let i = 0; i < userPlayerList.length; i++) {
+                    if ((userPlayerList[i]).player_position === "MIDFIELDER") {
+                        midfielderNumber++
+                    }
+                    if (midfielderNumber == 2) {
+                        userCurrentMidfielder2Player = userPlayerList[i];
+                        break;
+                    }
                 }
-                if (midfielderNumber === 2){
-                    userCurrentMidfielder2Player = userPlayerList[i];
-                }
+            } else {
+                userCurrentMidfielder2Player = userPlayerList.find(player => player.player_position === "MIDFIELDER");
+                setIsMidFielder1AtTopOfUserPlayerList(true);
             }
 
             let userCurrentMidfielder2PlayerId = userCurrentMidfielder2Player.id;
+            console.log("current midfielder 2 player id: " + userCurrentMidfielder2PlayerId)
             selectAssignmentByUserIdAndPlayerId(userCurrentMidfielder2PlayerId);
 
             fetchPlayersByPosition("MIDFIELDER");
@@ -255,19 +281,19 @@ const BuildTeam = ({ playerList }) => {
         ["ATLETICO", atleticoKit]
     ]);
 
-    const handleTransferTablePlayerSelect = (id, club) => {
+    const handleTransferTablePlayerSelect = () => {
 
-        for (var key in kitMap){
+        for (var key in kitMap) {
             if (forwardState.selected) {
-                setForwardState({ selected: true, kit: kitMap.get(key)})
+                setForwardState({ selected: true, kit: kitMap.get(key) })
             } else if (midfielder1State.selected) {
-                setMidfielder1State({ selected: true, kit: kitMap.get(key)})
+                setMidfielder1State({ selected: true, kit: kitMap.get(key) })
             } else if (midfielder2State.selected) {
-                setMidfielder2State({ selected: true, kit: kitMap.get(key)})
+                setMidfielder2State({ selected: true, kit: kitMap.get(key) })
             } else if (defenderState.selected) {
-                setDefenderState({ selected: true, kit: kitMap.get(key)})
+                setDefenderState({ selected: true, kit: kitMap.get(key) })
             } else if (goalkeeperState.selected) {
-                setGoalkeeperState({ selected: true, kit: kitMap.get(key)})
+                setGoalkeeperState({ selected: true, kit: kitMap.get(key) })
             }
         }
         setForwardState({ selected: false, kit: forwardState.kit });
@@ -275,6 +301,7 @@ const BuildTeam = ({ playerList }) => {
         setMidfielder2State({ selected: false, kit: midfielder2State.kit })
         setDefenderState({ selected: false, kit: defenderState.kit })
         setForwardState({ selected: false, kit: forwardState.kit })
+        setGoalkeeperState({ selected: false, kit: forwardState.kit })
         setPlayerOnPitchChangeSelected(false);
     }
 
