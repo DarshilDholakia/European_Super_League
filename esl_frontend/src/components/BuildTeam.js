@@ -106,7 +106,11 @@ const BuildTeam = ({ playerList }) => {
             .then(data => setSpecificUserAssignmentState(data))
             .catch((error) => console.error(error));
     }
-    // useEffect(selectAssignmentByUserIdAndPlayerId, [])
+    useEffect(() => {
+        if (specificUserAssignmentState.length > 0) {
+            setCurrentAssignmentIdState((specificUserAssignmentState[0]).id)    
+        }
+    }, [specificUserAssignmentState])
 
     //when user clicks + button on a player, we find the player id with that position
     //we then find the assignment id using that player id (and the user id) 
@@ -136,7 +140,7 @@ const BuildTeam = ({ playerList }) => {
             console.log({specificUserAssignmentState}); //this doesnt work on the first try - comes back as empty array in console
             // look at line 106 where specificUserAssignmentState should be set
             // async issue? 
-            setCurrentAssignmentIdState((specificUserAssignmentState[0]).id); 
+            // setCurrentAssignmentIdState((specificUserAssignmentState[0]).id); 
             // ^ you need [0] above because the method returns an array of objects eventho its just 1 object
 
 
