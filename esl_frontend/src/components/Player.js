@@ -13,7 +13,7 @@ const Player = ({ player, handleTransferTablePlayerSelect, updateAssignmentById,
     const select = <>{playerOnPitchChangeSelected === true ? <button onClick={() => {
         console.log("Assignment id: " + currentAssignmentId)
         updateAssignmentById(currentAssignmentId, updatedPlayer);
-        handleTransferTablePlayerSelect(player.player_id, player.player_club);
+        handleTransferTablePlayerSelect(player.player_id, player.player_club, playerOnPitchChangeSelected);
     }}>Select</button> : ""}</>
 
     return (

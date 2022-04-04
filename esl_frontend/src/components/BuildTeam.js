@@ -262,6 +262,12 @@ const BuildTeam = ({ playerList }) => {
                 setGoalkeeperState({ selected: true, kit: kitMap.get(key)})
             }
         }
+        setForwardState({ selected: false, kit: forwardState.kit });
+        setMidfielder1State({ selected: false, kit: midfielder1State.kit })
+        setMidfielder2State({ selected: false, kit: midfielder2State.kit })
+        setDefenderState({ selected: false, kit: defenderState.kit })
+        setForwardState({ selected: false, kit: forwardState.kit })
+        setPlayerOnPitchChangeSelected(false);
     }
 
     const filteredPositionListMap = filteredPositionList.map(filteredPlayer => {
@@ -471,7 +477,7 @@ const BuildTeam = ({ playerList }) => {
 
                     <div className="forward-container">
                         <div className="player-buttons">
-                            <button onClick={manageForward}> {forwardState.selected ? "x" : "+"} </button>
+                            <button onClick={manageForward}> {forwardState.selected && playerOnPitchChangeSelected === true ? "x" : "+"} </button>
                         </div>
                         <img className={`forward${forwardState.selected ? " player-after-add" : ""}`} src={forwardState.kit} alt='Forward'></img>
                     </div>
