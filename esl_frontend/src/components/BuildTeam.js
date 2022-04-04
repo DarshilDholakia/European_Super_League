@@ -26,7 +26,7 @@ const BuildTeam = ({ playerList }) => {
     const [filteredPositionList, setFilteredPositionList] = useState([]);
     const [filteredClubList, setFilteredClubList] = useState([]);
 
-    const [specificUserAssignment, setSpecificUserAssignment] = useState([]);
+    const [specificUserAssignmentState, setSpecificUserAssignmentState] = useState([]);
 
     const [playerOnPitchChangeSelected, setPlayerOnPitchChangeSelected] = useState(false);
 
@@ -103,9 +103,10 @@ const BuildTeam = ({ playerList }) => {
         fetch(`http://localhost:8080/assignments/user_id/${user.id}/player_id/${player_id}`)
             .then((response) => response.json())
             // .then(data => console.log(data)) <this works, the state is just not updating in time below
-            .then(data => setSpecificUserAssignment(data))
+            .then(data => setSpecificUserAssignmentState(data))
             .catch((error) => console.error(error));
     }
+    // useEffect(selectAssignmentByUserIdAndPlayerId, [])
 
     //when user clicks + button on a player, we find the player id with that position
     //we then find the assignment id using that player id (and the user id) 
@@ -122,8 +123,6 @@ const BuildTeam = ({ playerList }) => {
 
     const [currentAssignmentIdState, setCurrentAssignmentIdState] = useState([])
 
-    let blah = 0;
-
     const manageForward = () => {   //when you press the + button on the forward player
         if (forwardState.selected == false) {
             setPlayerOnPitchChangeSelected(true);
@@ -131,12 +130,13 @@ const BuildTeam = ({ playerList }) => {
             console.log({userCurrentForwardPlayer});
             let userCurrentForwardPlayerID = userCurrentForwardPlayer.id;
             console.log({userCurrentForwardPlayerID});
+
             selectAssignmentByUserIdAndPlayerId(userCurrentForwardPlayerID);
-            // ^ this is the function that should set specificUserAssignment
-            console.log({specificUserAssignment}); //this doesnt work on the first try - comes back as empty array in console
-            // look at line 106 where specificUserAssignment should be set
+            // ^ this is the function that should set specificUserAssignmentState
+            console.log({specificUserAssignmentState}); //this doesnt work on the first try - comes back as empty array in console
+            // look at line 106 where specificUserAssignmentState should be set
             // async issue? 
-            setCurrentAssignmentIdState((specificUserAssignment[0]).id); 
+            setCurrentAssignmentIdState((specificUserAssignmentState[0]).id); 
             // ^ you need [0] above because the method returns an array of objects eventho its just 1 object
 
 
@@ -372,7 +372,7 @@ const BuildTeam = ({ playerList }) => {
     //         let userCurrentForwardPlayer = userPlayerList.find(player => player.player_position === "FORWARD");
     //         let userCurrentForwardPlayerID = userCurrentForwardPlayer.id;
     //         selectAssignmentByUserIdAndPlayerId(userCurrentForwardPlayerID);
-    //         setCurrentAssignmentIdState(specificUserAssignment.id);
+    //         setCurrentAssignmentIdState(specificUserAssignmentState.id);
 
 
     //         // you want to get the forward player of the user
