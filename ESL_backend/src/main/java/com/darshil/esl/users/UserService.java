@@ -1,5 +1,6 @@
 package com.darshil.esl.users;
 
+import com.darshil.esl.assignment.AssignmentService;
 import com.darshil.esl.exception.EmptyFieldException;
 import com.darshil.esl.exception.InvalidRequestException;
 import com.darshil.esl.exception.UserNotFoundException;
@@ -15,10 +16,12 @@ import java.util.regex.Pattern;
 @Service
 public class UserService {
     private UserDao userDao;
+    private AssignmentService assignmentService;
 
-    public UserService(UserDao userDao) {
+    public UserService(UserDao userDao, AssignmentService assignmentService) {
 
         this.userDao = userDao;
+        this.assignmentService = assignmentService;
     }
 
     public boolean doesUserWithIdExist(Integer userId) {
@@ -122,6 +125,33 @@ public class UserService {
         if(user.getPassword() == null) {
             throw new InvalidRequestException("Password field cannot be null");
         }
+    }
+
+
+    public void tallyTotalUserPoints(List <Integer> userIdsWithPlayer) {
+        for (Integer userId : userIdsWithPlayer) {
+            List<Player> playerList = assignmentService.selectAllPlayersForUser(userId);
+            System.out.println(playerList);
+            int totalPoints = 0;
+
+            for (Player player : playerList) {
+                totalPoints += player.getPoints();
+
+            }
+            User currentUser = findUserById(userId);
+            currentUser.setTotalPoints(totalPoints);
+            User user = new User();
+            user.setPassword(currentUser.getPassword());
+            user.setTeamName(currentUser.getTeamName());
+            user.setEmail(currentUser.getEmail());
+            user.setTotalPoints(currentUser.getTotalPoints());
+            updateUser(userId, user);
+            System.out.println("user: " + user);
+            System.out.println(totalPoints);
+            System.out.println(currentUser);
+
+        }
+
     }
 
 }

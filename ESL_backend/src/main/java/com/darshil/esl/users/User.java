@@ -12,18 +12,25 @@ public class User {
     public User(){
     }
 
-    public User(String email, String password, String teamName) {
-        this.email = email;
-        this.password = password;
-        this.teamName = teamName;
-        this.totalPoints = 0;
-    }
+//    public User(String email, String password, String teamName) {
+//        this.email = email;
+//        this.password = password;
+//        this.teamName = teamName;
+//        this.totalPoints = 0;
+//    }
     public User(Integer id,String email, String password, String teamName, Integer totalPoints) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.teamName = teamName;
         this.totalPoints = totalPoints;
+    }
+
+    public User(Integer id,String email, String password, String teamName) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.teamName = teamName;
     }
 
     public Integer getId() {

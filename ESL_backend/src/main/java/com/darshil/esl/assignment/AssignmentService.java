@@ -5,7 +5,11 @@ import com.darshil.esl.exception.EmptyFieldException;
 import com.darshil.esl.exception.InvalidRequestException;
 import com.darshil.esl.exception.RowNotChangedException;
 import com.darshil.esl.players.Player;
+import com.darshil.esl.users.User;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -36,6 +40,33 @@ public class AssignmentService {
         }
             return assignments;
     }
+
+    public List<Integer> selectAllUsersWithPlayerId(Integer player_id) {
+        checkIfIdValid(player_id);
+
+        //Select All assignments.
+        List<Assignments> allAssignments = assignmentDao.selectAllAssignments();
+
+        //Loop through assisngments, returning the users that contain the player_id
+        List<Integer> userIdsWithPlayer = new ArrayList<Integer>();
+        for (Assignments assignment : allAssignments) {
+            if (assignment.getPlayer_id() == player_id) {
+                userIdsWithPlayer.add(assignment.getUser_id());
+            }
+
+        }
+        return userIdsWithPlayer;
+
+    }
+        //
+
+//        List<> assignments = assignmentDao.selectAllPlayersForUser(user_id);
+//
+//        if(assignments == null) {
+//            throw new InvalidRequestException("No players found, please try again.");
+//        }
+//        return assignments;
+
 
     public List<Assignments> selectAssignmentByUserIdAndPlayerId(Integer user_id, Integer player_id) {
         checkIfIdValid(user_id);
