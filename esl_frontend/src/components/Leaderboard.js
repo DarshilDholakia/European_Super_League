@@ -15,7 +15,7 @@ const Leaderboard = ({ userList }) => {
         <div className="leaderboard-div">
             <table className='table-element-leaderboard'>
                 <tr>
-                    <th>Rank</th>
+                    {/* <th>Rank</th> */}
                     <th>Team Name</th>
                     <th>Total Points</th>
                 </tr>
