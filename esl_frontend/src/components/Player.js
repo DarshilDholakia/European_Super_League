@@ -11,11 +11,10 @@ const Player = ({ player, handleTransferTablePlayerSelect, updateAssignmentById,
     }
 
     const select = <>{playerOnPitchChangeSelected === true ? <button onClick={() => {
-        console.log("Assignment id: " + currentAssignmentId)
-        isPlayerKitNonSelectedState == false ? updateAssignmentById(currentAssignmentId, updatedPlayer) : addNewAssignment(updatedPlayer)
-        handleTransferTablePlayerSelect();
-    }}>Select</button> : 
-    ""}</>
+        console.log("Assignment id: " + currentAssignmentId);
+        !isPlayerKitNonSelectedState ? updateAssignmentById(currentAssignmentId, updatedPlayer) : addNewAssignment(updatedPlayer);
+        // handleTransferTablePlayerSelect();
+    }}>Select</button> : ""}</>
 
     return (
         <>
