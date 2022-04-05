@@ -187,12 +187,12 @@ const Home = () => {
                             <img src={laLigaLogo} alt="La Liga Logo" width="100" height="100" />
                             </a>
                     </div>
-                    <div className="serie-a-logo">
+                    <div className="serie_a-logo">
                         <a href = "https://www.legaseriea.it/en" target="_blank">
                             <img src={serieALogo} alt="Serie A Logo" width="100" height="100" />
                             </a>
                     </div>
-                    <div className="ligue-1-logo">
+                    <div className="ligue_1-logo">
                         <a href = "https://www.ligue1.com/" target="_blank">
                             <img src={ligue1Logo} alt="Ligue 1 Logo" width="75" height="100" />
                             </a>

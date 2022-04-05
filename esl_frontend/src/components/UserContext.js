@@ -4,16 +4,25 @@ const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
     // User is the name of the "data" that gets stored in context
-    const [user, setUser] = useState({ id: '', auth: false });
+    const [user, setUser] = useState({ id: '', email: '', password: '', auth: false });
     const [admin, setAdmin] = useState({username: '', password: '', auth: false});
   
     // Login updates the user data with a name parameter
-    const login = (id) => {
+    // const login = (id) => {
+    //   setUser((user) => ({
+    //     id: id,
+    //     auth: true,
+    //   }));
+    // };
+
+    const login = (id, email, password) => {
       setUser((user) => ({
         id: id,
-        auth: true,
-      }));
-    };
+        email: email,
+        password: password,
+        auth: true
+      }))
+    }
   
     // Logout updates the user data to default
     const logout = () => {
