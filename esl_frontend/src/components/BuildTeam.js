@@ -118,7 +118,6 @@ const BuildTeam = ({ playerList }) => {
                 setIsPlayerKitNonSelectedState('updating')
             })
             .catch((error) => console.error(error));
-
     }
 
     const [forwardState, setForwardState] = useState({ selected: false, kit: nonSelectedPlayer });
