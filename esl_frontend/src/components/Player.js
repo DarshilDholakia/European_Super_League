@@ -1,6 +1,6 @@
 import { UserContext } from "./UserContext"
 import { useContext } from "react"
-import './Leaderboard.css';
+import '../App.css';
 
 const Player = ({ player, handleTransferTablePlayerSelect, updateAssignmentById, currentAssignmentId, playerOnPitchChangeSelected, isPlayerKitNonSelectedState, addNewAssignment }) => {
 

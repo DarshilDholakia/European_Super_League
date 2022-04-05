@@ -1,6 +1,6 @@
 import React from "react";
 import User from "./User";
-import './Leaderboard.css';
+import '../App.css';
 
 
 const Leaderboard = ({ userList }) => {

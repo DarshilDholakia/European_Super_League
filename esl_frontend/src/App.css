@@ -151,7 +151,9 @@
   font-size: 3em;
   padding-top: 2%;
   font-weight: bold;
-  font-style: italic;
+  font-family: 'Press Start 2P';
+  color: #ffca38;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
 .table-element {
@@ -637,6 +639,16 @@ ul{
 
 .add-player-container{
   height: 100%;
+  background-color: white;
+}
+
+.update-player-container{
+  background-color: white;
+}
+
+.delete-player-container{
+  height: 100%;
+  background-color: white;
 }
 
 .admin-form-field{
@@ -858,6 +870,10 @@ form .txt_field{
   margin:  30px 0;
 }
 
+.email-login {
+  margin-bottom: 6%;
+}
+
 .txt_field input{
   width: 100%;
   padding: 0 5px;
@@ -916,4 +932,3 @@ input[type ="submit"]{
   color: #ce3e3e;
     
 }
-
