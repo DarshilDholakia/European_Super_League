@@ -586,15 +586,34 @@ ul{
 } */
 
 /* ============ ADMIN PAGE STYLING ============== */
+
+.admin-page-container{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  padding-bottom: 2%;
+}
+
 .admin-player-forms{
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   padding: 30px;
   justify-content: center;
   gap: 10px;
   border: 2px solid purple;
   border-radius: 10px;
   margin: 10px;
+  width: 400px;
+}
+
+.add-player-container{
+  height: 100%;
+}
+
+.admin-form-field{
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
 }
 
 /* ============ SIGN-UP PAGE STYLING ============== */
