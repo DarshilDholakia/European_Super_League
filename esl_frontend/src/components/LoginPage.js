@@ -26,7 +26,7 @@ const LoginPage = ({userList}) => {
         if (found_user) {
             login(found_user.id, email, password)
         } else {
-            alert("Please enter a valid ID")
+            alert("Please enter a valid email and password")
         }
     }
 

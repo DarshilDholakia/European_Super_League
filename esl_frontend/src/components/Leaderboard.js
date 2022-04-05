@@ -12,9 +12,9 @@ const Leaderboard = ({ userList }) => {
     })
 
     return (
-        <div className="leaderboard-page">
-            <table className='leaderboard-table'>
-                <tr className="leaderboard-headings">
+        <div className="leaderboard-div">
+            <table className='table-element-leaderboard'>
+                <tr>
                     <th>Rank</th>
                     <th>Team Name</th>
                     <th>Total Points</th>
