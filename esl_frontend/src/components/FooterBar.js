@@ -51,7 +51,7 @@ const FooterBar = () => {
                     <div className="footer-col">
                         <h4>Follow us</h4>
                         <div className="social-links">
-                            <a className="social-media-icons" href=""><img className="Twitter" src={twitterLogo} alt="Twitter logo"/></a>
+                            <a className="social-media-icons" ><img className="Twitter" src={twitterLogo} alt="Twitter logo"/></a>
                             <a className="social-media-icons" href=""><img className="Instagram" src={instagramLogo} alt="Instagram logo"/></a>
                             <a className="social-media-icons"  href=""><img className="Facebook" src={facebookLogo} alt="Facebook logo"/></a>
                         
