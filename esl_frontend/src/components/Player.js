@@ -1,5 +1,6 @@
 import { UserContext } from "./UserContext"
 import { useContext } from "react"
+import '../App.css';
 
 const Player = ({ player, handleTransferTablePlayerSelect, updateAssignmentById, currentAssignmentId, playerOnPitchChangeSelected, isPlayerKitNonSelectedState, addNewAssignment }) => {
 
@@ -20,9 +21,14 @@ const Player = ({ player, handleTransferTablePlayerSelect, updateAssignmentById,
         // handleTransferTablePlayerSelect();
     }}>Select</button> : ""}</>
 
+    const changeRankingInTable = () => {
+        
+    }
+    
+
     return (
         <>
-            <tr>
+            <tr className="content-leaderboard">
                 <td>{player.player_name}</td>
                 <td>{player.player_position}</td>
                 <td>{player.player_club}</td>
