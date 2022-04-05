@@ -137,94 +137,95 @@ const AdminHub = ({addNewPlayer, deletePlayerById, updatePlayerById}) => {
         }
 
     return(
-        <>
+        <div className="admin-page-container">
             {/* ADD PLAYER FORM */}
-            <h3>Add player to database:</h3>
-            <form onSubmit={handleAddPlayerFormSubmit} className="admin-player-forms">
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" value={addPlayerName} onChange={handleAddNameChange}/>
+            <div className="add-player-container">
+                <h3>Add player to database:</h3>
+                <form onSubmit={handleAddPlayerFormSubmit} className="admin-player-forms">
+                    <label htmlFor="name">Name:</label>
+                    <input className="admin-form-field" type="text" id="name" value={addPlayerName} onChange={handleAddNameChange}/>
 
-                <label htmlFor="position">Position:</label>
-                <input type="text" id="position" value={addPlayerPosition} onChange={handleAddPositionChange}/>
+                    <label htmlFor="position">Position:</label>
+                    <input className="admin-form-field" type="text" id="position" value={addPlayerPosition} onChange={handleAddPositionChange}/>
 
-                <label htmlFor="club">Club:</label>
-                <input type="text" id="club" value={addPlayerClub} onChange={handleAddClubChange}/>
+                    <label htmlFor="club">Club:</label>
+                    <input className="admin-form-field" type="text" id="club" value={addPlayerClub} onChange={handleAddClubChange}/>
 
-                <label htmlFor="price">Price:</label>
-                <input type="number" id="price" value={addPlayerPrice} onChange={handleAddPriceChange}/>
+                    <label htmlFor="price">Price:</label>
+                    <input className="admin-form-field" type="number" id="price" value={addPlayerPrice} onChange={handleAddPriceChange}/>
 
-                <label htmlFor="goals">Goals:</label>
-                <input type="number" id="goals" value={addPlayerGoals} onChange={handleAddGoalsChange}/>
+                    <label htmlFor="goals">Goals:</label>
+                    <input className="admin-form-field" type="number" id="goals" value={addPlayerGoals} onChange={handleAddGoalsChange}/>
 
-                <label htmlFor="assists">Assists:</label>
-                <input type="number" id="assists" value={addPlayerAssists} onChange={handleAddAssistsChange}/>
+                    <label htmlFor="assists">Assists:</label>
+                    <input className="admin-form-field" type="number" id="assists" value={addPlayerAssists} onChange={handleAddAssistsChange}/>
 
-                <label htmlFor="red_cards">Red Cards:</label>
-                <input type="number" id="red_cards" value={addPlayerRed_cards} onChange={handleAddRedCardsChange}/>
+                    <label htmlFor="red_cards">Red Cards:</label>
+                    <input className="admin-form-field" type="number" id="red_cards" value={addPlayerRed_cards} onChange={handleAddRedCardsChange}/>
 
-                <label htmlFor="yellow_cards">Yellow Cards:</label>
-                <input type="number" id="yellow_cards" value={addPlayerYellow_cards} onChange={handleAddYellowCardsChange}/>
+                    <label htmlFor="yellow_cards">Yellow Cards:</label>
+                    <input className="admin-form-field" type="number" id="yellow_cards" value={addPlayerYellow_cards} onChange={handleAddYellowCardsChange}/>
 
-                <label htmlFor="clean_sheets">Clean Sheets:</label>
-                <input type="number" id="clean_sheets" value={addPlayerClean_sheets} onChange={handleAddCleanSheetsChange}/>
+                    <label htmlFor="clean_sheets">Clean Sheets:</label>
+                    <input className="admin-form-field" type="number" id="clean_sheets" value={addPlayerClean_sheets} onChange={handleAddCleanSheetsChange}/>
 
-                <input type="submit" value="Submit New Player"/>
-            </form>
+                    <input type="submit" value="Submit New Player"/>
+                </form>
+            </div>
+            
 
-            {/* <br></br>
-            <hr ></hr>
-            <br></br> */}
 
             {/* UPDATE PLAYER FORM */}
-            <h3>Update existing player:</h3>
-            <form onSubmit={handleUpdatePlayerFormSubmit} className="admin-player-forms">
-            <label htmlFor="id">id:</label>
-            <input type="number" id="id" value={updatePlayerId} onChange={handleUpdatePlayerIdChange}/>
+            <div className= "update-player-container">
+                <h3>Update existing player:</h3>
+                <form onSubmit={handleUpdatePlayerFormSubmit} className="admin-player-forms">
+                <label htmlFor="id">id:</label>
+                <input className="admin-form-field" type="number" id="id" value={updatePlayerId} onChange={handleUpdatePlayerIdChange}/>
+                
+                <label htmlFor="name">Name:</label>
+                <input className="admin-form-field" type="text" id="name" value={updatePlayerName} onChange={handleUpdateNameChange}/>
+
+                <label htmlFor="position">Position:</label>
+                <input className="admin-form-field" type="text" id="position" value={updatePlayerPosition} onChange={handleUpdatePositionChange}/>
+
+                <label htmlFor="club">Club:</label>
+                <input className="admin-form-field" type="text" id="club" value={updatePlayerClub} onChange={handleUpdateClubChange}/>
+
+                <label htmlFor="price">Price:</label>
+                <input className="admin-form-field" type="number" id="price" value={updatePlayerPrice} onChange={handleUpdatePriceChange}/>
+
+                <label htmlFor="goals">Goals:</label>
+                <input className="admin-form-field" type="number" id="goals" value={updatePlayerGoals} onChange={handleUpdateGoalsChange}/>
+
+                <label htmlFor="assists">Assists:</label>
+                <input className="admin-form-field" type="number" id="assists" value={updatePlayerAssists} onChange={handleUpdateAssistsChange}/>
+
+                <label htmlFor="red_cards">Red Cards:</label>
+                <input className="admin-form-field" type="number" id="red_cards" value={updatePlayerRed_cards} onChange={handleUpdateRedCardsChange}/>
+
+                <label htmlFor="yellow_cards">Yellow Cards:</label>
+                <input className="admin-form-field" type="number" id="yellow_cards" value={updatePlayerYellow_cards} onChange={handleUpdateYellowCardsChange}/>
+
+                <label htmlFor="clean_sheets">Clean Sheets:</label>
+                <input className="admin-form-field" type="number" id="clean_sheets" value={updatePlayerClean_sheets} onChange={handleUpdateCleanSheetsChange}/>
+
+                <input type="submit" value="Update Player"/>
+                </form>
+
+            </div>
             
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" value={updatePlayerName} onChange={handleUpdateNameChange}/>
-
-            <label htmlFor="position">Position:</label>
-            <input type="text" id="position" value={updatePlayerPosition} onChange={handleUpdatePositionChange}/>
-
-            <label htmlFor="club">Club:</label>
-            <input type="text" id="club" value={updatePlayerClub} onChange={handleUpdateClubChange}/>
-
-            <label htmlFor="price">Price:</label>
-            <input type="number" id="price" value={updatePlayerPrice} onChange={handleUpdatePriceChange}/>
-
-            <label htmlFor="goals">Goals:</label>
-            <input type="number" id="goals" value={updatePlayerGoals} onChange={handleUpdateGoalsChange}/>
-
-            <label htmlFor="assists">Assists:</label>
-            <input type="number" id="assists" value={updatePlayerAssists} onChange={handleUpdateAssistsChange}/>
-
-            <label htmlFor="red_cards">Red Cards:</label>
-            <input type="number" id="red_cards" value={updatePlayerRed_cards} onChange={handleUpdateRedCardsChange}/>
-
-            <label htmlFor="yellow_cards">Yellow Cards:</label>
-            <input type="number" id="yellow_cards" value={updatePlayerYellow_cards} onChange={handleUpdateYellowCardsChange}/>
-
-            <label htmlFor="clean_sheets">Clean Sheets:</label>
-            <input type="number" id="clean_sheets" value={updatePlayerClean_sheets} onChange={handleUpdateCleanSheetsChange}/>
-
-            <input type="submit" value="Update Player"/>
-            </form>
-
-            {/* <br></br>
-            <hr ></hr>
-            <br></br> */}
-
             {/* DELETE PLAYER FORM */}
-            <h3>Delete player:</h3>
-            <form onSubmit={handleDeletePlayerFormSubmit} className="admin-player-forms">
+            <div className="delete-player-container">
+                <h3>Delete player:</h3>
+                <form onSubmit={handleDeletePlayerFormSubmit} className="admin-player-forms">
 
-            <label htmlFor="id">id:</label>
-            <input type="number" id="id" value={deletePlayerId} onChange={handleDeletePlayerIdChange}/>
+                <label htmlFor="id">id:</label>
+                <input className="admin-form-field" type="number" id="id" value={deletePlayerId} onChange={handleDeletePlayerIdChange}/>
 
-            <input type="submit" value="Delete Player"/>
-            </form>
-        </>
+                <input type="submit" value="Delete Player"/>
+                </form>
+            </div>
+        </div>
         
     )
 }
