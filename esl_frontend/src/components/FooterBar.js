@@ -44,7 +44,7 @@ const FooterBar = () => {
 
                             <li><a href="https://www.slough.gov.uk/visitor-information/sloughs-history/4#:~:text=The%20origin%20of%20the%20name,sloe%2Dbushes%20in%20the%20area." target="_blank">Darshil wants to relocate from Slough</a></li>
 
-                            <li><a href="https://www.techradar.com/uk/news/computing/apple/cheap-macbook-deals-1295699" target="_blank">Michael's Mac is too old he doesn't want to give away the MacBook</a></li>
+                            <li><a href="https://www.techradar.com/uk/news/computing/apple/cheap-macbook-deals-1295699" target="_blank">Michael needs a replacement MackBook, NI rising</a></li>
                         </ul>
 
                     </ div>

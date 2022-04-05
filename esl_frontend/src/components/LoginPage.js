@@ -49,7 +49,7 @@ const LoginPage = ({userList}) => {
                 <input type="number" placeholder="Enter User ID..." min={1} onChange={handleIdChange} required />
                 <input type="submit" value="Login"/>
                   <div className="signup_link">
-                    Not a member? <a href="">Signup</a>
+                    Not a member? <a href="/sign-up">Signup</a>
 
 
                 </div>
@@ -59,7 +59,7 @@ const LoginPage = ({userList}) => {
             <h1>Admin Login here</h1>
             <div className="txt_field">
                 <form onSubmit={doesAdminExist}>
-                <input type="text" placeholder="Enter Admin Username..." onChange={handleAdminUsernameChange} required />
+                <input type="text" placeholder="Enter Admin Username..." onChange={handleAdminUsernameChange} required /> 
                 <input type="password" placeholder="Enter Admin Password..." onChange={handleAdminPasswordChange} required />
                 <input type="submit" value="Login"/>
 

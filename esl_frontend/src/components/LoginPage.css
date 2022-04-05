@@ -8,13 +8,17 @@
     background: white;
     border-bottom: 1px solid silver;
     border-radius: 0;
+    margin-bottom: 2%;
+    padding-bottom: 1.5%;
+    padding-top: 2%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .center h1{
+    
     text-align: center;
     font-family: 'Roboto', sans-serif;
-    padding: 0 0 20px;
+    padding: 0 0 1px;
     border-bottom: 1px solid silver;
     color: #000000;
 }
@@ -34,50 +38,37 @@ form .txt_field{
     padding: 0 5px;
     height: 40px;
     font-size: 16px;
-    border: none;
     background: none;
     outline: none;
-}
-
-.txt_field label{
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    color: #adadad;
-    transform: translateY(-50%);
-    font-size: 16px;
-    pointer-events: none;
-    transition: .5s;
-
 }
 .txt_field span::before{
     content: '';
     position: absolute;
     top: 40px;
     left: 0;
-    width: 100%;
+    width: 0%;
     height: 2px;
-    background: #4cc9f0;
+    transition: .5s;
 }
 
-.txt_field input:focus ~ label,
+/* .txt_field input:focus ~ label,
 .txt_field input:valid ~ label{
     top: -5px;
     color: #2691d9;
-}
+} */
 
 .txt_field input:focus ~ span::before,
 .txt_field input:valid ~ span::before{
     width: 100%;
 }
-.pass{
+/* .pass{
     margin: -5px 0 20px 5px;
     color: #a6a6a6;
     cursor: pointer;
 }
 .pass:hover{
     text-decoration: underline;
-}
+} */
 input[type ="submit"]{
     font-family: 'Roboto',sans-serif ;
     width: 100%;
@@ -89,18 +80,31 @@ input[type ="submit"]{
     font-weight: 700;
     cursor: pointer;
     outline: none;
+    margin-bottom: 5%;
 }
 .input[type ="submit"]:hover{
     border-color: #2691d9;
     transition: .5s;
 }
-.sign_link{
+
+.input[type ="number"]{
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+
+}
+.signup_link{
     margin: 30px 0;
     text-align: center;
     font-size: 16px;
-    color: #2691d9;
+    color: #000000;
 }
-.sign_link a{
-    color: #2691d9;
-    text-decoration: none;
+.signup_link a{
+    color: #ce3e3e;
+      
 }
+/* .signup_link a:hover{
+    text-decoration: underline;
+} */
+
