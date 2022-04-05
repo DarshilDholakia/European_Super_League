@@ -56,6 +56,7 @@
   grid-template-columns: 1fr 1fr;
   height: 1000px;
   width: auto;
+  margin-top: -5%;
 }
 
 .pitch-container{
@@ -142,25 +143,38 @@
 }
 
 /* ========================================= */
-
-.player-table-heading {
-
+.build-team-title {
+  font-size: 3em;
+  padding-top: 2%;
+  font-weight: bold;
+  font-style: italic;
 }
 
-.heading-th {
-  padding: 15px;
-  text-align: right;
-  border-bottom: 5px dotted black;
+.table-element {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1em;
+  min-width: 450px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  display: table-header-group;
+  height: 500px; 
+  overflow: scroll;
+  display: block;
+  border: 2px solid black;
+  background-color: white;
 }
 
-td {
-  padding: 5px;
-  text-align: left;
+.table-element th,
+.table-element td {
+  padding: 12px 15px;
 }
 
-.player-table-body {
-  width: 500px;
-  text-align: left;
+.table-element tr {
+  border-bottom: 1.5px solid black;
+  justify-content: center;
+  text-align: center;
 }
 
 table {
@@ -169,7 +183,6 @@ table {
 
 thead {
   display: block;
-  border: 2px solid black;
 }
 
 tbody {
@@ -177,7 +190,6 @@ tbody {
   overflow: scroll;
   display: block;
   border: 2px solid black;
-
 }
 
 .team-logos {
@@ -298,6 +310,8 @@ tbody {
   background-color: var(--teletext-blue);
   color: var(--teletext-yellow);
   width: fit-content;
+  margin-left: 3%;
+  margin-top: 3%;
 }
 
 .result-table li {

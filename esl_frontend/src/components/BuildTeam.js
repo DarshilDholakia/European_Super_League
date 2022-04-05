@@ -436,7 +436,7 @@ const BuildTeam = ({ playerList }) => {
 
     return (
         <>
-            <h1>Assemble your squad</h1>
+            <h1 className='build-team-title'>Assemble Your Squad</h1>
             <div className='Main-container'>
                 <div className="pitch-container">
                     <img className='pitch-image' src={pitchImage} alt='pitch image' width="100%"></img>
@@ -503,19 +503,15 @@ const BuildTeam = ({ playerList }) => {
                     </select>
 
                     <table className='table-element'>
-                        <thead>
-                            <tr className='player-table-heading'>
-                                <th className='heading-th'>Name</th>
-                                <th className='heading-th'>Position</th>
-                                <th className='heading-th'>Club</th>
-                                <th className='heading-th'>Total Points</th>
-                                <th className='heading-th'>Select</th>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Club</th>
+                                <th>Total Points</th>
+                                <th>{playerOnPitchChangeSelected === true ? "Select" : ""}</th>
                             </tr>
-                        </thead>
-                        <tbody className='player-table-body'>
                             {(filteredClubList.length > 0) && (filteredPositionList.length > 0) ? filteredCombinedMap : filteredPositionList.length > 0 && filteredClubList.length === 0
                                 ? filteredPositionListMap : filteredClubList.length > 0 && filteredPositionList.length === 0 ? filteredClubListMap : playerMap}
-                        </tbody>
                     </table>
                 </div>
             </div>
