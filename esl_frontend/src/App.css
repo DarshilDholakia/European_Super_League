@@ -266,6 +266,8 @@ tbody {
   font-size: 14px;
 }
 
+/* LEADERBOARD PAGE STYLING */
+
 /* TODO: double check padding on leaderboard table */
 .leaderboard-table{
   border-collapse: collapse;
@@ -525,6 +527,9 @@ body {
   color: #222;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
+  background-color: lightgray;
+  background-image: url(./assets/background-effect-image.png);
+  background-repeat: no-repeat;
 }
 
 #login-box {
