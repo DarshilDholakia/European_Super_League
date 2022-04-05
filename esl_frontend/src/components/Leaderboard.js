@@ -1,5 +1,7 @@
 import React from "react";
 import User from "./User";
+import './Leaderboard.css';
+
 
 const Leaderboard = ({ userList }) => {
 
@@ -19,8 +21,8 @@ const Leaderboard = ({ userList }) => {
                         <th>Total Points</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {userMap}
+                <tbody className="Leaderboard-body">
+                    {userMap}    
                 </tbody>
             </table>
         </div>

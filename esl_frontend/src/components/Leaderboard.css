@@ -1,0 +1,32 @@
+.leaderboard-page{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 20px;
+    
+}
+.leaderboard-page thead tr{
+    background-color: #16a085;
+    color: white;
+    text-align: left;
+    font-size: 28px;
+    font-weight: bold;
+}
+.leaderboard-page th,
+.leaderboard-page tbody{
+    position: relative;
+    padding: 12px 15px;
+   
+}
+
+.leaderboard-page tbody{
+    border-bottom: 1px solid #292727;
+    border-style: solid;
+    
+}
+
+.content-leaderboard leaderboard-elemts :nth-of-type(even) {
+    background-color: rgb(141, 141, 141);
+}
+.leaderboard-headings tbody tr:last-of-type {
+    border-bottom: #16a085;
+}
