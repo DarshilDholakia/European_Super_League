@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
+import bntaLogo from '../assets/bntaLogo.png'
 
 const UserNavBar = () => {
 
-    const {user,logout} = useContext(UserContext);
+    const { user, logout } = useContext(UserContext);
 
-    return(
+    return (
         <ul className="navbar">
+            <li>
+                <img src={bntaLogo} alt="bnta logo" width="75" height="100" />
+            </li>
             <li>
                 <Link to="/"> Home </Link>
             </li>
@@ -18,7 +22,7 @@ const UserNavBar = () => {
                 <Link to="/leaderboard"> Leaderboard </Link>
             </li>
             <li>
-                <button onClick={logout}>Sign Out</button>
+                <button className="sign-out-button" onClick={logout}>Sign Out</button>
             </li>
         </ul>
     )
