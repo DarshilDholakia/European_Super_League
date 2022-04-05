@@ -131,17 +131,17 @@ const Home = () => {
                         </a>
                     </div>
                     <div className="west_ham-logo">
-                        <a href = "https://www.whufc.com/">
+                        <a href = "https://www.whufc.com/" target="_blank">
                         <img src={west_hamLogo} alt="West Ham Logo" width="180" height="200" />
                         </a>
                     </div>
                     <div className="liverpool-logo">
-                        <a href = "https://www.liverpoolfc.com/">
+                        <a href = "https://www.liverpoolfc.com/" target="_blank">
                         <img src={liverpoolLogo} alt="Liverpool Logo" width="150" height="200" />
                         </a>
                     </div>
                     <div className="psg-logo">
-                        <a href = "https://en.psg.fr/">
+                        <a href = "https://en.psg.fr/" target="_blank">
                         <img src={psgLogo} alt="PSG Logo" width="200" height="200" />
                         </a>
                     </div>
