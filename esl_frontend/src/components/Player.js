@@ -1,7 +1,7 @@
 import { UserContext } from "./UserContext"
 import { useContext } from "react"
 
-const Player = ({ player, handleTransferTablePlayerSelect, updateAssignmentById, assignmentList, currentAssignmentId, playerOnPitchChangeSelected }) => {
+const Player = ({ player, handleTransferTablePlayerSelect, updateAssignmentById, currentAssignmentId, playerOnPitchChangeSelected, isPlayerKitNonSelectedState, addNewAssignment }) => {
 
     const { user } = useContext(UserContext)
 
@@ -12,9 +12,10 @@ const Player = ({ player, handleTransferTablePlayerSelect, updateAssignmentById,
 
     const select = <>{playerOnPitchChangeSelected === true ? <button onClick={() => {
         console.log("Assignment id: " + currentAssignmentId)
-        updateAssignmentById(currentAssignmentId, updatedPlayer);
-        handleTransferTablePlayerSelect(player.player_id, player.player_club, playerOnPitchChangeSelected);
-    }}>Select</button> : ""}</>
+        isPlayerKitNonSelectedState == false ? updateAssignmentById(currentAssignmentId, updatedPlayer) : addNewAssignment(updatedPlayer)
+        handleTransferTablePlayerSelect();
+    }}>Select</button> : 
+    ""}</>
 
     return (
         <>

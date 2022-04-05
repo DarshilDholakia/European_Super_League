@@ -22,9 +22,9 @@ const Home = () => {
         <div>
             <div className="main-home-container">
                 <div className="result-table">
-                    <h1>Matchweek Scores:</h1>
+                    <h1 className="teletext-heading">Matchweek Scores:</h1>
                     <ul className="result-list">
-                        <h2>Gameweek 1</h2>
+                        <h2 className="teletext-heading">Gameweek 1</h2>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
@@ -32,7 +32,7 @@ const Home = () => {
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
 
-                        <h2>Gameweek 2</h2>
+                        <h2 className="teletext-heading">Gameweek 2</h2>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
@@ -40,7 +40,7 @@ const Home = () => {
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
 
-                        <h2>Gameweek 3</h2>
+                        <h2 className="teletext-heading">Gameweek 3</h2>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
@@ -48,7 +48,7 @@ const Home = () => {
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
 
-                        <h2>Gameweek 4</h2>
+                        <h2 className="teletext-heading">Gameweek 4</h2>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
@@ -56,7 +56,7 @@ const Home = () => {
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
 
-                        <h2>Gameweek 5</h2>
+                        <h2 className="teletext-heading">Gameweek 5</h2>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
@@ -64,7 +64,7 @@ const Home = () => {
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
 
-                        <h2>Gameweek 6</h2>
+                        <h2 className="teletext-heading">Gameweek 6</h2>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
@@ -72,7 +72,7 @@ const Home = () => {
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
 
-                        <h2>Gameweek 7</h2>
+                        <h2 className="teletext-heading">Gameweek 7</h2>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
@@ -80,7 +80,7 @@ const Home = () => {
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
 
-                        <h2>Gameweek 8</h2>
+                        <h2 className="teletext-heading">Gameweek 8</h2>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
@@ -88,7 +88,7 @@ const Home = () => {
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
 
-                        <h2>Gameweek 9</h2>
+                        <h2 className="teletext-heading">Gameweek 9</h2>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
@@ -96,7 +96,7 @@ const Home = () => {
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
 
-                        <h2>Gameweek 10</h2>
+                        <h2 className="teletext-heading">Gameweek 10</h2>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
@@ -104,7 +104,7 @@ const Home = () => {
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
 
-                        <h2>Gameweek 11</h2>
+                        <h2 className="teletext-heading">Gameweek 11</h2>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
                         <li>Manchester United 0 - 5 Liverpool</li>
@@ -131,17 +131,17 @@ const Home = () => {
                         </a>
                     </div>
                     <div className="west_ham-logo">
-                        <a href = "https://www.whufc.com/">
+                        <a href = "https://www.whufc.com/" target="_blank">
                         <img src={west_hamLogo} alt="West Ham Logo" width="180" height="200" />
                         </a>
                     </div>
                     <div className="liverpool-logo">
-                        <a href = "https://www.liverpoolfc.com/">
+                        <a href = "https://www.liverpoolfc.com/" target="_blank">
                         <img src={liverpoolLogo} alt="Liverpool Logo" width="150" height="200" />
                         </a>
                     </div>
                     <div className="psg-logo">
-                        <a href = "https://en.psg.fr/">
+                        <a href = "https://en.psg.fr/" target="_blank">
                         <img src={psgLogo} alt="PSG Logo" width="200" height="200" />
                         </a>
                     </div>

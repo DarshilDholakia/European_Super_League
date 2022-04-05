@@ -4,6 +4,8 @@
   --pink:  #ff2882;
   --purple: #963cff;
   --BNTA_purple: #37003c;
+  --teletext-yellow:#ffff00;
+  --teletext-blue:#0000ff;
 }
 
 .App {
@@ -47,6 +49,7 @@
 
 .pitch-image{
   position: relative;
+  margin-left: 80px;
   top: 0;
   left: 0; 
 }
@@ -68,40 +71,52 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 22%;  
-  left: 47%;
+  top: 19%;  
+  left: 54%;
 }
 
 .midfielder1-container{
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 33%;  
-  left: 30%;
+  top: 28%;  
+  left: 36%;
 }
 
 .midfielder2-container{
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 33%;  
-  left: 65%;
+  top: 28%;  
+  left: 72%;
 }
 
 .defender-container{
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 41%;  
-  left: 47%;
+  top: 37%;  
+  left: 54%;
 }
 
 .goalkeeper-container{
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 54%;  
-  left: 47%;
+  top: 51.5%;  
+  left: 54%;
+}
+
+.player-label{
+  margin-top: 0px;
+  font-size: 10px;
+  background-color: yellow;
+}
+
+.player-label{
+  margin-top: 0px;
+  font-size: 10px;
+  background-color: yellow;
 }
 
 .table-and-filter {
@@ -141,65 +156,77 @@ tbody {
 
 /* ===========TEAM LOGO BACKGROUNDS START============== */
 .united-logo {
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, #d00000 60%, #fdcd3b 60%);
+  border: 2px solid black;
   border-radius: 10px;
 }
 
 .psg-logo {
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, #33658a 60%, #d00000 60%);
+  border: 2px solid black;
   border-radius: 10px;
 }
 
 .arsenal-logo {
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, #dc2f02 60%, #3905c9 60%);
+  border: 2px solid black;
   border-radius: 10px;
 }
 
 .city-logo {
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, #70d6ff 60%, #3a86ff 60%);
+  border: 2px solid black;
   border-radius: 10px;
 }
 
 .inter-logo {
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, #3905c9 60%, white 60%);
+  border: 2px solid black;
   border-radius: 10px;
 }
 
 .juventus-logo {
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, grey 60%, white 60%);
   border-radius: 10px;
+  border: 2px solid black;
   padding: 5px;
 }
 
 .liverpool-logo {
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, #d00000 60%, #9d0208 60%);
   border-radius: 10px;
+  border: 2px solid black;
 }
 
 .milan-logo {
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, #d00000 60%, black 60%);
   border-radius: 10px;
+  border: 2px solid black;
 }
 
 .west_ham-logo {
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, #9a031e 60%, #fdcd3b 60%);
   border-radius: 10px;
+  border: 2px solid black;
   padding: 7.5px;
 }
 
 .barcelona-logo {
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, #d00000 60%, #3905c9 60%);
   border-radius: 10px;
+  border: 2px solid black;
 }
 
 .real_madrid-logo {
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, white 60%, #fdcd3b 60%);
   border-radius: 10px;
+  border: 2px solid black;
 }
 
 .atletico-logo {
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, #d00000 60%, white 60%);
   border-radius: 10px;
+  border: 2px solid black;
 }
 /* ===========TEAM LOGO BACKGROUNDS END============== */
 
@@ -212,6 +239,9 @@ tbody {
 }
 
 .result-table {
+  font-family: 'Press Start 2P';
+  font-size: 14px;
+  background-color: black;
   width: 60%;
   margin-left: auto;
   margin-right: auto;
@@ -222,6 +252,18 @@ tbody {
   grid-row-end: 2;
   overflow: scroll;
   display: block;
+}
+
+.teletext-heading {
+  background-color: var(--teletext-blue);
+  color: var(--teletext-yellow);
+  width: fit-content;
+}
+
+.result-table li {
+  color: white;
+  padding: 2%;
+  font-size: 14px;
 }
 
 /* TODO: double check padding on leaderboard table */
@@ -393,7 +435,8 @@ ul{
 .Twitter{
   flex: auto;
   position: relative;
-  margin-top: 7%;
+  margin-top: 10%;
+  margin-left: 4%;
 }
 .Facebook{
   flex: auto;
@@ -406,3 +449,235 @@ ul{
   margin-top: 15%;
 }
 /* ======================= Footer Styling ============================= */
+
+.label{
+  display: block;
+  font-size: larger;
+  color: black;
+  padding: 5px;
+}
+ 
+.input{
+  font-size: larger;
+  padding: 5px;
+  margin: 2px;
+  
+}
+.btn{
+  color: white;
+  background-color: var(--purple);
+  border-radius: 5px;
+  font-size: 20px;
+  display: block;
+  padding: 5px;
+  margin: 20px auto;
+}
+ 
+/* .messages{
+  display: flex;
+  justify-content: center;
+}
+ 
+.error{
+  display: block;
+  background-color: red;
+  color: white;
+  width: fit-content;
+  height: 50px;
+  padding: 5px;
+} */
+ 
+/* .success{
+  display: block;
+  background-color: lightblue;
+  color: black;
+  width: fit-content;
+  height: 50px;
+  padding: 5px;
+} */
+
+/* ============ ADMIN PAGE STYLING ============== */
+.admin-player-forms{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  justify-content: center;
+  gap: 10px;
+  border: 2px solid purple;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+/* ============ SIGN-UP PAGE STYLING ============== */
+.sign-up-submit-button{
+margin-bottom: 50px;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: rgb(255, 255, 255);
+  font-size: 16px;
+  color: #222;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+#login-box {
+  position: relative;
+  margin: 5% auto;
+  width: 600px;
+  height: 440px;
+  background: #FFF;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.left-hand-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 400px;
+}
+
+h1 {
+  margin: 0 0 20px 0;
+  font-weight: 300;
+  font-size: 28px;
+}
+
+input[type="text"],
+input[type="password"] {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 220px;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid #AAA;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom: 2px solid #16a085;
+  color: #16a085;
+  transition: 0.2s ease;
+}
+
+input[type="submit"] {
+  margin-top: 28px;
+  width: 120px;
+  height: 32px;
+  background: #16a085;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+.or {
+  position: absolute;
+  top: 180px;
+  left: 280px;
+  width: 40px;
+  height: 40px;
+  background: #DDD;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  line-height: 40px;
+  text-align: center;
+}
+
+.right-hand-side {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 400px;
+  background: url('https://goo.gl/YbktSj');
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+}
+
+.right .loginwith {
+  display: block;
+  margin-bottom: 40px;
+  font-size: 28px;
+  color: #FFF;
+  text-align: center;
+}
+
+button.social-signin {
+  margin-bottom: 20px;
+  width: 220px;
+  height: 36px;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+button.social-signin:hover,
+button.social-signin:focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+button.social-signin:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+button.social-signin.facebook {
+  background: #32508E;
+}
+
+button.social-signin.twitter {
+  background: #55ACEE;
+}
+
+button.social-signin.google {
+  background: #DD4B39;
+}
+
+.sign_up_password {
+  display: block;
+  font-size: larger;
+  color: black;
+  padding: 5px;
+}

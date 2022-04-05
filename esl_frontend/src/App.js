@@ -116,9 +116,6 @@ function App() {
       .catch((error) => console.error(error))
   }
 
-
-
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -136,7 +133,8 @@ function App() {
             updateUserById={updateUserById}
           /> : <Navigate replace to="/" />} />
           <Route exact path="/login" element={user.auth ? <Navigate replace to="/build-team" /> : admin.auth ? <Navigate replace to="/admin-hub" /> : <LoginPage userList={userList} />} />
-          <Route exact path="/sign-up" element={<SignupPage />} />
+    
+          <Route exact path="/sign-up" element={user.auth ? <Navigate replace to="/build-team"/> : <SignupPage userList={userList} addNewUser={addNewUser} />}/>
           <Route exact path="/build-team" element={user.auth ? <BuildTeam playerList={playerList} /> : <Navigate replace to="/" />} />
           <Route exact path="/leaderboard" element={user.auth ? <Leaderboard userList={userList}/> : <Navigate replace to="/" />} />
         </Routes>
