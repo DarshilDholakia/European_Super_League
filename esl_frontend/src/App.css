@@ -331,7 +331,7 @@ tbody {
   display: flex;
   justify-content: center;
   background-color:var(--BNTA_purple);
-  padding: 50px 0;
+  padding: 10px 0;
 
 }
 .container{

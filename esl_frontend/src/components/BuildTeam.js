@@ -58,8 +58,10 @@ const BuildTeam = ({ playerList }) => {
             },
             body: JSON.stringify(newAssignment),
         })
-            .then(() => fetchAllAssignments)
+            // .then(() => fetchAllAssignments)
+            .then(() => fetchAssignmentByUser(user.id))
             .catch((error) => console.error(error))
+            setIsPlayerKitNonSelectedState(false)
     };
 
     // DELETE ASSIGNMENT
@@ -124,7 +126,7 @@ const BuildTeam = ({ playerList }) => {
 
     const [currentAssignmentIdState, setCurrentAssignmentIdState] = useState([])
 
-    const [isPlayerKitNonSelectedState, setIsPlayerKitNonSelectedState] = useState(false);
+    const [isPlayerKitNonSelectedState, setIsPlayerKitNonSelectedState] = useState(false); // line added for addAssignment
 
     const manageForward = () => {   //when you press the + button on the forward player
         setForwardState({ selected: true, kit: forwardState.kit });
@@ -133,26 +135,22 @@ const BuildTeam = ({ playerList }) => {
         setDefenderState({ selected: false, kit: defenderState.kit });
         setGoalkeeperState({ selected: false, kit: goalkeeperState.kit });
 
-        if (forwardState.selected === true && forwardState.kit === nonSelectedPlayer
-            || midfielder1State.selected === true && midfielder1State.kit === nonSelectedPlayer
-            || midfielder2State.selected === true && midfielder2State.kit === nonSelectedPlayer
-            || defenderState.selected === true && defenderState.kit === nonSelectedPlayer
-            || goalkeeperState.selected === true && goalkeeperState.kit === nonSelectedPlayer){
+        //-----to be able to add new assignment if selected player on pitch has nonSelectedPlayer kit-------
+        const positionState = [forwardState, midfielder1State, midfielder2State, defenderState, goalkeeperState]
+        for (let i = 0; i < positionState.length; i++) {
+            if (positionState[i].selected && positionState[i].kit === nonSelectedPlayer) {
                 setIsPlayerKitNonSelectedState(true);
             }
+        }
 
-        if (forwardState.selected == false) {
+        if (!forwardState.selected) {
             setPlayerOnPitchChangeSelected(true);
             console.log(isPlayerKitNonSelectedState)
-            if (isPlayerKitNonSelectedState===false){
+            if (!isPlayerKitNonSelectedState) { // line added for addAssignment
                 let userCurrentForwardPlayer = userPlayerList.find(player => player.player_position === "FORWARD");
                 let userCurrentForwardPlayerId = userCurrentForwardPlayer.id;
                 selectAssignmentByUserIdAndPlayerId(userCurrentForwardPlayerId);
-            } 
-
-            // let userCurrentForwardPlayer = userPlayerList.find(player => player.player_position === "FORWARD");
-            // let userCurrentForwardPlayerId = userCurrentForwardPlayer.id;
-            // selectAssignmentByUserIdAndPlayerId(userCurrentForwardPlayerId);
+            }  // line added for addAssignment
 
             fetchPlayersByPosition("FORWARD"); //shows the forward players on the transfer table
 
@@ -160,7 +158,7 @@ const BuildTeam = ({ playerList }) => {
             setPlayerOnPitchChangeSelected(false);
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setForwardState({ selected: false, kit: nonSelectedPlayer });
+            setForwardState({ selected: false, kit: forwardState.kit });
         }
     }
 
@@ -181,7 +179,7 @@ const BuildTeam = ({ playerList }) => {
             setPlayerOnPitchChangeSelected(false);
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setMidfielder1State({ selected: false, kit: nonSelectedPlayer });
+            setMidfielder1State({ selected: false, kit: midfielder1State.kit });
         }
     }
 
@@ -215,7 +213,7 @@ const BuildTeam = ({ playerList }) => {
             setPlayerOnPitchChangeSelected(false);
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setMidfielder2State({ selected: false, kit: nonSelectedPlayer });
+            setMidfielder2State({ selected: false, kit: midfielder2State.kit });
         }
     }
 
@@ -236,7 +234,7 @@ const BuildTeam = ({ playerList }) => {
             setPlayerOnPitchChangeSelected(false);
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setDefenderState({ selected: false, kit: nonSelectedPlayer });
+            setDefenderState({ selected: false, kit: defenderState.kit });
         }
     }
 
@@ -257,7 +255,7 @@ const BuildTeam = ({ playerList }) => {
             setPlayerOnPitchChangeSelected(false);
             setFilteredPositionList([]);
             setFilteredClubList([])
-            setGoalkeeperState({ selected: false, kit: nonSelectedPlayer });
+            setGoalkeeperState({ selected: false, kit: goalkeeperState.kit });
         }
     }
 
