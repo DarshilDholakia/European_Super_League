@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "./UserContext";
+import "./LoginPage.css";
 
 const LoginPage = ({userList}) => {
 
@@ -42,18 +43,29 @@ const LoginPage = ({userList}) => {
 
     return(
         <>
+            <div className="center">
             <h1>Player Login here</h1>
             <form onSubmit={doesUserExist}>
                 <input type="number" placeholder="Enter User ID..." min={1} onChange={handleIdChange} required />
                 <input type="submit" value="Login"/>
+                  <div className="signup_link">
+                    Not a member? <a href="">Signup</a>
+
+
+                </div>
+
             </form>
 
             <h1>Admin Login here</h1>
-            <form onSubmit={doesAdminExist}>
+            <div className="txt_field">
+                <form onSubmit={doesAdminExist}>
                 <input type="text" placeholder="Enter Admin Username..." onChange={handleAdminUsernameChange} required />
-                <input type="text" placeholder="Enter Admin Password..." onChange={handleAdminPasswordChange} required />
+                <input type="password" placeholder="Enter Admin Password..." onChange={handleAdminPasswordChange} required />
                 <input type="submit" value="Login"/>
-            </form>
+
+                </form>
+            </div>
+            </div>
         </>
         
     )
