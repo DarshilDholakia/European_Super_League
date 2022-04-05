@@ -504,15 +504,15 @@ const BuildTeam = ({ playerList }) => {
 
                     <table className='table-element'>
                         <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Club</th>
-                                <th>Total Points</th>
-                                <th>Select</th>
+                            <tr className='player-table-heading'>
+                                <th className='heading-th'>Name</th>
+                                <th className='heading-th'>Position</th>
+                                <th className='heading-th'>Club</th>
+                                <th className='heading-th'>Total Points</th>
+                                <th className='heading-th'>Select</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='player-table-body'>
                             {(filteredClubList.length > 0) && (filteredPositionList.length > 0) ? filteredCombinedMap : filteredPositionList.length > 0 && filteredClubList.length === 0
                                 ? filteredPositionListMap : filteredClubList.length > 0 && filteredPositionList.length === 0 ? filteredClubListMap : playerMap}
                         </tbody>

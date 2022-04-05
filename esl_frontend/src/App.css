@@ -141,6 +141,28 @@
   margin: auto;
 }
 
+/* ========================================= */
+
+.player-table-heading {
+
+}
+
+.heading-th {
+  padding: 15px;
+  text-align: right;
+  border-bottom: 5px dotted black;
+}
+
+td {
+  padding: 5px;
+  text-align: left;
+}
+
+.player-table-body {
+  width: 500px;
+  text-align: left;
+}
+
 table {
   text-align: justify;
 }
