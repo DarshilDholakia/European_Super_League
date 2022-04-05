@@ -4,13 +4,16 @@
     font-size: 20px;
     
 }
-.leaderboard-page thead tr{
-    background-color: #16a085;
-    color: white;
+.leaderboard-table tr{
+    background-color: #ffffff;
     text-align: left;
     font-size: 28px;
     font-weight: bold;
 }
+.leaderboard-headings{
+    background-color: #16a085;
+}
+
 .leaderboard-page th,
 .leaderboard-page tbody{
     position: relative;

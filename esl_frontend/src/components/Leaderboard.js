@@ -14,16 +14,12 @@ const Leaderboard = ({ userList }) => {
     return (
         <div className="leaderboard-page">
             <table className='leaderboard-table'>
-                <thead>
-                    <tr className="leaderboard-headings">
-                        <th>Rank</th>
-                        <th>Team Name</th>
-                        <th>Total Points</th>
-                    </tr>
-                </thead>
-                <tbody className="Leaderboard-body">
-                    {userMap}    
-                </tbody>
+                <tr className="leaderboard-headings">
+                    <th>Rank</th>
+                    <th>Team Name</th>
+                    <th>Total Points</th>
+                </tr>
+                {userMap}
             </table>
         </div>
     )
