@@ -39,13 +39,15 @@ const SignupPage = ({ addNewUser, userList }) => {
     }
     //  setSubmitted(true);
     //  setError(false);
-    login(userList[userList.length - 1].id)
+    
     const newUser = {
       email: email,
       password: password,
       teamName: teamName
     }
-    addNewUser(newUser)
+    addNewUser(newUser);
+    
+    login(userList[userList.length].id, email, password);
   };
 
   // Showing success message
