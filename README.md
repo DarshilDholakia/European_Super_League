@@ -34,7 +34,7 @@ This is a full-stack project, meaning it must include both front and back ends. 
     3. Open client-side repo ("esl_frontend") in Visual Studio Code (VSC) and run the following code in the VSC in-built terminal:
         - npm install
         - npm start
-    4. Further instructions to follow
+    4. Interact with site - create/edit your team!
 
 
 
