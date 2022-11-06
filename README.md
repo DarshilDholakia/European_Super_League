@@ -1,6 +1,6 @@
 # Fantasy European Super League
 
-Group1 of the BNTA Capstone project aiming to create a front-end application for an existing Wordle-Helper server-side project.
+Group1 of the BNTA Capstone project aiming to create a full-stack fantasy football application.
 
 By Aaron, Abdi, Adib, Darshil, Michael and Suraaj.
 
